@@ -1,0 +1,33 @@
+:root{
+    --gris:#EAECF0;
+}
+
+
+.imageContainer {
+    display: flex;
+    flex-direction: row;
+    max-width: 100%; /* Ajusta la anchura del contenedor */
+    height: 645px;
+}
+
+.image1 {
+
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 500px;
+    margin-left: -100px;
+    border-radius: 100px;
+    object-fit: cover;
+}
+
+.image2 {
+    z-index: -2;
+    top: 0;
+    left: 0;
+    margin-left: -200px;
+    height: 645px;
+    object-fit: cover;
+    width:88.3%;
+}
+

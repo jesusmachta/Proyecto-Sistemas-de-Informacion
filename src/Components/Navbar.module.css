@@ -11,36 +11,64 @@
     
 }
 
+.container{
+    background-color: #EAECF0;
+}
+
 .navbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 15px;
     background-color: var(--naranja);
-    border-radius: 100px;
-    max-width: 700px; 
-    padding: 10px;
-    margin-top: 10px;
-    font-family: 'Montserrat', sans-serif;
+    width: 918px;
+    height: 70px;
+    border-radius: 50px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 15px;
 }
 
-@media screen and (max-width: 768px) {
-    .navbar {
-        max-width: 500px;
-        gap: 0px;
+@media(min-width:119px) and (max-width:537px){
+    .container{
+        display: flex;
+        flex-direction: column;
+    }
+    .navbar{
+        border-radius: 45px;
+        width: 110%;
     }
     .list{
-       margin-right: 10px;
+        margin-left:30px;
+    }
+    .list .link{
+        font-size: 13px;
+        margin-left: 10px;
+        margin-right: 10px;
     }
     .icons{
-        gap: 2px;
-        margin-left: 2px;
+        margin-right: 30px;
+        gap: 15px;
+    }
+
+}
+
+@media (min-width:538px) and (max-width:1024px){
+    .navbar{
+        width: 80%;
+        margin-left: 5%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    .icons{
+        margin-right: 13px;
+        gap: 13px;
     }
 }
 
 @media screen and (min-width:1028px){
     .navbar{
-        margin-left: 65em;
+        margin-left: 70em;
+        margin-right: 3em;
     }
     .list{
         gap: 4px;
@@ -67,7 +95,7 @@
 
 .icons{
     display: flex;
-    margin-right: 20px;
+    margin-right: 30px;
 }
 
   
@@ -88,3 +116,4 @@
 .logo img{
     height: 80px;
 }
+
