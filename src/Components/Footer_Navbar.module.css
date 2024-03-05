@@ -1,0 +1,10 @@
+.container {
+    position: relative;
+  }
+  
+  .custom-navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100; /* Asegura que el Navbar se muestre por encima de las imágenes de fondo */
+  }
