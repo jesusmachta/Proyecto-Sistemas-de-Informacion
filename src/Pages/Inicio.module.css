@@ -11,13 +11,12 @@
 }
 
 .image1 {
-
     top: 0;
     left: 0;
     z-index: -1;
-    width: 500px;
-    margin-left: -100px;
-    border-radius: 100px;
+    width: 800px;
+    margin-left: -50px;
+    border-radius: 15px;
     object-fit: cover;
 }
 

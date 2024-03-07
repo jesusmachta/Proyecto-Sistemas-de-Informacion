@@ -9,7 +9,11 @@ const Inicio = () => {
       <div className={styles.imageContainer}>
         <img className={styles.image1} src={Foto1} alt="Foto_inicio"/>
         <img className={styles.image2} src={Foto2} alt="Foto_inicio2"/>
-        
+      </div>
+      <div>
+        <h1>“La realidad está esperando a que la transformes”</h1>
+        <button>Registrate</button>
+        <button>Explorar agrupaciones</button>
       </div>
     </div>   
   );
