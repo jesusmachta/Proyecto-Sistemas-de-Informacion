@@ -6,6 +6,7 @@ import styles from './Footer_Navbar.module.css'
 const Footer_Navbar = () => {
   return (
     <div className='conteiner'>
+
       <Navbar/>
       <Outlet/>
       <Footer/>
