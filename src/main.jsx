@@ -5,6 +5,7 @@ import Footer_Navbar from './Components/Footer_Navbar'
 import Agrupaciones from './Pages/Agrupaciones'
 import Inicio from './Pages/Inicio'
 import Feedbacks from './Pages/Feedbacks'
+import Register from './Pages/Signup'
 
 const browserRouter = createBrowserRouter([
   {
@@ -22,9 +23,12 @@ const browserRouter = createBrowserRouter([
       {
         path:"/feedbacks",
         element:<Feedbacks/>
-      }
+      },
     ]
-  },
+  },{
+    path:"/signup",
+    element:<Register/>
+  }
 
 ])
 
