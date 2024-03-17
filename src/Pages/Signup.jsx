@@ -29,7 +29,7 @@ export default function Register() {
 
       <div className={styles.container}>
         <h2 className={styles.titles}>Nombre</h2>
-        <TextField placeholder="Ingresa tu nombre..." />
+        <TextField placeholder="Ingresa tu nombre... :)" />
 
         <h2 className={styles.titles}>Apellido</h2>
         <TextField placeholder="Ingresa tu apellido..." />
