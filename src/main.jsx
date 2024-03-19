@@ -6,6 +6,7 @@ import Agrupaciones from './Pages/Agrupaciones'
 import Inicio from './Pages/Inicio'
 import Feedbacks from './Pages/Feedbacks'
 import Register from './Pages/Signup'
+import UserProvider from './UserProvider'
 
 const browserRouter = createBrowserRouter([
   {
@@ -34,6 +35,9 @@ const browserRouter = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <UserProvider>
     <RouterProvider router={browserRouter}/>
+    </UserProvider>
+    
   </React.StrictMode>,
 )
