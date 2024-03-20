@@ -1,15 +1,15 @@
-export function TextField({placeholder}){
-    return <input type ="text" placeholder={placeholder}></input>
+export function TextField({placeholder, onChange}){
+    return <input type ="text" placeholder={placeholder} onChange={onChange}></input>
 }
 
-export function EmailField({placeholder}){
-    return <input type ="email" placeholder={placeholder}></input>
+export function EmailField({placeholder, onChange}){
+    return <input type ="email" placeholder={placeholder} onChange={onChange}></input>
 }
 
-export function PasswordField({placeholder}){
-    return <input type ="password" placeholder={placeholder}></input>
+export function PasswordField({placeholder, onChange}){
+    return <input type ="password" placeholder={placeholder} onChange={onChange}></input>
 }
 
-export function TelField({placeholder}){
-    return <input type= "tel" placeholder={placeholder}/>;
+export function TelField({placeholder, onChange}){
+    return <input type= "tel" placeholder={placeholder} onChange={onChange}/>;
 }

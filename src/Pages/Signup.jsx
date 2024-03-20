@@ -22,6 +22,7 @@ import {
 import { saveUser } from "../SaveUserDB";
 import { Link, useNavigate } from "react-router-dom";
 
+
 export default function Register() {
   const navigate = useNavigate();
   const [values, setvalues] = useState({
@@ -32,10 +33,15 @@ export default function Register() {
     password: "",
     confirmPassword: "",
   });
+
+  // const handleInputChange = (event) => {
+  //   setvalues((prev) => ({ ...prev, [event.target.name]: event.target.value }));
+  // }
   const [errorMessage, setErrorMessage] = useState([]);
   const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
 
   const registro = () => {
+    console.log(values); 
     if (
       !values.name ||
       !values.lastName ||
@@ -54,7 +60,7 @@ export default function Register() {
       .then(async (res) => {
         setSubmitButtonDisabled(false);
         const user = res.user;
-        await updatePassword(user, {
+        await updateProfile(user, {
           displayName: values.name,
           displayLastname: values.lastName,
           phone: values.phoneNumber,
@@ -123,8 +129,11 @@ export default function Register() {
         <TextField
           label="Nombre"
           placeholder="Ingresa tu nombre..."
-          onChange={(event) =>
-            setvalues({ ...values, name: event.target.value })
+          onChange={(event) =>{
+            console.log(event.target.value); 
+            setvalues((prev) =>({...prev, name: event.target.value}));
+          }
+            
           }
         />
 
@@ -133,7 +142,7 @@ export default function Register() {
           label="Apellido"
           placeholder="Ingresa tu apellido..."
           onChange={(event) =>
-            setvalues({ ...values, lastName: event.target.value })
+            setvalues((prev) => ({ ...prev, lastName: event.target.value }))
           }
         />
 
@@ -142,7 +151,7 @@ export default function Register() {
           label="Telefono"
           placeholder="Ingresa tu teléfono..."
           onChange={(event) =>
-            setvalues({ ...values, phoneNumber: event.target.value })
+            setvalues((prev) => ({ ...prev, phoneNumber: event.target.value }))
           }
         />
 
@@ -151,7 +160,7 @@ export default function Register() {
           label="Email"
           placeholder="Ingresa tu correo..."
           onChange={(event) =>
-            setvalues({ ...values, email: event.target.value })
+            setvalues((prev)=>({ ...prev, email: event.target.value }))
           }
         />
 
@@ -160,7 +169,7 @@ export default function Register() {
           label="Contraseña"
           placeholder="Ingresa tu contraseña..."
           onChange={(event) =>
-            setvalues({ ...values, password: event.target.value })
+            setvalues((prev) =>({ ...prev, password: event.target.value }))
           }
         />
 
@@ -169,7 +178,7 @@ export default function Register() {
           label="ConfirmeContraseña"
           placeholder="Confirma tu contraseña..."
           onChange={(event) =>
-            setvalues({ ...values, confirmPassword: event.target.value })
+            setvalues((prev) =>({ ...prev, confirmPassword: event.target.value }))
           }
         />
 
