@@ -132,4 +132,33 @@ h2{
     
 }
 
+.passwordField {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .passwordInput {
+    flex-grow: 1;
+  margin-right: 10px; /* Esto deja espacio para el icono del ojo */
+  width: 40%;
+  height: 50px; /* Ajusta esto al tamaño que desees */
+  padding: 0 10px
+  
+  }
+  
+  .fas {
+    cursor: pointer;
+  }
 
+b{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    color: rgb(177, 17, 17);
+    font-family: 'Raleway', sans-serif
+
+
+}

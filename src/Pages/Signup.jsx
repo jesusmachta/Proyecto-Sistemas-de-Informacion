@@ -22,7 +22,6 @@ import {
 import { saveUser } from "../SaveUserDB";
 import { Link, useNavigate } from "react-router-dom";
 
-
 export default function Register() {
   const navigate = useNavigate();
   const [values, setvalues] = useState({
@@ -39,9 +38,12 @@ export default function Register() {
   // }
   const [errorMessage, setErrorMessage] = useState([]);
   const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const emailRegex = /^[\w-]+(\.[\w-]+)*@correo\.unimet\.edu\.ve$/;
 
   const registro = () => {
-    console.log(values); 
+    console.log(values);
     if (
       !values.name ||
       !values.lastName ||
@@ -51,6 +53,14 @@ export default function Register() {
       !values.confirmPassword
     ) {
       setErrorMessage("Todos los campos son obligatorios");
+      return;
+    }
+    if (values.password !== values.confirmPassword) {
+      setErrorMessage("Las contraseñas no coinciden");
+      return;
+    }
+    if(!emailRegex.test(values.email)){
+      setErrorMessage("El correo no es válido. Debe colocar su correo unimet");
       return;
     }
     setErrorMessage("");
@@ -122,19 +132,17 @@ export default function Register() {
           Sign Up
         </button>
       </div>
-      <b className = {styles.error}>{errorMessage}</b>
+      <b className={styles.error}>{errorMessage}</b>
 
       <div className={styles.container}>
         <h2 className={styles.titles}>Nombre</h2>
         <TextField
           label="Nombre"
           placeholder="Ingresa tu nombre..."
-          onChange={(event) =>{
-            console.log(event.target.value); 
-            setvalues((prev) =>({...prev, name: event.target.value}));
-          }
-            
-          }
+          onChange={(event) => {
+            console.log(event.target.value);
+            setvalues((prev) => ({ ...prev, name: event.target.value }));
+          }}
         />
 
         <h2 className={styles.titles}>Apellido</h2>
@@ -160,30 +168,37 @@ export default function Register() {
           label="Email"
           placeholder="Ingresa tu correo..."
           onChange={(event) =>
-            setvalues((prev)=>({ ...prev, email: event.target.value }))
+            setvalues((prev) => ({ ...prev, email: event.target.value }))
           }
         />
 
         <h2 className={styles.titles}>Contraseña</h2>
         <PasswordField
-          label="Contraseña"
           placeholder="Ingresa tu contraseña..."
           onChange={(event) =>
-            setvalues((prev) =>({ ...prev, password: event.target.value }))
+            setvalues((prev) => ({ ...prev, password: event.target.value }))
           }
+          showPassword={showPassword}
+          onTogglePassword={() => setShowPassword(!showPassword)}
         />
 
         <h2 className={styles.titles}>Confirme su Contraseña</h2>
         <PasswordField
-          label="ConfirmeContraseña"
           placeholder="Confirma tu contraseña..."
           onChange={(event) =>
-            setvalues((prev) =>({ ...prev, confirmPassword: event.target.value }))
+            setvalues((prev) => ({
+              ...prev,
+              confirmPassword: event.target.value,
+            }))
           }
+          showPassword={showConfirmPassword}
+          onTogglePassword={() => setShowConfirmPassword(!showConfirmPassword)}
         />
 
         <div>
-          <button className={styles.buttonRegistrarse} onClick={registro}>Registrarse</button>
+          <button className={styles.buttonRegistrarse} onClick={registro}>
+            Registrarse
+          </button>
         </div>
         <div>
           <GoogleButton />
