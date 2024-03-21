@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { saveUser } from "../SaveUserDB";
 
 export function GoogleButton() {
-  const navigate = useNavigate();
+  const navigate = useNavigate ();
   const signinWithGoogle = async () => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
@@ -16,6 +16,17 @@ export function GoogleButton() {
       const userEmail = userCredential.email;
       const phoneNumber = userCredential.phoneNumber;
       const nameDisplay = userCredential.displayName;
+
+        // se verifica si el correo es de la metro (si no es asi se elimina el usuario)
+        if (!userEmail.endsWith("@correo.unimet.edu.ve")) {
+          await userCredential.delete();
+          alert("Debe utilizar un correo de la UNIMET"); 
+          navigate("/signup"); 
+          return;
+        }
+
+
+
       let name = "";
       let lastname = "";
       if (nameDisplay) {
