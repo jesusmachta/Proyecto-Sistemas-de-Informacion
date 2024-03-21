@@ -7,6 +7,7 @@ import Inicio from './Pages/Inicio'
 import Feedbacks from './Pages/Feedbacks'
 import Register from './Pages/Signup'
 import UserProvider from './UserProvider'
+import StudentProfile from './Pages/StudentProfile'
 
 const browserRouter = createBrowserRouter([
   {
@@ -29,7 +30,12 @@ const browserRouter = createBrowserRouter([
   },{
     path:"/signup",
     element:<Register/>
+  },{
+    // borrar!!!!
+    path: "profile", 
+    element: <StudentProfile/>
   }
+
 
 ])
 
