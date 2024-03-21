@@ -103,6 +103,10 @@ export default function studentProfile() {
            </div>
             
           </div>
+          <div className = {styles.profilePicUpload}>
+              <input type = "file" accpet ="image/*"></input>
+            
+            </div>
           <div className="button">
             <button>Guardar cambios</button>
           </div>
