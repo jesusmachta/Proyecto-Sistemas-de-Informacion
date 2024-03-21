@@ -120,6 +120,7 @@ export default function Register() {
     return unsubscribe;
   }, [navigate, values.name, values.lastName, values.phoneNumber]);
 
+
   return (
     <div className={styles.page}>
       <div>
