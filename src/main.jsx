@@ -5,6 +5,8 @@ import Footer_Navbar from './Components/Footer_Navbar'
 import Agrupaciones from './Pages/Agrupaciones'
 import Inicio from './Pages/Inicio'
 import Feedbacks from './Pages/Feedbacks'
+import Register from './Pages/Signup'
+import UserProvider from './UserProvider'
 
 const browserRouter = createBrowserRouter([
   {
@@ -22,14 +24,20 @@ const browserRouter = createBrowserRouter([
       {
         path:"/feedbacks",
         element:<Feedbacks/>
-      }
+      },
     ]
-  },
+  },{
+    path:"/signup",
+    element:<Register/>
+  }
 
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <UserProvider>
     <RouterProvider router={browserRouter}/>
+    </UserProvider>
+    
   </React.StrictMode>,
 )
