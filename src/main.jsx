@@ -7,6 +7,7 @@ import Inicio from './Pages/Inicio'
 import Feedbacks from './Pages/Feedbacks'
 import Register from './Pages/Signup'
 import UserProvider from './UserProvider'
+import Agrupacion from './Pages/Agrupacion/Agrupacion'
 
 const browserRouter = createBrowserRouter([
   {
@@ -25,6 +26,11 @@ const browserRouter = createBrowserRouter([
         path:"/feedbacks",
         element:<Feedbacks/>
       },
+      {
+        path:"/agrupaciones/:id",
+        element:<Agrupacion/>
+      },
+      
     ]
   },{
     path:"/signup",

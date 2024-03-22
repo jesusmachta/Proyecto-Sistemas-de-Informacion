@@ -1,0 +1,12 @@
+.agrupacion__container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.description__wrapper{
+    padding: 34px;
+    background: rgb(242,202,153);
+    background: linear-gradient(0deg, rgba(242,202,153,1) 0%, rgba(236,153,0,1) 55%);
+
+}
