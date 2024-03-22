@@ -3,6 +3,7 @@ import "./Agrupacion.css";
 import BannerAgrupacion from "../../Components/BannerAgrupacion/BannerAgrupacion";
 import { useParams } from "react-router-dom";
 import CarouselAgrupacion from "../../Components/CarouselAgrupacion/CarouselAgrupacion";
+import DropdownInfo from "../../Components/DropdownInfo/DropdownInfo";
 
 function Agrupacion() {
   const [agrupName, setAgrupName] = useState("");
@@ -45,6 +46,11 @@ function Agrupacion() {
         <p>{description}</p>
       </div>
       <CarouselAgrupacion imgsList={ejemplosImgs}/>
+      <div className="btns_list">
+        <DropdownInfo title="Mision" info="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro itaque repellendus voluptatibus modi ipsam atque rerum temporibus molestias doloremque non?"/>
+        <DropdownInfo title="Vision" info="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro itaque repellendus voluptatibus modi ipsam atque rerum temporibus molestias doloremque non?"/>
+        <DropdownInfo title="Integrantes" info="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro itaque repellendus voluptatibus modi ipsam atque rerum temporibus molestias doloremque non?"/>
+      </div>
     </div>
   );
 }
