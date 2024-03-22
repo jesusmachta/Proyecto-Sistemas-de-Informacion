@@ -9,7 +9,7 @@ const logo = "./logo-color-sinfondo.png";
 import { useEffect, useState } from "react";
 import { auth } from "../firebase";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { saveUser } from "../saveAdminBD";
+import { saveUser } from "../SaveAdminBD";
 import { useNavigate } from "react-router-dom";
 
 export default function RegistrarAdmin() {
