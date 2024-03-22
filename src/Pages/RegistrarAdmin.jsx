@@ -9,10 +9,10 @@ const logo = "./logo-color-sinfondo.png";
 import { useEffect, useState } from "react";
 import { auth } from "../firebase";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { saveUser } from "../SaveAdminDB";
+import { saveUser } from "../saveAdminBD";
 import { useNavigate } from "react-router-dom";
 
-export default function Register() {
+export default function RegistrarAdmin() {
   const navigate = useNavigate();
   const [values, setvalues] = useState({
     name: "",
