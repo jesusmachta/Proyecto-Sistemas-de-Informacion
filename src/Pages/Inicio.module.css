@@ -1,7 +1,8 @@
 :root{
     --gris:#EAECF0;
+    --animate-duration: 800ms;
+    --animate-delay: 0.9s;
 }
-
 
 .imageContainer {
     display: flex;
@@ -11,13 +12,12 @@
 }
 
 .image1 {
-
     top: 0;
     left: 0;
     z-index: -1;
-    width: 500px;
-    margin-left: -100px;
-    border-radius: 100px;
+    width: 800px;
+    margin-left: -50px;
+    border-radius: 15px;
     object-fit: cover;
 }
 
@@ -30,4 +30,181 @@
     object-fit: cover;
     width:88.3%;
 }
+
+.textContainer{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    z-index: 1;
+}
+
+.text{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #F18700;
+}
+
+.animate__animated.animate__fadeIn{
+    animation-duration: 10000ms;
+    animation-delay: 77s;
+}
+
+.buttonConteiner{
+    margin-top: 2vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+}
+
+.button{
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 1rem;
+    border-radius: 5px;
+    
+}
+
+
+/*Esto es para las imagenes*/
+@media (min-width:100px) and (max-width:538px){
+    .imageContainer{
+        width: auto;
+        height: auto;
+    }
+    .image1{
+        height: 50%;
+        width: 50%; 
+        margin-left: -5vw; 
+        position: static; 
+    }
+    .image2{
+        height: auto;
+        width: 59%;
+        margin-left:-1rem;
+        position: static;
+    }
+    .textContainer{
+        font-size: 13px;
+        top: 37%;
+    }
+    .text{
+        font-size: 12px;
+    }
+    .button{
+        padding: 0.5rem;
+    }
+    .conteinerInformacion{
+        max-height: auto;
+    }
+    .misionVision{
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        z-index: 1;
+        align-items: center;
+        justify-content: center;
+    }
+    .imagen3{
+        width: 40%;
+        height: auto;
+        object-fit: cover;
+        z-index:2;
+    }
+    .parrafo{
+        font-size: 12px;
+        margin-inline: 2rem;
+        margin: 0.5rem 0 1rem 0;
+    }
+}
+
+@media (min-width:540px) and (max-width:1024px){
+    .imageContainer{
+        width: auto;
+        height: auto;
+    }
+    .image1{
+        height: 50%;
+        width: 50%; 
+        margin-left: -5vw; 
+        position: static;
+    }
+    .image2{
+        height: auto;
+        width: 56.9%;
+        margin-left:-1rem;
+        position: static;
+    }
+    .text{
+        font-size: 20px;
+    }
+    .textContainer{
+        top: 30%;
+        font-size: 15px;
+    }
+    .conteinerInformacion{
+        max-height: auto;
+    }
+    .misionVision{
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .imagen3{
+        width: 40%;
+        height: auto;
+        object-fit: cover;
+    }
+    .parrafo{
+        font-size: 15px;
+        margin-inline: 2rem;
+        margin: 0.75rem 0 1.5rem 0;
+    }
+}
+
+@media (min-width:1025px){
+    .image2{
+        height: auto;
+        width: 57%;
+        margin-left:-1rem;
+        position: static;
+    }
+    .textContainer{
+        top: 40%;
+    }
+    .text{
+        font-size: 50px;
+    }
+    .misionVision{
+        height: auto;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+    }
+    .imagen3{
+        width: 40%;
+        height: auto;
+        object-fit: cover;
+    }
+    .parrafo{
+        font-size: 20px;
+        margin-inline: 2rem;
+        margin: 1rem 0 2rem 0;
+    }
+}
+
+.conteinerInformacion{
+    display: flex;
+    flex-direction: row;
+    background-color: #D9D9D9;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
 
