@@ -8,7 +8,7 @@ import { db } from "../firebase";
 import styles from "./StudentProfile.module.css";
 import { updateUser } from "../controllers/updateUser";
 import { storage } from "../firebase";
-import {ref, uploadBytes, getStorage} from "firebase/storage";
+import {ref, uploadBytes, getStorage, getDownloadURL} from "firebase/storage";
 export default function studentProfile() {
   const navigation = useNavigate();
   const userL = useUser();
@@ -50,6 +50,17 @@ export default function studentProfile() {
       } catch (error) {
         console.log("Error getting documents: ", error);
       }
+
+      if(userId){
+        const storageRef = ref(storage, `profilePictures/${userId}`);
+        try{
+          const url = await getDownloadURL(storageRef);
+          setImage(url); 
+        }
+        catch(error){
+          setImage(defaultPicture); 
+        }
+      }
     };
     findUser();
   }, [navigation, userId, userEmail, userL, userName, userLastName, userPhone]);
@@ -88,14 +99,9 @@ export default function studentProfile() {
     setImage(event.target.files[0]); 
   };
 
-  const uploadImage=()=>{
-    if(image == null) return; 
-    const storageRef = ref(storage, `profilePictures/${userId}`);// la carpeta será profilePictures y el path es el mismo id de la persona
-     uploadBytes(storageRef, image).then(()=>{
-      alert("Se subió la imagen correctamente"); 
-     });
+ 
 
-  }; 
+
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -108,7 +114,7 @@ export default function studentProfile() {
           <div
             className={styles.profilePic}
             style={{
-              backgroundImage: `url(${defaultPicture})`,
+              backgroundImage: `url(${image})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
               borderRadius: "50%",
