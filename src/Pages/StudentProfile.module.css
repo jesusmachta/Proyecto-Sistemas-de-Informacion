@@ -76,3 +76,27 @@ button{
     margin-top: 20px;
   }
   
+  
+  .customFileInput {
+    font-family: 'Raleway', sans-serif;
+    position: relative;
+    border: 1px solid #ccc;
+    background-color: white;
+    border-radius: 10px;
+    width: 400px;
+    height: 80px;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  .customFileInput label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+  }
+
+  .pImage{
+    color: grey; 
+  }

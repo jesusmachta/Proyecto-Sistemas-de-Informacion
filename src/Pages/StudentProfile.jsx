@@ -6,6 +6,7 @@ import { collection, where, query, getDocs } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { db } from "../firebase";
 import styles from "./StudentProfile.module.css";
+import { updateUser } from "../controllers/updateUser";
 export default function studentProfile() {
   const navigation = useNavigate();
   const userL = useUser();
@@ -26,13 +27,6 @@ export default function studentProfile() {
       console.log("Si existe userL");
       setUserEmail(userL.email);
       console.log(userEmail);
-      // setUserName(userL.displayName.split(" ")[0]);
-      // console.log(userName);
-      // setUserLastName(userL.displayName.split(" ")[1]);
-      // console.log(userLastName);
-      // setUserPhone(userL.phoneNumber);
-      // console.log(userPhone);
-      // setDataLoaded(true);
     }
     const findUser = async () => {
       try {
@@ -41,21 +35,43 @@ export default function studentProfile() {
         );
 
         querySnapshot.forEach((doc) => {
-          setUserId(doc.id); 
+          setUserId(doc.id);
+          console.log("ID DEL DOC:");
+          console.log(userId); 
           setUserName(doc.data().name);
           setUserLastName(doc.data().lastName);
           setUserPhone(doc.data().phoneNumber);
-          setDataLoaded(true); 
-          setIsLoading(false); 
+          setDataLoaded(true);
+          setIsLoading(false);
         });
       } catch (error) {
         console.log("Error getting documents: ", error);
       }
-    }; findUser(); 
-  }, [navigation, userEmail, userL]);
+    };
+    findUser();
+  }, [navigation, userId, userEmail, userL, userName, userLastName, userPhone]);
 
-  if(isLoading){
-    return <div>Loading...</div>
+  const update = () => {
+    const nameR = nameRef.current.value;
+    const lastNameR = lastNameRef.current.value;
+    const phoneR = phoneRef.current.value;
+    if (nameR !== "" || lastNameR !== "" || phoneR !== "") {
+      // ME QUEDE AQUIIIII
+      updateUser({
+        userId: userId,
+        email: userEmail,
+        name: userName, 
+        phoneNumber: userPhone, 
+        lastName: userLastName,
+        nameRef: nameR,
+        lastNameRef: lastNameR,
+        phoneRef: phoneR,
+      });
+    }
+  };
+
+  if (isLoading) {
+    return <div>Loading...</div>;
   }
   if (dataLoaded) {
     return (
@@ -74,45 +90,65 @@ export default function studentProfile() {
             }}
           ></div>
           <div>
-          <h1 className={styles.profileName}>{userName}</h1>
-          <p className={styles.profileEmail}>{userEmail}</p>
+            <h1 className={styles.profileName}>{userName}</h1>
+            <p className={styles.profileEmail}>{userEmail}</p>
           </div>
-          
         </div>
         <div className={styles.parentContainer}>
-        <div className={styles.containerInputs}>
-          <div className={styles.inputs}>
-            <div>
-            <h1>Nombre</h1>
-            <input type="text" placeholder={userName}></input>
+          <div className={styles.containerInputs}>
+            <div className={styles.inputs}>
+              <div>
+                <h1>Nombre</h1>
+                <input type="text" placeholder={userName} ref={nameRef}></input>
+              </div>
+              <div>
+                <h1>Apellido</h1>
+                <input
+                  type="text"
+                  placeholder={userLastName}
+                  ref={lastNameRef}
+                ></input>
+              </div>
             </div>
-            <div>
-            <h1>Apellido</h1>
-            <input type="text" placeholder={userLastName}></input>
+            <div className={styles.inputs}>
+              <div>
+                <h1>Teléfono</h1>
+                <input
+                  type="tel"
+                  placeholder={userPhone}
+                  ref={phoneRef}
+                ></input>
+              </div>
+              <div>
+                <h1>Correo electrónico</h1>
+                <input
+                  type="email"
+                  placeholder={userEmail}
+                  readOnly={true}
+                ></input>
+              </div>
             </div>
-            
-          </div>
-          <div className={styles.inputs}>
-            <div>
-            <h1>Teléfono</h1>
-            <input type="tel" placeholder={userPhone}></input>
+            <div className={styles.profilePicUpload}>
+              <div className={styles.customFileInput}>
+                <input
+                  type="file"
+                  id="file"
+                  accept="image/*"
+                  style={{ display: "none" }}
+                  // onChange={handleImageUpload}
+                />
+                <label htmlFor="file">
+                  <i className="fas fa-upload"></i> Subir una imagen
+                  <p className={styles.pImage}>Esta será la foto de perfil</p>
+                </label>
+              </div>
+              <img id="preview" className={styles.profilePicPreview} />
             </div>
-           <div>
-           <h1>Correo electrónico</h1>
-            <input type="email" placeholder={userEmail} readOnly={true}></input>
-           </div>
-            
-          </div>
-          <div className = {styles.profilePicUpload}>
-              <input type = "file" accpet ="image/*"></input>
-            
+            <div className="button">
+              <button onClick={update}>Guardar cambios</button>
             </div>
-          <div className="button">
-            <button>Guardar cambios</button>
           </div>
         </div>
-        </div>
-       
       </div>
     );
   }
