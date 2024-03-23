@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 import { db } from "../firebase";
 import styles from "./StudentProfile.module.css";
 import { updateUser } from "../controllers/updateUser";
+import { storage } from "../firebase";
+import {ref, uploadBytes, getStorage} from "firebase/storage";
 export default function studentProfile() {
   const navigation = useNavigate();
   const userL = useUser();
@@ -17,6 +19,7 @@ export default function studentProfile() {
   const [dataLoaded, setDataLoaded] = useState(false);
   const [userId, setUserId] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [image, setImage] = useState(null);
 
   const nameRef = useRef();
   const lastNameRef = useRef();
@@ -67,8 +70,32 @@ export default function studentProfile() {
         lastNameRef: lastNameR,
         phoneRef: phoneR,
       });
+      
     }
+
+   
+      if (image) { // Esto verifica si image es diferente de null
+        const storageRef = ref(getStorage(), `profilePictures/${userId}`);
+        uploadBytes(storageRef, image).then(() => {
+          alert("Se subió la imagen correctamente");
+        });
+      } else {
+        alert("No se seleccionó ninguna imagen");
+      }
   };
+
+  const handleFileChange=(event)=>{
+    setImage(event.target.files[0]); 
+  };
+
+  const uploadImage=()=>{
+    if(image == null) return; 
+    const storageRef = ref(storage, `profilePictures/${userId}`);// la carpeta será profilePictures y el path es el mismo id de la persona
+     uploadBytes(storageRef, image).then(()=>{
+      alert("Se subió la imagen correctamente"); 
+     });
+
+  }; 
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -135,6 +162,7 @@ export default function studentProfile() {
                   id="file"
                   accept="image/*"
                   style={{ display: "none" }}
+                  onChange ={handleFileChange}
                   // onChange={handleImageUpload}
                 />
                 <label htmlFor="file">

@@ -13,13 +13,13 @@ export async function updateUser({
 }) {
   const usersCollection = collection(db, "Students");
 
-  if (nameRef !== null) {
+  if (nameRef !== null && nameRef !== "") {
     name = nameRef;
   }
-  if (lastNameRef !== null) {
+  if (lastNameRef !== null && lastNameRef !== "") {
     lastName = lastNameRef;
   }
-  if (phoneRef !== null) {
+  if (phoneRef !== null && phoneRef !== "") {
     phoneNumber = phoneRef;
   }
   if(userId !== undefined && userId !== null){
