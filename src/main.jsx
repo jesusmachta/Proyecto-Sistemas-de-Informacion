@@ -8,6 +8,7 @@ import Feedbacks from './Pages/Feedbacks'
 import Register from './Pages/Signup'
 import UserProvider from './UserProvider'
 import StudentProfile from './Pages/StudentProfile'
+import SidebarStudent from './Components/SidebarStudent'
 
 const browserRouter = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const browserRouter = createBrowserRouter([
     // borrar!!!!
     path: "profile", 
     element: <StudentProfile/>
+  },{
+    path: "sidebarP", 
+    element: <SidebarStudent/>
+    
   }
 
 
