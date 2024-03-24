@@ -1,21 +1,21 @@
 import {Link} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; 
-import { faHome, faUser, faUserGraduate, faUserTie, faUserCog, faUserShield, faUserFriends, faUserPlus, faMoneyCheckDollar, faUsers, faArrowRightFromBracket} from '@fortawesome/free-solid-svg-icons';
+import { faHome, faUser, faUserPlus, faMoneyCheckDollar, faUsers, faArrowRightFromBracket} from '@fortawesome/free-solid-svg-icons';
 
-
+import styles from './SidebarStudent.module.css';
 
 
 
 export default function SidebarStudent() {
 
     return(
-        <div className = 'sidebar'>
+        <div className = {styles.sidebar}>
             <ul>
-                <li><FontAwesomeIcon icon ={faUser}></FontAwesomeIcon></li>
-                <li><FontAwesomeIcon icon ={faUsers}></FontAwesomeIcon></li>
-                <li><FontAwesomeIcon icon ={faUserPlus}></FontAwesomeIcon></li>
-                <li><FontAwesomeIcon icon ={faMoneyCheckDollar}></FontAwesomeIcon></li>
-                <li><FontAwesomeIcon icon ={faArrowRightFromBracket}></FontAwesomeIcon></li>
+                <li><FontAwesomeIcon className = {styles.icon}icon ={faUser}></FontAwesomeIcon></li>
+                <li><FontAwesomeIcon className = {styles.icon} icon ={faUsers}></FontAwesomeIcon></li>
+                <li><FontAwesomeIcon className = {styles.icon} icon ={faUserPlus}></FontAwesomeIcon></li>
+                <li><FontAwesomeIcon className = {styles.icon} icon ={faMoneyCheckDollar}></FontAwesomeIcon></li>
+                <li><FontAwesomeIcon className = {styles.logout} icon ={faArrowRightFromBracket}></FontAwesomeIcon></li>
             </ul>
         </div>
     );
