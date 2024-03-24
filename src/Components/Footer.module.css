@@ -1,8 +1,129 @@
 .conteiner{
-    background-color:black ;
+    background-color:#EAECF0 ;
+    width: 100%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+.container{
+    display: flex;
+    flex-direction: row;
+}
+@media screen and (min-width:155px){
+    .logo{
+        width: 9rem;
+    }
+}
+.list{
+    list-style-type:none;
+}
+.button{
+    color: white;
+    background-color: #99BEA9;
+    border: none;
+    width: 6rem;
+    height: 3rem;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
-.image{
-    width: 100px;
+@media screen and (max-width:538px){
+    .list{
+        margin: 1rem 0rem 0rem 4.5rem;
+    }
+    .redesSociales{
+        margin-top: 1rem;
+        text-align: center;
+    }
+    .input{
+        width: 65%;
+    }
+    .button{
+        margin-left: 0.75rem;
+
+    }
+    .iconos{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 1rem;
+        margin: 0.35rem 0 0.25rem 0;
+    }
 }
-  
+
+@media screen and (min-width:540px) and (max-width:1024px){
+    .footer{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+    }
+    .titles{
+        display: block;
+        max-width: 20rem ;
+    }
+    .redesSociales{
+        display: flex;
+        flex-direction: row;
+    }
+    .container{
+        align-items: center;
+    }
+    .nose{
+        justify-content: center;
+    }
+    .iconos{
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+    }
+    .input{
+        width: 6rem;
+        height: 1rem;
+    }
+    .button{
+        height: 2rem;
+    }
+}
+
+@media screen and (min-width:1025px) {
+    .footer{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 15rem;
+    }
+    .redesSociales{
+        display: flex;
+        flex-direction: row;
+        gap: 15rem;
+    }
+    .containerRedes{
+        justify-content: center;
+    }
+    .container{
+        align-items: center;
+        gap: 15rem;
+    }
+    .unorderlist li{
+        margin-bottom: 0.25rem;
+    }
+    .iconos{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+    }
+    .icon{
+        margin-top: 1rem;
+    }
+    .input{
+        height: 2rem;
+        margin-right: 2rem;
+    }
+    .button{
+        height: 2rem;
+    }
+    
+}

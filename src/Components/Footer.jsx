@@ -1,11 +1,40 @@
 import styles from './Footer.module.css'
-import Foto from '../../public/logo-color.png'
+import foto from '../../public/logo-color-sinfondo.png'
+import {SiInstagram,SiX,SiFacebook,SiTiktok} from "react-icons/si"
+
 
 const Footer = () => {
   return (
     <div className={styles.conteiner}>
-      <footer>
-        <img className={styles.image} src={Foto} alt='imagen de la app'/>
+      <footer className={styles.footer}>
+        <div className={styles.container}>
+          <img src={foto} alt='imagen de conecta unimet' className={styles.logo} />
+          <ul className={styles.unorderlist}>
+            <li className={styles.list}>Enlaces</li>
+            <li className={styles.list}>Inicio</li>
+            <li className={styles.list}>Nosotros</li>
+            <li className={styles.list}>Contacto</li>
+          </ul>
+        </div>
+        
+        <div className={styles.redesSociales}>
+          <div className={styles.containerRedes}>
+            <p className={styles.titles}>¡Subscríbete para ser notificado de nuevas agrupaciones!</p>
+            <input type='text' className={styles.input}/>
+            <button className={styles.button}>Suscribe</button>
+          </div>
+
+          <div className={styles.nose}>
+            <p className={styles.redes}>Redes Sociales</p>
+            <div className={styles.iconos}>
+              <SiInstagram className={styles.icon} />
+              <SiFacebook className={styles.icon}/>
+              <SiX className={styles.icon}/>
+              <SiTiktok className={styles.icon}/>
+            </div>  
+          </div>
+                
+        </div>
       </footer>
      
     </div>
