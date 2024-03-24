@@ -6,26 +6,28 @@ import Agrupaciones from './Pages/Agrupaciones'
 import Inicio from './Pages/Inicio'
 import Feedbacks from './Pages/Feedbacks'
 import Register from './Pages/Signup'
+import RegistrarAdmin from "./Pages/RegistrarAdmin";
 import UserProvider from './UserProvider'
 import StudentProfile from './Pages/StudentProfile'
 import SidebarStudent from './Components/SidebarStudent'
 
+
 const browserRouter = createBrowserRouter([
   {
-    path:"/",
-    element:<Footer_Navbar/>,
-    children:[
+    path: "/",
+    element: <Footer_Navbar />,
+    children: [
       {
-        index: true, 
-        element:<Inicio/>
+        index: true,
+        element: <Inicio />,
       },
       {
-        path:"/agrupaciones",
-        element:<Agrupaciones/>
+        path: "/agrupaciones",
+        element: <Agrupaciones />,
       },
       {
-        path:"/feedbacks",
-        element:<Feedbacks/>
+        path: "/feedbacks",
+        element: <Feedbacks />,
       },
     ]
   },{
@@ -39,16 +41,19 @@ const browserRouter = createBrowserRouter([
     path: "sidebarP", 
     element: <SidebarStudent/>
     
-  }
+  },   
+   {
+    path: "/registraradmin",
+    element: <RegistrarAdmin />,
+  },
 
 
 ])
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <UserProvider>
-    <RouterProvider router={browserRouter}/>
+      <RouterProvider router={browserRouter} />
     </UserProvider>
-    
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+);
