@@ -8,6 +8,7 @@ import Feedbacks from "./Pages/Feedbacks";
 import Register from "./Pages/Signup";
 import RegistrarAdmin from "./Pages/RegistrarAdmin";
 import UserProvider from "./UserProvider";
+import { LoginAdmin } from "./Pages/loginAdmin";
 
 const browserRouter = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const browserRouter = createBrowserRouter([
   {
     path: "/registraradmin",
     element: <RegistrarAdmin />,
+  },
+  {
+    path: "/loginadmin",
+    element: <LoginAdmin />,
   },
 ]);
 
