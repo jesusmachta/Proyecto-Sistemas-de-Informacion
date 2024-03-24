@@ -1,0 +1,20 @@
+.sidebar{
+    background-color: orange;
+    padding-top: 50px; 
+    padding-right: 50px;
+   margin-right: 95%;
+   padding-bottom: 450px;
+}
+
+
+.icon{
+    font-size: 30px;
+    padding: 20px;
+
+}
+
+.logout{
+    position: absolute;
+    font-size: 30px;
+    bottom: 0;
+}
