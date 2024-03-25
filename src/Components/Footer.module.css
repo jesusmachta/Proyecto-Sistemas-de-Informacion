@@ -1,22 +1,25 @@
-.conteiner{
-    background-color:#EAECF0 ;
+.container {
+    background-color: #EAECF0;
     width: 100%;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-
 }
-.container{
+
+.container {
     display: flex;
     flex-direction: row;
 }
-@media screen and (min-width:155px){
-    .logo{
+
+@media screen and (min-width:155px) {
+    .logo {
         width: 9rem;
     }
 }
-.list{
-    list-style-type:none;
+
+.list {
+    list-style-type: none;
 }
-.button{
+
+.button {
     color: white;
     background-color: #99BEA9;
     border: none;
@@ -26,240 +29,178 @@
     cursor: pointer;
 }
 
-@media screen and (max-width:538px){
-    .list{
+@media screen and (max-width:538px) {
+    .list {
         margin: 1rem 0rem 0rem 4.5rem;
     }
-    .redesSociales{
+
+    .redesSociales {
         margin-top: 1rem;
         text-align: center;
     }
-<<<<<<< Updated upstream
-    .input{
+
+    .input {
         width: 65%;
     }
-    .button{
-        margin-left: 0.75rem;
 
-=======
-    .formConteiner{
+    .button {
+        margin-left: 0.75rem;
+    }
+
+    .formConteiner {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
-    .formConteiner .button{
+
+    .formConteiner .button {
         margin-top: 0px;
-        margin-right:90px;
+        margin-right: 90px;
     }
-    .nose{
+
+    .nose {
         margin-top: 40px;
     }
-    .input{
+
+    .input {
         width: 50%;
         margin: 1rem;
     }
-    .containerRedes{
+
+    .containerRedes {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         margin-top: 1rem;
->>>>>>> Stashed changes
     }
-    .iconos{
+
+    .iconos {
         display: flex;
         flex-direction: row;
         justify-content: center;
         gap: 1rem;
         margin: 0.35rem 0 0.25rem 0;
     }
-<<<<<<< Updated upstream
-=======
 }
 
-@media screen and (min-width:540px) and (max-width:1024px){
-    .logo{
-        margin-left:-100px;
+@media screen and (min-width:540px) and (max-width:1024px) {
+    .logo {
+        margin-left: -100px;
     }
-    .footer{
+
+    .footer {
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: center;
         gap: 3rem;
     }
-    .titles{
+
+    .titles {
         display: block;
-        max-width: 20rem ;
+        max-width: 20rem;
     }
-    .redesSociales{
+
+    .redesSociales {
         display: flex;
         flex-direction: row;
         align-items: center;
     }
-    .formConteiner{
+
+    .formConteiner {
         display: flex;
         flex-direction: row;
         align-items: center;
-        gap: 0.2 rem;
+        gap: 0.2rem;
         margin-top: 3px;
     }
-    .container{
+
+    .container {
         align-items: center;
     }
-    .nose{
+
+    .nose {
         justify-content: center;
     }
-    .iconos{
+
+    .iconos {
         display: flex;
         flex-direction: row;
         gap: 0.5rem;
     }
-    .input{
+
+    .input {
         width: 10rem;
         height: 1rem;
     }
-    .button{
+
+    .button {
         margin-top: -2px;
-        height: 2rem;
-    }
-}
-
-@media screen and (min-width:1025px){
-    .footer{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        
-    }
-    .redesSociales{
-
-        display: flex;
-        flex-direction: row;
-        margin-left: 10%;
-    }
-    .containerRedes{
-       
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-right: 10%;
-    }
-    .formConteiner{
-       
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 2rem;
-    }
-    .container{
-        
-        align-items: center;
-    }
-    .unorderlist{
-        margin-left: 30%;
-    }
-    .unorderlist li{
-        margin-bottom: 0.25rem;
-    }
-    .iconos{
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        gap: 1rem;
-    }
-    .icon{
-        margin-top: 1rem;
-    }
-    .input{
-        width: 20rem;
-        height: 2rem;
-        margin-right: 2rem;
-    }
-    .button{
-        margin-top: -2px;
-        height: 2rem;
-    }
-    
->>>>>>> Stashed changes
-}
-
-@media screen and (min-width:540px) and (max-width:1024px){
-    .footer{
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        gap: 2rem;
-    }
-    .titles{
-        display: block;
-        max-width: 20rem ;
-    }
-    .redesSociales{
-        display: flex;
-        flex-direction: row;
-    }
-    .container{
-        align-items: center;
-    }
-    .nose{
-        justify-content: center;
-    }
-    .iconos{
-        display: flex;
-        flex-direction: row;
-        gap: 0.5rem;
-    }
-    .input{
-        width: 6rem;
-        height: 1rem;
-    }
-    .button{
         height: 2rem;
     }
 }
 
 @media screen and (min-width:1025px) {
-    .footer{
+    .footer {
         display: flex;
         flex-direction: row;
         align-items: center;
-        gap: 15rem;
-    }
-    .redesSociales{
-        display: flex;
-        flex-direction: row;
-        gap: 15rem;
-    }
-    .containerRedes{
         justify-content: center;
     }
-    .container{
-        align-items: center;
-        gap: 15rem;
+
+    .redesSociales {
+        display: flex;
+        flex-direction: row;
+        margin-left: 10%;
     }
-    .unorderlist li{
+
+    .containerRedes {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-right: 10%;
+    }
+
+    .formConteiner {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .container {
+        align-items: center;
+    }
+
+    .unorderlist {
+        margin-left: 30%;
+    }
+
+    .unorderlist li {
         margin-bottom: 0.25rem;
     }
-    .iconos{
+
+    .iconos {
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
         gap: 1rem;
     }
-    .icon{
+
+    .icon {
         margin-top: 1rem;
     }
-    .input{
+
+    .input {
+        width: 20rem;
         height: 2rem;
         margin-right: 2rem;
     }
-    .button{
+
+    .button {
+        margin-top: -2px;
         height: 2rem;
     }
-    
 }
