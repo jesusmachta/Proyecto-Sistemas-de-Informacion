@@ -3,7 +3,7 @@ import "./DropdownInfo.css"
 import { FaChevronDown } from "react-icons/fa";
 
 
-function DropdownInfo({title, info}) {
+function DropdownInfo({title, info, isList}) {
 
     const [show, setShow] = useState(false)
 
@@ -15,7 +15,18 @@ function DropdownInfo({title, info}) {
         </div>
         {show && (
         <div className='dropdownInfo__content'>
-            <p>{info}</p>
+            {!isList ? (
+              <p>{info}</p>
+            ):(
+              <ul>
+                {info.map((element,index)=>(
+                  <li key={index}>
+                    {element}
+                  </li>     
+                ))}
+              </ul>
+            )}
+            
         </div>
         )}
     </div>

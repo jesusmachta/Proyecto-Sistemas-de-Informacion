@@ -4,55 +4,41 @@ import BannerAgrupacion from "../../Components/BannerAgrupacion/BannerAgrupacion
 import { useParams } from "react-router-dom";
 import CarouselAgrupacion from "../../Components/CarouselAgrupacion/CarouselAgrupacion";
 import DropdownInfo from "../../Components/DropdownInfo/DropdownInfo";
+import { getAgrupacionById } from "../../controllers/Agrupaciones";
 
 function Agrupacion() {
-  
-  const [agrupName, setAgrupName] = useState("");
-  const [agrupImgSrc, setAgrupImgSrc] = useState("");
-  const [description, setDescription] = useState("");
-  const [mision, setMision] = useState("");
-  const [vision, setVision] = useState("");
-  const [imgsList, setImgsList] = useState([]);
 
-  const ejemplosImgs = [
-    "https://mmedia.eluniversal.com/18127/prototipo-unimet-31284.jpg",
-    "https://mmedia.eluniversal.com/18127/prototipo-unimet-31284.jpg",
-    "https://mmedia.eluniversal.com/18127/prototipo-unimet-31284.jpg",
-    "https://mmedia.eluniversal.com/18127/prototipo-unimet-31284.jpg",
-    "https://mmedia.eluniversal.com/18127/prototipo-unimet-31284.jpg",
-    "https://mmedia.eluniversal.com/18127/prototipo-unimet-31284.jpg",
-  ];
+  const [agrupacion, setAgrupacion] = useState(null);
 
   let { id } = useParams();
 
   useEffect(() => {
-    if (id === "1") {
-      // BUSCAR ID EN LA BD
-
-      // Set valores de la bd
-      setAgrupName("Formula Sae");
-      setAgrupImgSrc(
-        "https://meditron.com.ve/home/wp-content/uploads/2023/03/meditron_sae.jpg"
-      );
-      setDescription(
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro itaque repellendus voluptatibus modi ipsam atque rerum temporibus molestias doloremque non?"
-      );
+    if (id) {
+      const buscarId = async () => { 
+        const currentAgrup = await getAgrupacionById(id);
+        console.log(currentAgrup)
+        if (currentAgrup){
+          setAgrupacion(currentAgrup);
+        }
+      } 
+      buscarId();    
     }
   }, []);
 
-  return (
-    <div className="agrupacion__container">
-      <BannerAgrupacion title={agrupName} imgSrc={agrupImgSrc} />
-      <div className="description__wrapper">
-        <p>{description}</p>
-      </div>
-      <CarouselAgrupacion imgsList={ejemplosImgs}/>
-      <div className="btns_list">
-        <DropdownInfo title="Mision" info="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro itaque repellendus voluptatibus modi ipsam atque rerum temporibus molestias doloremque non?"/>
-        <DropdownInfo title="Vision" info="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro itaque repellendus voluptatibus modi ipsam atque rerum temporibus molestias doloremque non?"/>
-        <DropdownInfo title="Integrantes" info="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro itaque repellendus voluptatibus modi ipsam atque rerum temporibus molestias doloremque non?"/>
-      </div>
-    </div>
+  return ( agrupacion && ( 
+  <div className="agrupacion__container">
+  <BannerAgrupacion title={agrupacion?.name} imgSrc={agrupacion?.ImgSrc} />
+  <div className="description__wrapper">
+    <p>{agrupacion?.description}</p>
+  </div>
+  <CarouselAgrupacion imgsList={agrupacion?.ImgExtras}/>
+  <div className="btns_list">
+    <DropdownInfo title="Mision" info={agrupacion?.mision}/>
+    <DropdownInfo title="Vision" info={agrupacion?.vision}/>
+    <DropdownInfo title="Integrantes" info={agrupacion?.members} isList={true}/>
+  </div>
+</div>)
+   
   );
 }
 
