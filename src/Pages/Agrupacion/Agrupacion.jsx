@@ -6,6 +6,7 @@ import CarouselAgrupacion from "../../Components/CarouselAgrupacion/CarouselAgru
 import DropdownInfo from "../../Components/DropdownInfo/DropdownInfo";
 
 function Agrupacion() {
+  
   const [agrupName, setAgrupName] = useState("");
   const [agrupImgSrc, setAgrupImgSrc] = useState("");
   const [description, setDescription] = useState("");
