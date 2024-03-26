@@ -10,7 +10,6 @@ import RegistrarAdmin from "./Pages/RegistrarAdmin";
 import UserProvider from "./UserProvider";
 import StudentProfile from "./Pages/StudentProfile";
 import SidebarStudent from "./Components/SidebarStudent";
-import UserProvider from "./UserProvider";
 import { LoginAdmin } from "./Pages/loginAdmin";
 
 const browserRouter = createBrowserRouter([
