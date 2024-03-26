@@ -10,6 +10,7 @@ import RegistrarAdmin from "./Pages/RegistrarAdmin";
 import UserProvider from './UserProvider'
 import StudentProfile from './Pages/StudentProfile'
 import SidebarStudent from './Components/SidebarStudent'
+import ThankYouRegisterPage from './Pages/ThankYouAndSuccessPages/ThankYouRegisterPage'
 
 
 const browserRouter = createBrowserRouter([
@@ -35,16 +36,20 @@ const browserRouter = createBrowserRouter([
     element:<Register/>
   },{
     // borrar!!!!
-    path: "profile", 
+    path: "/profile", 
     element: <StudentProfile/>
   },{
-    path: "sidebarP", 
+    path: "/sidebarP", 
     element: <SidebarStudent/>
     
   },   
    {
     path: "/registraradmin",
     element: <RegistrarAdmin />,
+  },{
+    path: "/thank-you-register", 
+    element: <ThankYouRegisterPage/>
+
   },
 
 

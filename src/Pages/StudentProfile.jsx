@@ -9,6 +9,7 @@ import styles from "./StudentProfile.module.css";
 import { updateUser } from "../controllers/updateUser";
 import { storage } from "../firebase";
 import {ref, uploadBytes, getStorage, getDownloadURL} from "firebase/storage";
+
 export default function studentProfile() {
   const navigation = useNavigate();
   const userL = useUser();
@@ -25,12 +26,16 @@ export default function studentProfile() {
   const lastNameRef = useRef();
   const phoneRef = useRef();
 
+ 
   useEffect(() => {
     if (userL) {
       console.log("Si existe userL");
       setUserEmail(userL.email);
       console.log(userEmail);
     }
+    // else{
+    //   navigation("/signup");
+    // }
     const findUser = async () => {
       try {
         const querySnapshot = await getDocs(
@@ -49,6 +54,7 @@ export default function studentProfile() {
         });
       } catch (error) {
         console.log("Error getting documents: ", error);
+        // navigation("/signup");
       }
 
       if(userId){
