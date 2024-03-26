@@ -12,6 +12,7 @@ import StudentProfile from './Pages/StudentProfile'
 import SidebarStudent from './Components/SidebarStudent'
 import ThankYouRegisterPage from './Pages/ThankYouAndSuccessPages/ThankYouRegisterPage'
 import { useUser } from './context/user'
+import Afiliaciones from './Pages/Afiliaciones'
 
 
 
@@ -51,6 +52,11 @@ const browserRouter = createBrowserRouter([
   },{
     path: "/thank-you-register", 
     element: <ThankYouRegisterPage/>
+
+  },
+  {
+    path:"/profile/afilliations", 
+    element: <Afiliaciones/>
 
   },
 
