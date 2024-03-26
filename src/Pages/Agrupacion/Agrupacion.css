@@ -16,3 +16,20 @@
     padding: 20px;
     width: 94%;
 }
+
+.buttonUnirse{
+    background-color: var(--naranja);
+    color: var(--verde);
+    font-weight: 600;
+    border: 0;
+    outline: 0;
+    border-radius: 15px;
+    padding: 10px 20px;
+}
+
+.buttonUnirseWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
