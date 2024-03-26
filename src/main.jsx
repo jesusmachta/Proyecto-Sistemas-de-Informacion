@@ -11,6 +11,8 @@ import UserProvider from './UserProvider'
 import StudentProfile from './Pages/StudentProfile'
 import SidebarStudent from './Components/SidebarStudent'
 import ThankYouRegisterPage from './Pages/ThankYouAndSuccessPages/ThankYouRegisterPage'
+import { useUser } from './context/user'
+
 
 
 const browserRouter = createBrowserRouter([
@@ -36,7 +38,7 @@ const browserRouter = createBrowserRouter([
     element:<Register/>
   },{
     // borrar!!!!
-    path: "/profile", 
+    path: "/profile/:userId", 
     element: <StudentProfile/>
   },{
     path: "/sidebarP", 
