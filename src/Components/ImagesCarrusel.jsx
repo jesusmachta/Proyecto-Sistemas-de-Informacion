@@ -59,9 +59,11 @@ const ImagesCarrusel = () => {
     
     //     fetchImageData();
     // }, [db, images]);
+
     const settings = {
-        dots: true,
-        infinite: true,
+        arrows:false,
+        dots: false,
+        infinite: false,
         speed: 500,
         slidesToShow: 3,
         slidesToScroll: 3

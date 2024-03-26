@@ -19,12 +19,11 @@ const Footer = () => {
         <div className={styles.redesSociales}>
           <div className={styles.containerRedes}>
             <p className={styles.titles}>¡Subscríbete para ser notificado de nuevas agrupaciones!</p>
-            <input type='text' className={styles.input}/>
-            <button className={styles.button}>Suscribe</button>
             <div className={styles.formConteiner}>
               <input type='text' className={styles.input}/>
               <button className={styles.button}>Suscribe</button>
             </div>
+
           </div>
 
           <div className={styles.nose}>
@@ -36,6 +35,9 @@ const Footer = () => {
               <SiTiktok className={styles.icon}/>
             </div>  
           </div>
+                
+
+                 
         </div>
       </footer>
      
@@ -44,4 +46,5 @@ const Footer = () => {
 }
 
 export default Footer
+
 
