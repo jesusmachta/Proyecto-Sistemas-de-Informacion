@@ -1,19 +1,54 @@
 .container {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
+    gap: 30px; /* Espacio entre las cartas */
+}
+.aver{
+    background-color: white;
+    border-radius: 10px;
+    padding:10px;
+    display: flex;
+    flex-direction: column;
+    margin-right: 100px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.card {
-    width: calc(33.33% - 10px); /* Ajusta el ancho de las tarjetas */
-    height: 200px; /* Altura fija para todas las tarjetas */
-    overflow: hidden;
+.imageContainer {
+    width: 300px; /* Define el ancho deseado para todas las cartas */
+    height: 400px; /* Define la altura deseada para todas las cartas */
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
 }
 
 .images {
-    width: 80%; 
-    height: 100%; 
-    object-fit: cover; 
-    border-radius: 10px;
+    width: 100%; /* Asegura que la imagen no exceda el ancho de la carta */
+    height: 100%; /* Ajusta la altura de la imagen según tus preferencias */
+    max-height: 300px; /* Define la altura máxima de la imagen */
+    border-radius: 8px; /* Añade borde redondeado a la imagen si es necesario */
+    object-fit: cover; /* Ajusta la forma en que la imagen se ajusta dentro de su contenedor */
 }
 
+.textContainer {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center; /* Centra el texto dentro de la carta */
+    margin-top: 10px; /* Ajusta el margen superior del texto según tus preferencias */
+}
+
+.textContainer h2{
+    text-align: center;
+}
+
+.textContainer p{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2; 
+}

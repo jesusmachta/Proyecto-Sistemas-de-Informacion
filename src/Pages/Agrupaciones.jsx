@@ -1,9 +1,9 @@
-
+import styles from "./Agrupaciones.module.css"
 
 const Agrupaciones = () => {
   return (
-    <div className="main-content">
-      <h1>Nuevas agrupaciones</h1>
+    <div className={styles.conteiner}>
+      <h1>Agrupaciones</h1>
     </div>
   )
 }
