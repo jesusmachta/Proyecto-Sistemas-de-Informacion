@@ -6,6 +6,8 @@ import {db} from "../firebase";
 import {ref, uploadBytes, getStorage, getDownloadURL} from "firebase/storage";
 import { storage } from "../firebase";
 import { useNavigate } from "react-router-dom";
+import styles from "./Afiliaciones.module.css";
+
 
 
 export default function Afiliaciones(){
@@ -81,8 +83,8 @@ export default function Afiliaciones(){
                 </div>
                 {!agrupaciones ? (
               <div>
-                <p>Todavía no estás afiliado a ninguna agrupación.</p>
-                <button onClick={() => navigation('/ruta-a-agrupaciones')}>Ver agrupaciones</button>
+                <p className={styles.mensaje}>Todavía no estás afiliado a ninguna agrupación.</p>
+                <button onClick={() => navigation('/ruta-a-agrupaciones') } className ={styles.botonveragrupaciones}>Ver agrupaciones</button>
               </div>
             ) : (
                 <div>Aqui va la tabla</div>  )}   

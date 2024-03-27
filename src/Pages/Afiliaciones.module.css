@@ -1,0 +1,27 @@
+
+.mensaje{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    margin-top: 15%;  
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold; 
+    margin-bottom: 10px;
+    font-size: 20px;
+
+}
+
+.botonveragrupaciones{
+    background: black; 
+    color: white; 
+    width: 200px; 
+    height: 50px; 
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+    border: none; 
+    border-radius: 10px;
+    margin: auto; 
+}

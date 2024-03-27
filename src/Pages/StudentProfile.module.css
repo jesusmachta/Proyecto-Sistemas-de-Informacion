@@ -1,3 +1,6 @@
+.mainContainer{
+    display: flex; 
+}
 .nameContainer{
     margin-bottom: 0;
     display: flex;
@@ -7,7 +10,10 @@
 }
 
 .profilePic{
-    margin-left: 30px;
+    margin-left: 100px;
+    width: calc(100%-45px); 
+    height: 100%; 
+    /* z-index: 2; */
 }
 
 .profileName, .profileEmail{
@@ -43,11 +49,12 @@ input{
     display: flex; 
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: auto;
     width: 90%; 
     margin: 0 auto;
     padding: 20px; 
     margin-top: 0;
+    
 }
 
 h1{
@@ -99,4 +106,8 @@ button{
 
   .pImage{
     color: grey; 
+  }
+
+  .sidebar{
+    z-index: 1;
   }

@@ -9,6 +9,7 @@ import styles from "./StudentProfile.module.css";
 import { updateUser } from "../controllers/updateUser";
 import { storage } from "../firebase";
 import {ref, uploadBytes, getStorage, getDownloadURL} from "firebase/storage";
+import SidebarStudent from "../Components/SidebarStudent";
 
 export default function studentProfile() {
   const navigation = useNavigate();
@@ -64,7 +65,8 @@ export default function studentProfile() {
           setImage(url); 
         }
         catch(error){
-          setImage(defaultPicture); 
+          // setImage(defaultPicture); 
+          console.log("No se encontró la imagen");
         }
       }
     };
@@ -76,7 +78,7 @@ export default function studentProfile() {
     const lastNameR = lastNameRef.current.value;
     const phoneR = phoneRef.current.value;
     if (nameR !== "" || lastNameR !== "" || phoneR !== "") {
-      // ME QUEDE AQUIIIII
+      
       updateUser({
         userId: userId,
         email: userEmail,
@@ -114,13 +116,15 @@ export default function studentProfile() {
   }
   if (dataLoaded) {
     return (
-      <div>
+      <div >
+        <div>
+        <SidebarStudent className ={styles.sidebar}></SidebarStudent>
         <Navbar></Navbar>
         <div className={styles.nameContainer}>
           <div
             className={styles.profilePic}
             style={{
-              backgroundImage: `url(${image})`,
+              backgroundImage: `url(${image||defaultPicture})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
               borderRadius: "50%",
@@ -189,6 +193,8 @@ export default function studentProfile() {
             </div>
           </div>
         </div>
+        </div>
+       
       </div>
     );
   }
