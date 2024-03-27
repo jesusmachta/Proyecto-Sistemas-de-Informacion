@@ -7,6 +7,7 @@ import {ref, uploadBytes, getStorage, getDownloadURL} from "firebase/storage";
 import { storage } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import styles from "./Afiliaciones.module.css";
+import SidebarStudent from "../Components/SidebarStudent";
 
 
 
@@ -63,9 +64,11 @@ export default function Afiliaciones(){
     if(dataLoaded){
         return(
             <div>
+                <div>
+                    <SidebarStudent></SidebarStudent>
                 <Navbar/>
-                <div className="nameContainer">
-                    <div className="profilePic"
+                <div className={styles.nameContainer}>
+                    <div className={styles.profilePic}
                     style={{
                         backgroundImage: `url(${image})`,
                         backgroundSize: "cover",
@@ -73,21 +76,34 @@ export default function Afiliaciones(){
                         borderRadius: "50%",
                         width: "100px",
                         height: "100px",
+                      
                       }}
                     >
                     </div>
                     <div> 
-                        <h1 className="profileName">{userName}</h1>
-                        <p className="profileMail">{userEmail}</p>
+                        <h1 className={styles.profileName}>{userName}</h1>
+                        <p className={styles.profileEmail}>{userEmail}</p>
                     </div>
                 </div>
                 {!agrupaciones ? (
               <div>
+                <h1 className={styles.titulo}>Afiliaciones</h1>
                 <p className={styles.mensaje}>Todavía no estás afiliado a ninguna agrupación.</p>
-                <button onClick={() => navigation('/ruta-a-agrupaciones') } className ={styles.botonveragrupaciones}>Ver agrupaciones</button>
+                <button onClick={() => navigation('/') } className ={styles.botonveragrupaciones}>Ver agrupaciones</button>
               </div>
             ) : (
-                <div>Aqui va la tabla</div>  )}   
+                <div>
+                    <div>
+                    <h1 className={styles.titulo}>Afiliaciones</h1>
+                    <button>Realizar un feedback</button>
+                    </div>
+                    
+
+                    <div>Aqui va la tabla</div>
+                </div>
+                  )}  
+                </div>
+                
     
                 
             </div>

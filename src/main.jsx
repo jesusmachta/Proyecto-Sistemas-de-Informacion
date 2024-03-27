@@ -13,6 +13,7 @@ import SidebarStudent from './Components/SidebarStudent'
 import ThankYouRegisterPage from './Pages/ThankYouAndSuccessPages/ThankYouRegisterPage'
 import { useUser } from './context/user'
 import Afiliaciones from './Pages/Afiliaciones'
+import Formulario from './Pages/FormularioRegistroAgrupacion'
 
 
 
@@ -59,6 +60,11 @@ const browserRouter = createBrowserRouter([
     element: <Afiliaciones/>
 
   },
+  {
+    path:"/profile/formulario", 
+    element: <Formulario/>
+
+  }
 
 
 ])
