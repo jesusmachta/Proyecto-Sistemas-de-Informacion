@@ -7,6 +7,7 @@ import {
   faMoneyCheckDollar,
   faUsers,
   faArrowRightFromBracket,
+  faPenToSquare,
 } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "./SidebarStudent.module.css";
@@ -38,11 +39,11 @@ export default function SidebarStudent() {
           </li>
         </Link>
 
-        <Link >
+        <Link to = "/profile/formulario">
           <li>
             <FontAwesomeIcon
               className={styles.icon}
-              icon={faUserPlus}
+              icon={faPenToSquare}
             ></FontAwesomeIcon>
           </li>
 

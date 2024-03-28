@@ -11,6 +11,7 @@ import SidebarStudent from "../Components/SidebarStudent";
 
 
 
+
 export default function Afiliaciones(){
     const navigation = useNavigate();
     const userL = useUser();
@@ -84,6 +85,7 @@ export default function Afiliaciones(){
                         <h1 className={styles.profileName}>{userName}</h1>
                         <p className={styles.profileEmail}>{userEmail}</p>
                     </div>
+                    
                 </div>
                 {!agrupaciones ? (
               <div>
