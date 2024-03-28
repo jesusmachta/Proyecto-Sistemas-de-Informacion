@@ -1,12 +1,13 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import {createBrowserRouter, RouterProvider} from 'react-router-dom'
-import Footer_Navbar from './Components/Footer_Navbar'
-import Agrupaciones from './Pages/Agrupaciones'
-import Inicio from './Pages/Inicio'
-import Feedbacks from './Pages/Feedbacks'
-import Register from './Pages/Signup'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Footer_Navbar from "./Components/Footer_Navbar";
+import Agrupaciones from "./Pages/Agrupaciones";
+import Inicio from "./Pages/Inicio";
+import Feedbacks from "./Pages/Feedbacks";
+import Register from "./Pages/Signup";
 import RegistrarAdmin from "./Pages/RegistrarAdmin";
+
 import UserProvider from './UserProvider'
 import StudentProfile from './Pages/StudentProfile'
 import SidebarStudent from './Components/SidebarStudent'
@@ -15,6 +16,11 @@ import { useUser } from './context/user'
 import Afiliaciones from './Pages/Afiliaciones'
 import Formulario from './Pages/FormularioRegistroAgrupacion'
 
+
+
+import UserProvider from "./UserProvider";
+
+import { LoginAdmin } from "./Pages/loginAdmin";
 
 
 const browserRouter = createBrowserRouter([
@@ -34,12 +40,15 @@ const browserRouter = createBrowserRouter([
         path: "/feedbacks",
         element: <Feedbacks />,
       },
-    ]
-  },{
-    path:"/signup",
-    element:<Register/>
-  },{
+    ],
+  },
+  {
+    path: "/signup",
+    element: <Register />,
+  },
+  {
     // borrar!!!!
+
     path: "/profile/:userId", 
     element: <StudentProfile/>
   },{
@@ -48,6 +57,7 @@ const browserRouter = createBrowserRouter([
     
   },   
    {
+
     path: "/registraradmin",
     element: <RegistrarAdmin />,
   },{
@@ -61,13 +71,20 @@ const browserRouter = createBrowserRouter([
 
   },
   {
+
     path:"/profile/formulario", 
     element: <Formulario/>
 
-  }
+  },
 
 
-])
+
+
+    path: "/loginadmin",
+    element: <LoginAdmin />,
+  },
+]);
+
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
