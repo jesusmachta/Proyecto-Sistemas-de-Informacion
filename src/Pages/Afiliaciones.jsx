@@ -8,6 +8,7 @@ import { storage } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import styles from "./Afiliaciones.module.css";
 import SidebarStudent from "../Components/SidebarStudent";
+import PaypalButton from "../Components/PaypalButton";
 
 export default function Afiliaciones() {
   const navigation = useNavigate();
@@ -91,6 +92,7 @@ export default function Afiliaciones() {
           {!agrupaciones ? (
             <div>
               <h1 className={styles.titulo}>Afiliaciones</h1>
+              <PaypalButton></PaypalButton>
               <p className={styles.mensaje}>
                 Todavía no estás afiliado a ninguna agrupación.
               </p>
