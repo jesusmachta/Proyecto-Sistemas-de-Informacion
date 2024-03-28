@@ -1,0 +1,20 @@
+
+.titles{
+    text-align: center;
+}
+.contenedor {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .card {
+    width: calc(33.33% - 10px); /* Ajusta el tamaño de las cartas para que haya tres en cada fila */
+    margin-bottom: 20px; /* Espacio entre las filas */
+  }
+  
+  @media (max-width: 768px) {
+    .card {
+      width: calc(50% - 10px); /* Ajusta el tamaño de las cartas para pantallas más pequeñas */
+    }
+  }

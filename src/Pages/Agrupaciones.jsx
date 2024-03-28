@@ -1,9 +1,11 @@
 import styles from "./Agrupaciones.module.css"
+import Card from "../Components/Card";
 
 const Agrupaciones = () => {
   return (
-    <div className={styles.conteiner}>
+    <div>
       <h1>Agrupaciones</h1>
+      <Card/>
     </div>
   )
 }
