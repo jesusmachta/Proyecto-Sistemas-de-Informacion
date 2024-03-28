@@ -10,6 +10,8 @@ import {
   AppleButton,
 } from "../Components/Signupbuttons";
 
+
+
 import styles from "./Signup.module.css";
 const logo = "./logo-color-sinfondo.png";
 import { useEffect, useState } from "react";
@@ -78,7 +80,8 @@ export default function Register() {
         console.log(values);
 
         saveUser(values);
-        alert("Usuario creado correctamente");
+        // alert("Usuario creado correctamente");
+        navigate("/thank-you-register");
       })
       .catch((e) => {
         setSubmitButtonDisabled(false);
