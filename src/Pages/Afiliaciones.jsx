@@ -10,6 +10,7 @@ import styles from "./Afiliaciones.module.css";
 import SidebarStudent from "../Components/SidebarStudent";
 import PaypalButton from "../Components/PaypalButton";
 
+
 export default function Afiliaciones() {
   const navigation = useNavigate();
   const userL = useUser();
@@ -20,6 +21,8 @@ export default function Afiliaciones() {
   const [dataLoaded, setDataLoaded] = useState(false);
   const [agrupaciones, setAgrupaciones] = useState([]);
   const [image, setImage] = useState(null);
+  //borrar: 
+  const [showAlert, setShowAlert] = useState(false);
 
   useEffect(() => {
     if (userL) {
@@ -35,8 +38,10 @@ export default function Afiliaciones() {
           setUserName(doc.data().name);
           setAgrupaciones(doc.data().agrupaciones);
           console.log(agrupaciones);
+          setShowAlert(true); 
           setDataLoaded(true);
           setIsLoading(false);
+          
         });
       } catch (error) {
         console.log("Error getting documents: ", error);
@@ -66,10 +71,12 @@ export default function Afiliaciones() {
   if (isLoading) {
     return <div>Loading...</div>;
   }
+
   if (dataLoaded) {
     return (
       <div>
         <div>
+    
           <SidebarStudent></SidebarStudent>
           <Navbar />
           <div className={styles.nameContainer}>
@@ -92,7 +99,7 @@ export default function Afiliaciones() {
           {!agrupaciones ? (
             <div>
               <h1 className={styles.titulo}>Afiliaciones</h1>
-              <PaypalButton></PaypalButton>
+           
               <p className={styles.mensaje}>
                 Todavía no estás afiliado a ninguna agrupación.
               </p>
