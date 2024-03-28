@@ -11,7 +11,6 @@ import UserProvider from './UserProvider'
 import StudentProfile from './Pages/StudentProfile'
 import SidebarStudent from './Components/SidebarStudent'
 import ThankYouRegisterPage from './Pages/ThankYouAndSuccessPages/ThankYouRegisterPage'
-import { useUser } from './context/user'
 import Afiliaciones from './Pages/Afiliaciones'
 import Formulario from './Pages/FormularioRegistroAgrupacion'
 
