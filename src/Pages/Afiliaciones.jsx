@@ -10,7 +10,9 @@ import styles from "./Afiliaciones.module.css";
 import SidebarStudent from "../Components/SidebarStudent";
 import PaypalButton from "../Components/PaypalButton";
 import ClipLoader from "react-spinners/ClipLoader";
-
+import { getStudentById } from "../controllers/updateUser";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 
 export default function Afiliaciones() {
   const navigation = useNavigate();
@@ -22,7 +24,7 @@ export default function Afiliaciones() {
   const [dataLoaded, setDataLoaded] = useState(false);
   const [agrupaciones, setAgrupaciones] = useState([]);
   const [image, setImage] = useState(null);
-  //borrar: 
+  //borrar:
   const [showAlert, setShowAlert] = useState(false);
 
   useEffect(() => {
@@ -37,12 +39,11 @@ export default function Afiliaciones() {
         querySnapshot.forEach((doc) => {
           setUserId(doc.id);
           setUserName(doc.data().name);
-          setAgrupaciones(doc.data().agrupaciones);
+          setAgrupaciones(doc.data().afiliaciones);
           console.log(agrupaciones);
-          setShowAlert(true); 
+          setShowAlert(true);
           setDataLoaded(true);
           setIsLoading(false);
-          
         });
       } catch (error) {
         console.log("Error getting documents: ", error);
@@ -69,21 +70,24 @@ export default function Afiliaciones() {
     dataLoaded,
     isLoading,
   ]);
+
   if (isLoading) {
-    return <div className ={styles.loaderContainer}>
-    <ClipLoader
-      color="#d6ae36"
-      cssOverride={{}}
-      size={100}
-      speedMultiplier={1}
-    /> </div>;
+    return (
+      <div className={styles.loaderContainer}>
+        <ClipLoader
+          color="#d6ae36"
+          cssOverride={{}}
+          size={100}
+          speedMultiplier={1}
+        />{" "}
+      </div>
+    );
   }
 
   if (dataLoaded) {
     return (
       <div>
         <div>
-    
           <SidebarStudent></SidebarStudent>
           <Navbar />
           <div className={styles.nameContainer}>
@@ -106,7 +110,7 @@ export default function Afiliaciones() {
           {!agrupaciones ? (
             <div>
               <h1 className={styles.titulo}>Afiliaciones</h1>
-           
+
               <p className={styles.mensaje}>
                 Todavía no estás afiliado a ninguna agrupación.
               </p>
@@ -119,11 +123,13 @@ export default function Afiliaciones() {
             </div>
           ) : (
             <div>
-              <div>
+              <div className={styles.header}>
                 <h1 className={styles.titulo}>Afiliaciones</h1>
-                <button>Realizar un feedback</button>
+                <button className={styles.botonRealizarFeedback}>
+                  Realizar un feedback
+                </button>
               </div>
-              <div>
+              <div className={styles.tableContainer}>
                 <table>
                   <thead>
                     <tr>
@@ -131,7 +137,6 @@ export default function Afiliaciones() {
                       <th>Colaborar</th>
                       <th>Fecha de Afiliación</th>
                       <th>Desafiliar</th>
-                      <th>Miembros</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -139,17 +144,20 @@ export default function Afiliaciones() {
                       <tr key={agrupacion.id}>
                         <td>{agrupacion.nombre}</td>
                         <td>
-                          <button>Pay with Paypal</button>
+                          <button className={styles.botonColaborar}>Pay with Paypal</button>
                         </td>{" "}
-                        
-                        <td>{agrupacion.fechaAfiliacion}</td>
                         <td>
-                          <button >
-                            Desafiliar
-                          </button>
+                          {new Date(
+                            agrupacion.fechaInicio.seconds * 1000
+                          ).toLocaleDateString()}
+                        </td>
+                        <td>
+                          <FontAwesomeIcon
+                            className={styles.logout}
+                            icon={faArrowRightFromBracket}
+                            // onClick={logOut}
+                          ></FontAwesomeIcon>
                         </td>{" "}
-                        
-                        <td>{agrupacion.miembros.length}</td>
                       </tr>
                     ))}
                   </tbody>
