@@ -55,6 +55,10 @@ function FeedbacksUsuario() {
         if(currentFeedback){
           setFeedBackInput(currentFeedback.content);
           setRating(currentFeedback.rating);
+        }else{
+          setFeedBackInput('');
+          setRating(null);
+          setHover(null);
         }
       }else{
 
