@@ -50,6 +50,7 @@ function Agrupacion() {
         </div>
 
         <Feedbacks />
+        
       </div>
     )
   );
