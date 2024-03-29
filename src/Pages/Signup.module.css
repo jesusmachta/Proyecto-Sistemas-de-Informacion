@@ -97,10 +97,11 @@ input:focus{
     height: 100vh;
     flex-direction: column;
     width: 80%;
-    height: 100vh; 
+    /* height: 100vh;  */
     margin-top: 0;
-    padding: 0; 
+    padding: 20px; 
     margin: auto; 
+    box-sizing: border-box;
     
 
 }
@@ -116,6 +117,7 @@ input:focus{
     flex-wrap: wrap;
     /* max-width: 575px; 
     padding-left: 20px;  */
+
 
     
 
@@ -183,4 +185,25 @@ b{
     font-family: 'Raleway', sans-serif
 
 
+}
+.buttonIniciar{
+    font-size: 20px;
+    cursor: pointer;
+    width: 30%; 
+    height: 50px;
+    border-radius: 5px;
+    background-color: white;
+    color: #7d8490;
+   display: flex;
+   align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 10px; 
+    margin-bottom: 10px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: normal;
+    font-size: 18px;
+    border: 1px solid #F2CA99;
+    border-color:rgb(181, 177, 177); 
+     
 }
