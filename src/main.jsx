@@ -11,6 +11,9 @@ import UserProvider from "./UserProvider";
 import StudentProfile from "./Pages/StudentProfile";
 import SidebarStudent from "./Components/SidebarStudent";
 import { LoginAdmin } from "./Pages/loginAdmin";
+import UpdateGroup from "./Pages/UpdateGroup";
+import RegisterGroup from "./Pages/RegisterGroup";
+import AdminProfile from "./Pages/AdminProfile";
 
 const browserRouter = createBrowserRouter([
   {
@@ -51,6 +54,18 @@ const browserRouter = createBrowserRouter([
   {
     path: "/loginadmin",
     element: <LoginAdmin />,
+  },
+  {
+    path: "/updategroup",
+    element: <UpdateGroup />,
+  },
+  {
+    path: "/registergroup/",
+    element: <RegisterGroup />,
+  },
+  {
+    path: "/adminprofile",
+    element: <AdminProfile />,
   },
 ]);
 
