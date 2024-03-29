@@ -35,6 +35,10 @@ const browserRouter = createBrowserRouter([
         path: "/feedbacks",
         element: <Feedbacks />,
       },
+      {
+        path:"/agrupaciones/:id",
+        element:<Agrupacion/>
+      },
     ],
   },
   {
@@ -73,10 +77,7 @@ const browserRouter = createBrowserRouter([
     path: "/loginadmin",
     element: <LoginAdmin />,
   },
-  {
-    path:"/agrupaciones/:id",
-    element:<Agrupacion/>
-  }
+  
 ]);
 
 

@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import CarouselAgrupacion from "../../Components/CarouselAgrupacion/CarouselAgrupacion";
 import DropdownInfo from "../../Components/DropdownInfo/DropdownInfo";
 import { getAgrupacionById } from "../../controllers/Agrupaciones";
-import Feedbacks from "../Feedbacks/Feedbacks";
+import FeedbackAgrupacion from "../../Components/FeedbackAgrupacion/FeedbackAgrupacion";
 
 function Agrupacion() {
   const [agrupacion, setAgrupacion] = useState(null);
@@ -49,7 +49,8 @@ function Agrupacion() {
           <button className="buttonUnirse"> Unirse a Agrupación </button>
         </div>
 
-        <Feedbacks />
+        <FeedbackAgrupacion />
+       
         
       </div>
     )
