@@ -1,11 +1,11 @@
-import React from 'react'
+import styles from "./Feedbacks.module.css";
 import FeedbacksUsuario from "../FeedbacksUsuario/FeedbacksUsuario";
 
 
 function Feedbacks() {
   return (
-    <div>
-       <FeedbacksUsuario/>
+    <div className={styles.FeedbacksContainer}>
+      <FeedbacksUsuario />
     </div>
   )
 }

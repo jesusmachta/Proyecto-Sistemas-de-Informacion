@@ -15,28 +15,43 @@ const Navbar = () => {
       <div className={styles.logo}>
         <img src={logo} alt="logo_conectaUnimet" />
       </div>
-      
 
       <div className={styles.navbar}>
-      <nav className={styles.list}>
-        <Link className={`${styles.link} ${location.pathname === "/" ? styles.ubi : ""}`} to="/">Inicio</Link>
-        <Link className={`${styles.link} ${location.pathname === "/agrupaciones" ? styles.ubi : ""}`} to="/agrupaciones">Agrupaciones</Link>
-        <Link className={`${styles.link} ${location.pathname === "/feedbacks" ? styles.ubi : ""}`} to="/feedbacks">Feedbacks</Link>
-      </nav>
-
+        <nav className={styles.list}>
+          <Link
+            className={`${styles.link} ${
+              location.pathname === "/" ? styles.ubi : ""
+            }`}
+            to="/"
+          >
+            Inicio
+          </Link>
+          <Link
+            className={`${styles.link} ${
+              location.pathname === "/agrupaciones" ? styles.ubi : ""
+            }`}
+            to="/agrupaciones"
+          >
+            Agrupaciones
+          </Link>
+          <Link
+            className={`${styles.link} ${
+              location.pathname === "/feedbacks" ? styles.ubi : ""
+            }`}
+            to="/feedbacks"
+          >
+            Feedbacks
+          </Link>
+        </nav>
       <div className={styles.icons}>
         <img className={styles.icon} src={lupa} alt="lupa" />
-        <Link to={userL?`/profile/${userL.id}` : '/signup'}>
+        <Link to={userL?`/profile/${userL.uid}` : '/signup'}>
           <img className={styles.icon} src={user} alt="user" />
         </Link>
-       
       </div>
-      
       </div>
-
     </div>
-    
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

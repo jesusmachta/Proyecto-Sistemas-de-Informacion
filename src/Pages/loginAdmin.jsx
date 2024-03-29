@@ -15,6 +15,7 @@ export function LoginAdmin() {
   const [values, setValues] = useState({ email: "", password: "" });
   const [errorMsg, setErrorMsg] = useState([]);
   const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const Iniciar = () => {
     if (!values.email || !values.password) {
       setErrorMsg("Datos incompletos");
@@ -59,8 +60,8 @@ export function LoginAdmin() {
         <img src={logo} alt="logo" className={styles.logo}></img>
       </div>
       <div className={styles.buttonsLogInSignUp}>
-        <button className={styles.button}>Log In</button>
-        <button className={`${styles.button} ${styles.buttonSelected}`}>
+        <button className={`${styles.button} ${styles.buttonSelected}`}>Log In</button>
+        <button className={styles.button}>
           Sign Up
         </button>
       </div>
@@ -83,8 +84,10 @@ export function LoginAdmin() {
           onChange={(event) =>
             setValues((prev) => ({ ...prev, password: event.target.value }))
           }
+          showPassword={showPassword}
+          onTogglePassword={() => setShowPassword(!showPassword)}
         />
-        <button onClick={Iniciar} disabled={submitButtonDisabled}>
+        <button onClick={Iniciar} disabled={submitButtonDisabled} className={styles.buttonIniciar}>
           Iniciar
         </button>
       </form>
