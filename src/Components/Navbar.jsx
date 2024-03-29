@@ -26,7 +26,7 @@ const Navbar = () => {
 
       <div className={styles.icons}>
         <img className={styles.icon} src={lupa} alt="lupa" />
-        <Link to={userL?`/profile/${userL.id}` : '/signup'}>
+        <Link to={userL?`/profile/${userL.uid}` : '/signup'}>
           <img className={styles.icon} src={user} alt="user" />
         </Link>
        

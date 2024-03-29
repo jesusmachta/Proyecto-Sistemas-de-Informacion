@@ -1,21 +1,22 @@
 
-import styles from "../Pages/Signup.module.css";
+
+import styles from "./InputControl.module.css";
 export function TextField({placeholder, onChange}){
-    return <input type ="text" placeholder={placeholder} onChange={onChange}></input>
+    return <input type ="text" placeholder={placeholder} onChange={onChange} className={styles.input}></input>
 }
 
 export function EmailField({placeholder, onChange}){
-    return <input type ="email" placeholder={placeholder} onChange={onChange}></input>
+    return <input type ="email" placeholder={placeholder} onChange={onChange} className={styles.input}></input>
 }
 
 export function PasswordField({placeholder, onChange, showPassword, onTogglePassword}){
     return (
-        <div className ={styles.PasswordField}>
+        <div >
             <input 
                 type={showPassword ? "text" : "password"} 
                 placeholder={placeholder} 
                 onChange={onChange}
-                className = {styles.passwordInput}
+                className={styles.input}
             />
             <i 
                 onClick={onTogglePassword}
@@ -26,5 +27,5 @@ export function PasswordField({placeholder, onChange, showPassword, onTogglePass
 }
 
 export function TelField({placeholder, onChange}){
-    return <input type= "tel" placeholder={placeholder} onChange={onChange}/>;
+    return <input type= "tel" placeholder={placeholder} onChange={onChange} className={styles.input}/>;
 }

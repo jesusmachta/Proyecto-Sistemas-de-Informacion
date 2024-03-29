@@ -10,6 +10,7 @@ import { updateUser } from "../controllers/updateUser";
 import { storage } from "../firebase";
 import { ref, uploadBytes, getStorage, getDownloadURL } from "firebase/storage";
 import SidebarStudent from "../Components/SidebarStudent";
+import ClipLoader from "react-spinners/ClipLoader";
 
 export default function studentProfile() {
   const navigation = useNavigate();
@@ -104,7 +105,14 @@ export default function studentProfile() {
   };
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div className ={styles.loaderContainer}>
+    <ClipLoader
+      color="#d6ae36"
+      cssOverride={{}}
+      size={100}
+      speedMultiplier={1}
+    /> </div>;
+    
   }
   if (dataLoaded) {
     return (
@@ -167,6 +175,7 @@ export default function studentProfile() {
                     type="email"
                     placeholder={userEmail}
                     readOnly={true}
+                    className={styles.input}
                   ></input>
                 </div>
               </div>

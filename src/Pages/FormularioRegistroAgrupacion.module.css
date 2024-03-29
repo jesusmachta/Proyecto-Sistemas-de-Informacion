@@ -101,3 +101,10 @@
   align-items: center; 
   flex-direction: column;
 }
+
+.loaderContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}

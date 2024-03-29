@@ -9,6 +9,7 @@ import { db } from "../firebase";
 import { ref, getDownloadURL } from "firebase/storage";
 import { storage } from "../firebase";
 import { updateDoc, doc } from "firebase/firestore";
+import ClipLoader from "react-spinners/ClipLoader";
 
 export default function Formulario() {
   const navigation = useNavigate();
@@ -86,6 +87,15 @@ export default function Formulario() {
       console.log("Se actualizó la carrera y el carnet");
 
   }; 
+  if(isLoading){
+    return <div className ={styles.loaderContainer}>
+    <ClipLoader
+      color="#d6ae36"
+      cssOverride={{}}
+      size={100}
+      speedMultiplier={1}
+    /> </div>;
+  }
   if (dataLoaded) {
     return (
       <div>

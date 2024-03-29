@@ -59,13 +59,13 @@ const browserRouter = createBrowserRouter([
 
   },
   {
-    path:"/profile/afilliations", 
+    path:"/profile/afilliations/:userId", 
     element: <Afiliaciones/>
 
   },
   {
 
-    path:"/profile/formulario", 
+    path:"/profile/formulario/:userId", 
     element: <Formulario/>
 
   },
