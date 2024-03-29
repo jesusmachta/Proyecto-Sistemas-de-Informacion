@@ -1,0 +1,36 @@
+.sidebar {
+  background-color: #f2ca99;
+  padding-top: 50px;
+  padding-right: 50px;
+  margin-right: 95%;
+  padding-bottom: 450px;
+  position: absolute;
+  margin-bottom: 0;
+  width: 70px;
+  height: 100%;
+  position: fixed;
+  left: 0;
+}
+
+.icon {
+  font-size: 30px;
+  padding: 20px;
+  color: black;
+}
+
+.logout {
+  position: absolute;
+  align-items: center;
+  font-size: 30px;
+  bottom: 0;
+}
+
+.activeLink {
+  color: green;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  background-color: green;
+}
+
+.activeIcon {
+  color: green;
+}

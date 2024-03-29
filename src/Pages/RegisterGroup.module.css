@@ -1,0 +1,70 @@
+body {
+  background-color: #eaecf0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-image {
+  width: 186px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-info h2 {
+  margin: 0;
+}
+
+.profile-info p {
+  margin: 0;
+}
+
+.update-group {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.left-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.right-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.input {
+  margin-bottom: 10px;
+}
+
+.button {
+  align-self: flex-end;
+}
+
+.textarea {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  min-height: 17vh;
+  margin-bottom: 10px;
+}
+
+.textarea {
+  height: auto;
+}

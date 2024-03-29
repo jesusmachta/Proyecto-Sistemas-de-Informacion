@@ -7,15 +7,17 @@ import Inicio from "./Pages/Inicio";
 import Feedbacks from "./Pages/Feedbacks/Feedbacks";
 import Register from "./Pages/Signup";
 import RegistrarAdmin from "./Pages/RegistrarAdmin";
-import Agrupacion from './Pages/Agrupacion/Agrupacion'
-
-import UserProvider from './UserProvider'
-import StudentProfile from './Pages/StudentProfile'
-import SidebarStudent from './Components/SidebarStudent'
-import ThankYouRegisterPage from './Pages/ThankYouAndSuccessPages/ThankYouRegisterPage'
-import Afiliaciones from './Pages/Afiliaciones'
-import Formulario from './Pages/FormularioRegistroAgrupacion'
+import Agrupacion from './Pages/Agrupacion/Agrupacion';
+import UserProvider from './UserProvider';
+import StudentProfile from './Pages/StudentProfile';
+import SidebarStudent from './Components/SidebarStudent';
+import ThankYouRegisterPage from './Pages/ThankYouAndSuccessPages/ThankYouRegisterPage';
+import Afiliaciones from './Pages/Afiliaciones';
+import Formulario from './Pages/FormularioRegistroAgrupacion';
 import { LoginAdmin } from "./Pages/loginAdmin";
+import UpdateGroup from "./Pages/UpdateGroup";
+import RegisterGroup from "./Pages/RegisterGroup";
+import AdminProfile from "./Pages/AdminProfile";
 
 
 const browserRouter = createBrowserRouter([
@@ -74,8 +76,20 @@ const browserRouter = createBrowserRouter([
     element: <LoginAdmin />,
   },
   {
-    path:"/agrupaciones/:id",
-    element:<Agrupacion/>
+    path: "/updategroup",
+    element: <UpdateGroup />,
+  },
+  {
+    path: "/registergroup/",
+    element: <RegisterGroup />,
+  },
+  {
+    path: "/adminprofile",
+    element: <AdminProfile />,
+  },
+  {
+    path: "/agrupaciones/:id",
+    element: <Agrupacion/>,
   }
 ]);
 
