@@ -1,6 +1,6 @@
 import React from "react";
 import { IoPersonCircle } from "react-icons/io5";
-import "./FeedbacksUsuario.css";
+import styles from "src/Pages/FeedbacksUsuario/FeedbacksUsuario.css";
 import { FaChevronDown } from "react-icons/fa";
 import { FaRegStar } from "react-icons/fa";
 import { FaStar } from "react-icons/fa";
