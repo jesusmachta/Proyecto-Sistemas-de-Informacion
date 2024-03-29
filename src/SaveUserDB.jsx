@@ -4,6 +4,7 @@ import {db} from "./firebase";
 
 
 export async function saveuser(user, idAuth){
+    console.log(idAuth); 
     const usuariosRef = collection(db, "Students"); 
     try{
         const userc = {
