@@ -1,0 +1,30 @@
+
+
+.commentContainer{
+background-color: #f9f9f9;
+border-radius: 15px;
+padding: 10px;
+box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+max-width: 400px;
+min-width: 400px;
+display: flex;
+flex-direction: column;
+gap: 5px;
+}
+
+.commentHeader{
+    display: flex;
+    align-items: center;
+    color: #ADAAAA;
+    gap: 5px;
+}
+
+.commentHeader > p{
+font-weight: 600;
+}
+
+.commentDescription{
+    color: #ADAAAA;
+
+}
+
