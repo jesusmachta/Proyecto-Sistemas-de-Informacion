@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { collection, getDocs, doc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import { useForm } from "react-hook-form";
-import styles from "../pages/UpdateGroup.module.css";
+import styles from "./UpdateGroup.module.css";
 
 const UpdateGroup = () => {
   const [groups, setGroups] = useState([]);
