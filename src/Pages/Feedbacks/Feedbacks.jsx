@@ -2,7 +2,7 @@ import React from "react";
 import { FaRegStar } from "react-icons/fa";
 import { FaStar } from "react-icons/fa";
 import { FaStarHalfAlt } from "react-icons/fa";
-import "./FeedBacks.css";
+import styles from "./Feedbacks.css";
 import { IoMdAdd } from "react-icons/io";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import Comment from "../../Components/Comment/Comment";
