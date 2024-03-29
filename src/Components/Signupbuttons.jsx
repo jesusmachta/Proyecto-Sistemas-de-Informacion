@@ -13,6 +13,7 @@ export function GoogleButton() {
     try {
       const result = await signInWithPopup(auth, googleProvider);
       const userCredential = result.user;
+      const uid = userCredential.uid;
       const userEmail = userCredential.email;
       const phoneNumber = userCredential.phoneNumber;
       const nameDisplay = userCredential.displayName;
@@ -44,7 +45,7 @@ export function GoogleButton() {
         email: userEmail,
         phoneNumber: phoneNumber,
       };
-      saveUser(user);
+      saveUser(user, uid);
       navigate("/");
     } catch (error) {
       console.log(error);

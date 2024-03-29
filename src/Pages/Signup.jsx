@@ -11,6 +11,7 @@ import {
 } from "../Components/Signupbuttons";
 
 import { saveuser } from "../SaveUserDB";
+import { saveUser } from "../SaveUserDB";
 
 import styles from "./Signup.module.css";
 const logo = "./logo-color-sinfondo.png";
@@ -80,7 +81,7 @@ export default function Register() {
         });
         console.log(values);
 
-        saveuser(values, uid);
+        saveUser(values, uid);
         // alert("Usuario creado correctamente");
         navigate("/thank-you-register");
       })
