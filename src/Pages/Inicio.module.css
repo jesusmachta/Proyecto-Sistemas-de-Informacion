@@ -42,7 +42,8 @@
 
 .text{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color: #F18700;
+    color: #FE8009;
+    text-align: center;
 }
 
 .animate__animated.animate__fadeIn{
@@ -94,6 +95,7 @@
     }
     .text{
         font-size: 12px;
+        text-align: center;
     }
     .button{
         padding: 0.5rem;
@@ -141,6 +143,7 @@
     }
     .text{
         font-size: 20px;
+        text-align: center;
     }
     .textContainer{
         top: 30%;
@@ -180,6 +183,7 @@
     }
     .text{
         font-size: 50px;
+        text-align: center;
     }
     .misionVision{
         height: auto;

@@ -1,3 +1,47 @@
 .conteiner{
     background-color: #F2CA99;
 }
+
+.title{
+    margin-bottom: 2rem;
+}
+.buttonConteiner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #99BEA9;
+}
+.button{
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+}
+@media screen and (min-width:115px){
+    .buttonConteiner{
+        right: 20px;
+        margin-top: 2rem;
+        height:3rem;
+        width: 200px;
+        border-radius: 20px;
+    }
+   
+}
+
+@media screen and (max-width:538px){
+    .buttonConteiner{
+        margin-left: 45%;
+        margin-bottom: 30px;
+    }
+}
+
+@media screen and (min-width:540px) and (max-width:1024px){
+    .buttonConteiner{
+        margin-left: 70%;
+    }
+}
+
+@media screen and (min-width:1025px){
+    .buttonConteiner{
+        margin-left: 80%;
+    }
+}

@@ -1,10 +1,16 @@
 import styles from "./SectionCarrusel.module.css"
+import ImagesCarrusel from "./ImagesCarrusel"
+import {Link} from "react-router-dom"
 
 const SectionCarrusel = () => {
+  
   return (
     <div className={styles.conteiner}>
-        <h2>Te presentamos nuestras principales agrupaciones</h2>
-        <p>Aca van a ir un carrusel de tarjetas.</p>
+      <h2 className={styles.titles}>Te presentamos nuestras principales agrupaciones</h2>
+       <ImagesCarrusel/>
+       <div className={styles.buttonConteiner}>
+        <Link className={styles.button} to="/agrupaciones">Click acá para ver más</Link>
+      </div>
     </div>
   )
 }
