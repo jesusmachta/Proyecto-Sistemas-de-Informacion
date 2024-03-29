@@ -4,8 +4,8 @@ import Card from "../Components/Card";
 const Agrupaciones = () => {
   return (
     <div>
-      <h1>Agrupaciones</h1>
-      <Card/>
+      <h1 className={styles.title}>Agrupaciones</h1>
+      <Card />
     </div>
   )
 }

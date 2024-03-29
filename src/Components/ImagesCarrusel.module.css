@@ -11,11 +11,12 @@
     flex-direction: column;
     margin-right: 100px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    height: 500px;
 }
 
 .imageContainer {
-    width: 300px; /* Define el ancho deseado para todas las cartas */
-    height: 400px; /* Define la altura deseada para todas las cartas */
+    width: 300px; 
+    height: 400px;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
@@ -25,11 +26,11 @@
 }
 
 .images {
-    width: 100%; /* Asegura que la imagen no exceda el ancho de la carta */
-    height: 100%; /* Ajusta la altura de la imagen según tus preferencias */
-    max-height: 300px; /* Define la altura máxima de la imagen */
-    border-radius: 8px; /* Añade borde redondeado a la imagen si es necesario */
-    object-fit: cover; /* Ajusta la forma en que la imagen se ajusta dentro de su contenedor */
+    width: 100%;
+    height: 100%;
+    max-height: 300px;
+    border-radius: 8px; 
+    object-fit: cover; 
 }
 
 .textContainer {
@@ -37,8 +38,8 @@
     flex-direction: column;
     text-align: center;
     justify-content: center;
-    align-items: center; /* Centra el texto dentro de la carta */
-    margin-top: 10px; /* Ajusta el margen superior del texto según tus preferencias */
+    align-items: center; 
+    margin-top: 10px; 
 }
 
 .textContainer h2{
