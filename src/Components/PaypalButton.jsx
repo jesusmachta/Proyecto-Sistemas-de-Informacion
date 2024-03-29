@@ -1,44 +1,25 @@
 import { useEffect, useRef } from "react";
+// 'https://www.paypal.com/sdk/js?client-id=AdJ08yXLmwB8zpy50VAZwj1LJ67bKAtfA73Ru92rUGnqN3slCVCADXeIDMj1hQU3fWpVl-O2vP9S7RnH'
 
-export default function PaypalButton({total}){
-    const paypal = useRef(); 
 
-    useEffect(() => {
-        const script = document.createElement('script');
-        // FALTA PONER EL CLIENT ID!!!!1
-        script.src = 'https://www.paypal.com/sdk/js?client-id=CLIENT_ID';
-        script.onload = () => {
-          window.paypal.Buttons({
-            createOrder: (data, actions, err) => {
-              return actions.order.create({
-                intent: "CAPTURE",
-                purchase_units: [
-                  {
-                    description: "Compra de productos",
-                    amount: {
-                      currency_code: "USD",
-                      value: total,
-                    },
-                  },
-                ],
-              });
-            },
-            onApprove: async (data, actions) => {
-              const order = await actions.order.capture();
-              console.log(order);
-            },
-            onError: (err) => {
-              console.log(err);
-            },
-          })
-          .render(paypal.current);
-        };
-        document.body.appendChild(script);
-      }, []);
-    
-      return (
-        <div>
-          <div ref={paypal}></div>
-        </div>
-      );
+
+export default function PaypalButton({ total }) {
+  const paypal = useRef(); // Declarar la referencia
+
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://www.paypal.com/sdk/js?client-id=AdJ08yXLmwB8zpy50VAZwj1LJ67bKAtfA73Ru92rUGnqN3slCVCADXeIDMj1hQU3fWpVl-O2vP9S7RnH';
+    script.onload = () => {
+      window.paypal.Buttons({
+        // Configuración de los botones
+      }).render(paypal.current); // Usar la referencia
+    };
+    document.body.appendChild(script);
+  }, []);
+
+  return (
+    <div>
+      <div ref={paypal}></div> {/* Asignar la referencia a un elemento del DOM */}
+    </div>
+  );
 }

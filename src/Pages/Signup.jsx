@@ -10,7 +10,8 @@ import {
   AppleButton,
 } from "../Components/Signupbuttons";
 
-
+import { saveuser } from "../SaveUserDB";
+import { saveUser } from "../SaveUserDB";
 
 import styles from "./Signup.module.css";
 const logo = "./logo-color-sinfondo.png";
@@ -21,7 +22,7 @@ import {
   updatePassword,
   updateProfile,
 } from "firebase/auth";
-import { saveUser } from "../SaveUserDB";
+
 import { Link, useNavigate } from "react-router-dom";
 
 export default function Register() {
@@ -72,6 +73,7 @@ export default function Register() {
       .then(async (res) => {
         setSubmitButtonDisabled(false);
         const user = res.user;
+        const uid = user.uid; 
         await updateProfile(user, {
           displayName: values.name,
           displayLastname: values.lastName,
@@ -79,7 +81,7 @@ export default function Register() {
         });
         console.log(values);
 
-        saveUser(values);
+        saveUser(values, uid);
         // alert("Usuario creado correctamente");
         navigate("/thank-you-register");
       })
@@ -108,6 +110,7 @@ export default function Register() {
           displayLastname: values.lastName,
           phone: values.phoneNumber,
         };
+        
         await updateProfile(user, userProfile);
       } catch (error) {
         console.log(error);
@@ -141,6 +144,7 @@ export default function Register() {
       <div className={styles.container}>
         <h2 className={styles.titles}>Nombre</h2>
         <TextField
+        className = {styles.input}
           label="Nombre"
           placeholder="Ingresa tu nombre..."
           onChange={(event) => {
