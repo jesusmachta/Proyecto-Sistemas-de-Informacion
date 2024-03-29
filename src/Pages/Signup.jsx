@@ -141,6 +141,7 @@ export default function Register() {
       <div className={styles.container}>
         <h2 className={styles.titles}>Nombre</h2>
         <TextField
+        className = {styles.input}
           label="Nombre"
           placeholder="Ingresa tu nombre..."
           onChange={(event) => {
