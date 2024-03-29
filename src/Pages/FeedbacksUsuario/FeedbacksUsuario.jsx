@@ -55,13 +55,15 @@ function FeedbacksUsuario() {
         if(currentFeedback){
           setFeedBackInput(currentFeedback.content);
           setRating(currentFeedback.rating);
-        }
-      }else{
-
+        }else{
           setFeedBackInput('');
           setRating(null);
           setHover(null);
-
+        }
+      }else{
+        setFeedBackInput('');
+        setRating(null);
+        setHover(null);
       }
     }
   }, [selectedData]);
