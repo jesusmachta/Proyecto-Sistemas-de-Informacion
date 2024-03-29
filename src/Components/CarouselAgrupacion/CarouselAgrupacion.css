@@ -1,0 +1,13 @@
+.carouselAgrupacion__container{
+    display: flex;
+    overflow-x: scroll;
+    gap: 30px;
+    padding: 20px;
+}
+
+.carouselAgrupacion__container > img{
+    width: 300px;
+    height: 200px;
+}
+
+.carouselAgrupacion__container::-webkit-scrollbar {display: none;}

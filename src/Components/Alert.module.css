@@ -1,0 +1,48 @@
+.alert {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #868181;
+    color: white;
+    opacity: 0.9;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+}
+
+.closeBtn {
+    align-self: flex-end; /* Asegúrate de que la "x" esté alineada a la derecha */
+    color: white;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* El resto de tu CSS... */
+
+.closeBtn:hover {
+    color: black;
+}
+
+.titulo{
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Raleway', sans-serif;
+    align-items: center;
+    text-align: center;
+}
+
+.mensaje{
+    font-size: 15px;
+    font-weight: bold;
+    font-family: 'Raleway', sans-serif;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 10px;
+}

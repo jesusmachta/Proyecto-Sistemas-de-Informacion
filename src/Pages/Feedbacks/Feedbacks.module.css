@@ -1,0 +1,59 @@
+.ratingTitleContainer{
+    padding: 12px;
+    border: 3px solid #EC9900;
+}
+
+.ratingTitleContainer > p{
+    color: #EC9900;
+}
+
+.ratingWrapper{
+    display: flex;
+    gap: 10px;
+}
+
+.ratingContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.FeedbacksContainer{
+    display: flex;
+    padding: 20px;
+    overflow: hidden;
+    gap: 10px;
+}
+
+.boton{
+display: flex;
+align-items: center;
+cursor: pointer;
+transition: all ease .3s;
+}
+
+.boton:hover{
+    opacity: 0.5;
+    /* transform: scale(1.2); */
+    }
+
+.boton > p{
+    color: #667085;
+    font-weight: 500;
+    }
+
+.align-right{
+    justify-content: end;
+}
+
+.commentsList{
+    display: flex;
+    gap: 10px;
+    overflow-x: scroll; 
+}
+
+.contenedorComentario{
+    overflow-x: scroll;
+}

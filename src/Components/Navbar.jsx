@@ -1,13 +1,14 @@
-import styles from "./Navbar.module.css";
-import logo from "../../public/Logo.png";
-import lupa from "../../Icons/search_black_36dp.svg";
-import user from "../../Icons/account_circle_black_24dp.svg";
-import { Link, useLocation } from "react-router-dom";
-import { useUser } from "../context/user";
+import styles from './Navbar.module.css'
+import logo from '../../public/Logo.png'
+import lupa from "../../Icons/search_black_36dp.svg"
+import user from "../../Icons/account_circle_black_24dp.svg"
+import { Link,useLocation } from'react-router-dom'
+import { useUser } from '../context/user'
+
 
 const Navbar = () => {
-  const location = useLocation();
-  const userL = useUser();
+  const location = useLocation(); 
+  const userL = useUser(); 
 
   return (
     <div className={styles.container}>
@@ -42,13 +43,12 @@ const Navbar = () => {
             Feedbacks
           </Link>
         </nav>
-
-        <div className={styles.icons}>
-          <img className={styles.icon} src={lupa} alt="lupa" />
-          <Link to={userL ? `/profile/${userL.id}` : "/signup"}>
-            <img className={styles.icon} src={user} alt="user" />
-          </Link>
-        </div>
+      <div className={styles.icons}>
+        <img className={styles.icon} src={lupa} alt="lupa" />
+        <Link to={userL?`/profile/${userL.uid}` : '/signup'}>
+          <img className={styles.icon} src={user} alt="user" />
+        </Link>
+      </div>
       </div>
     </div>
   );

@@ -1,0 +1,110 @@
+.nameContainer {
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  font-family: "Raleway", sans-serif;
+}
+
+.profilePic {
+  margin-left: 100px;
+  width: calc(100%-45px);
+  height: 100%;
+  /* z-index: 2; */
+}
+
+.profileName,
+.profileEmail {
+  margin-left: 10px;
+  font-family: "Raleway", sans-serif;
+}
+
+.titulo {
+  font-family: "Raleway", sans-serif;
+  font-size: 40px;
+  color: #337d54;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.mensaje {
+  font-family: "Raleway", sans-serif;
+  font-size: 15px;
+  color: #adaaaa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.titulosinputs {
+  font-family: "Raleway", sans-serif;
+  font-size: 20px;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.inputs {
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  width: 50%;
+  margin: auto;
+}
+
+.botonGuardar {
+  font-family: "Raleway", sans-serif;
+  font-size: 20px;
+  color: #337d54;
+  background-color: #f2ca99;
+  border: none;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: flex; 
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  justify-content: center;
+  align-items: center;
+  width: 200px; /* Cambia esto al ancho que quieras */
+  height: 50px;
+  margin: auto; 
+  margin-top: 10px; 
+  border-radius: 10px;
+}
+
+.errorMsg{
+    font-family: "Raleway", sans-serif;
+    font-size: 20px;
+    color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.containerInputs{
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  flex-direction: column;
+}
+
+.loaderContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}

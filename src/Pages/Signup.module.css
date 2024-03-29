@@ -46,22 +46,38 @@ body{
     font-family: 'Raleway', sans-serif;
     font-weight: normal;
     font-size: 18px;
-     text-align: left;
+    margin-top: 10px; 
+    flex-wrap: wrap;
+    width: 100%;
+     /* text-align: left; */
     /* width: 100%; */
     /* max-width: 500px; */
     /* margin: 0 auto;  */ 
 
 }
 
-input{
-    width: 40%; 
+.input{
+    width: 60%; 
     padding: 12px 20px;
-    margin: 8px 0;
+    margin: auto;
+    margin-left: 20%;
+  display: block;
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 10px;
     font-family: 'Raleway', sans-serif;
     font-size: 20px;
+    padding: 12px 20px;
+   
+
+  
+  
+  
+  
+  
+  
+
+
     /* text-align: left; */
 
     
@@ -75,29 +91,31 @@ input:focus{
 }
 
 .container{
-    
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     flex-direction: column;
-    width: 100%;
+    width: 80%;
     height: 100vh; 
     margin-top: 0;
     padding: 0; 
-    margin: 0; 
+    margin: auto; 
+    
 
 }
 
-h2{
+.h2{
     /* font-family: 'Raleway', sans-serif;
     font-weight: normal; */
     /* font-size: 30px; */
-    text-align: left;
+    text-align: center;
     margin-bottom: 20px;
     width: 100%; 
-    margin: 0 auto; 
-    max-width: 575px; 
+    /* margin: auto;  */
+    flex-wrap: wrap;
+    /* max-width: 575px; 
+    padding-left: 20px;  */
 
     
 
@@ -111,11 +129,12 @@ h2{
     border-radius: 5px;
     font-size: 16px;
     text-align: center;
+    cursor: pointer;
 }
 
 .buttonRegistrarse{
     font-size: 20px;
-
+    cursor: pointer;
     width: 300px; 
     height: 50px;
     border-radius: 5px;
@@ -129,20 +148,22 @@ h2{
     font-size: 18px;
     border: 1px solid #F2CA99;
     border-color:rgb(181, 177, 177); 
+     
     
 }
 
 .passwordField {
-    display: flex;
+    /* display: grid;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
+    width: 500%;
+    flex-direction: row; */
   }
   
   .passwordInput {
     flex-grow: 1;
-  margin-right: 10px; /* Esto deja espacio para el icono del ojo */
-  width: 40%;
+    margin-right: 10px; /* Esto deja espacio para el icono del ojo */
+  width: 89%;
   height: 50px; /* Ajusta esto al tamaño que desees */
   padding: 0 10px
   
@@ -150,6 +171,7 @@ h2{
   
   .fas {
     cursor: pointer;
+    order: 2; 
   }
 
 b{

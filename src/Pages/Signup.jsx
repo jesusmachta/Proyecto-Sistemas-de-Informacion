@@ -10,6 +10,8 @@ import {
   AppleButton,
 } from "../Components/Signupbuttons";
 
+import { saveUser } from "../SaveUserDB";
+
 import styles from "./Signup.module.css";
 const logo = "./logo-color-sinfondo.png";
 import { useEffect, useState } from "react";
@@ -19,7 +21,7 @@ import {
   updatePassword,
   updateProfile,
 } from "firebase/auth";
-import { saveUser } from "../SaveUserDB";
+
 import { Link, useNavigate } from "react-router-dom";
 
 export default function Register() {
@@ -70,6 +72,7 @@ export default function Register() {
       .then(async (res) => {
         setSubmitButtonDisabled(false);
         const user = res.user;
+        const uid = user.uid; 
         await updateProfile(user, {
           displayName: values.name,
           displayLastname: values.lastName,
@@ -77,8 +80,9 @@ export default function Register() {
         });
         console.log(values);
 
-        saveUser(values);
-        alert("Usuario creado correctamente");
+        saveUser(values, uid);
+        // alert("Usuario creado correctamente");
+        navigate("/thank-you-register");
       })
       .catch((e) => {
         setSubmitButtonDisabled(false);
@@ -105,6 +109,7 @@ export default function Register() {
           displayLastname: values.lastName,
           phone: values.phoneNumber,
         };
+        
         await updateProfile(user, userProfile);
       } catch (error) {
         console.log(error);
@@ -138,6 +143,7 @@ export default function Register() {
       <div className={styles.container}>
         <h2 className={styles.titles}>Nombre</h2>
         <TextField
+        className = {styles.input}
           label="Nombre"
           placeholder="Ingresa tu nombre..."
           onChange={(event) => {
@@ -148,6 +154,7 @@ export default function Register() {
 
         <h2 className={styles.titles}>Apellido</h2>
         <TextField
+        className = {styles.input}
           label="Apellido"
           placeholder="Ingresa tu apellido..."
           onChange={(event) =>
@@ -157,6 +164,7 @@ export default function Register() {
 
         <h2 className={styles.titles}>Teléfono</h2>
         <TelField
+        className = {styles.input}
           label="Telefono"
           placeholder="Ingresa tu teléfono..."
           onChange={(event) =>
@@ -166,6 +174,7 @@ export default function Register() {
 
         <h2 className={styles.titles}>Correo Electrónico</h2>
         <EmailField
+        className = {styles.input}
           label="Email"
           placeholder="Ingresa tu correo..."
           onChange={(event) =>
@@ -175,6 +184,7 @@ export default function Register() {
 
         <h2 className={styles.titles}>Contraseña</h2>
         <PasswordField
+        className = {styles.input}
           placeholder="Ingresa tu contraseña..."
           onChange={(event) =>
             setvalues((prev) => ({ ...prev, password: event.target.value }))
@@ -185,6 +195,7 @@ export default function Register() {
 
         <h2 className={styles.titles}>Confirme su Contraseña</h2>
         <PasswordField
+        className = {styles.input}
           placeholder="Confirma tu contraseña..."
           onChange={(event) =>
             setvalues((prev) => ({
