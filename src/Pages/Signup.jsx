@@ -10,7 +10,7 @@ import {
   AppleButton,
 } from "../Components/Signupbuttons";
 
-
+import { saveuser } from "../SaveUserDB";
 
 import styles from "./Signup.module.css";
 const logo = "./logo-color-sinfondo.png";
@@ -21,7 +21,7 @@ import {
   updatePassword,
   updateProfile,
 } from "firebase/auth";
-import { saveUser } from "../SaveUserDB";
+
 import { Link, useNavigate } from "react-router-dom";
 
 export default function Register() {
@@ -80,7 +80,7 @@ export default function Register() {
         });
         console.log(values);
 
-        saveUser(values);
+        saveuser(values, uid);
         // alert("Usuario creado correctamente");
         navigate("/thank-you-register");
       })

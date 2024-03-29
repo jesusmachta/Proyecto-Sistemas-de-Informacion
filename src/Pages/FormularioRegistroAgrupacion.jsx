@@ -121,7 +121,7 @@ export default function Formulario() {
           <p className={styles.errorMsg}>{errorMessage}</p>
         </div>
         
-        <div>
+        <div className={styles.containerInputs}>
             <p className={styles.titulosinputs}>Nombre</p>
             <input type="text" readOnly placeholder={userName} className={styles.inputs}/>
             <p className={styles.titulosinputs}>Apellido</p>
