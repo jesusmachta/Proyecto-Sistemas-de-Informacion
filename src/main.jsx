@@ -36,7 +36,7 @@ const browserRouter = createBrowserRouter([
         element: <Feedbacks />,
       },
       {
-        path:"/agrupaciones/:id",
+        path:"/agrupacion/:id",
         element:<Agrupacion/>
       },
     ],
