@@ -61,7 +61,7 @@ export function LoginAdmin() {
       </div>
       <div className={styles.buttonsLogInSignUp}>
         <button className={`${styles.button} ${styles.buttonSelected}`}>Log In</button>
-        <button className={styles.button}>
+        <button className={styles.button} onClick={() => navigate("/signup")}>
           Sign Up
         </button>
       </div>
