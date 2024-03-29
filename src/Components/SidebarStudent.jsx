@@ -1,16 +1,9 @@
-import { Link , NavLink} from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faHome,
-  faUser,
-  faUserPlus,
-  faMoneyCheckDollar,
-  faUsers,
-  faArrowRightFromBracket,
-  faPenToSquare,
-} from "@fortawesome/free-solid-svg-icons";
+import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser , faPenToSquare, faUsers, faMoneyCheckDollar,faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import styles from './SidebarStudent.module.css';
 
-import styles from "./SidebarStudent.module.css";
 
 export default function SidebarStudent() {
     const logOut = () => {
@@ -18,28 +11,34 @@ export default function SidebarStudent() {
         nav("/signup");
        
       };
+
+     
   return (
     <div className={styles.sidebar}>
       <ul>
-        <Link to="/profile/:userId">
-          <li>
-            <FontAwesomeIcon
-              className={styles.icon}
-              icon={faUser}
-            ></FontAwesomeIcon>
-          </li>
-        </Link>
+      <NavLink
+            to="/profile/:userId"
+            activeClassName={styles.activeLink}
+            
+        >
+            <li>
+                <FontAwesomeIcon
+                    className={styles.icon}
+                    icon={faUser}
+                ></FontAwesomeIcon>
+            </li>
+        </NavLink>
 
-        <Link to="/profile/afilliations" >
+        <NavLink to="/profile/afilliations" activeClassName ={styles.activeLink}>
           <li>
             <FontAwesomeIcon
               className={styles.icon}
               icon={faUsers}
             ></FontAwesomeIcon>
           </li>
-        </Link>
+        </NavLink>
 
-        <Link to = "/profile/formulario">
+        <NavLink to = "/profile/formulario" activeClassName ={styles.activeLink}>
           <li>
             <FontAwesomeIcon
               className={styles.icon}
@@ -47,7 +46,7 @@ export default function SidebarStudent() {
             ></FontAwesomeIcon>
           </li>
 
-        </Link>
+        </NavLink>
         <li>
           <FontAwesomeIcon
             className={styles.icon}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { IoPersonCircle } from "react-icons/io5";
-import "./FeedbacksUsuario.css";
+import styles from "./FeedbacksUsuario.module.css";
 import { FaChevronDown } from "react-icons/fa";
 import { FaRegStar } from "react-icons/fa";
 import { FaStar } from "react-icons/fa";
@@ -39,18 +39,18 @@ function FeedbacksUsuario() {
     }
   }, [user]);
   return (
-    <div className="Contenedor">
-      <div className="UsuarioHeader">
+    <div className={styles.Contenedor}>
+      <div className={styles.UsuarioHeader}>
         <IoPersonCircle size={70} />
         <div>
           <p className="username">Jane Doe</p>
           <p className="email">jane.doe@correo.unimet.edu.ve</p>
         </div>
       </div>
-      <div className="ParteIzquierda">
+      <div className={styles.ParteIzquierda}>
         <p>Agrupaciones a las que perteneces:</p>
       </div>
-      <div className="Agrupaciones">
+      <div className={styles.Agrupaciones}>
         <p> Agrupaciones</p>
         <FaChevronDown size={15} color="#000" />
         {agrupacionesUsuario.map((agrupacion) => (
