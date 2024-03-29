@@ -72,6 +72,7 @@ export default function Register() {
       .then(async (res) => {
         setSubmitButtonDisabled(false);
         const user = res.user;
+        const uid = user.uid; 
         await updateProfile(user, {
           displayName: values.name,
           displayLastname: values.lastName,
@@ -108,6 +109,7 @@ export default function Register() {
           displayLastname: values.lastName,
           phone: values.phoneNumber,
         };
+        
         await updateProfile(user, userProfile);
       } catch (error) {
         console.log(error);
