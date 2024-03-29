@@ -1,9 +1,13 @@
 .sidebar{
-    background-color: orange;
+    background-color: #F2CA99;
     padding-top: 50px; 
     padding-right: 50px;
    margin-right: 95%;
    padding-bottom: 450px;
+   position: absolute;
+   margin-bottom: 0;
+   width: 45px; 
+   height: 100%; 
 }
 
 
@@ -15,6 +19,11 @@
 
 .logout{
     position: absolute;
+    align-items: center;
     font-size: 30px;
     bottom: 0;
 }
+
+
+
+

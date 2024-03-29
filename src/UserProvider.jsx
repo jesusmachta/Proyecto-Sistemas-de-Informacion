@@ -13,6 +13,7 @@ export default function UserProvider({children}) {
         }); 
     }
     );
+    // const profileId = user ? user.uid : 'default';
 
     return <UserContext.Provider value = {user}>{children}</UserContext.Provider>;
 }
