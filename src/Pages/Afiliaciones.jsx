@@ -13,6 +13,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 import { getStudentById } from "../controllers/updateUser";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import {removeSubscriptionFunction} from '../controllers/agregarAfiliacion';
 
 export default function Afiliaciones() {
   const navigation = useNavigate();
@@ -70,6 +71,12 @@ export default function Afiliaciones() {
     dataLoaded,
     isLoading,
   ]);
+  const handleGetOut=( nombre)=>{
+    console.log("Nombre de la agrupación que quieres eliminar!"); 
+    console.log(nombre); 
+    removeSubscriptionFunction(nombre, userL);
+    // window.location.reload(); 
+  }; 
 
   if (isLoading) {
     return (
@@ -155,7 +162,7 @@ export default function Afiliaciones() {
                           <FontAwesomeIcon
                             className={styles.logout}
                             icon={faArrowRightFromBracket}
-                            // onClick={logOut}
+                            onClick={()=> handleGetOut( agrupacion.nombre)}
                           ></FontAwesomeIcon>
                         </td>{" "}
                       </tr>
