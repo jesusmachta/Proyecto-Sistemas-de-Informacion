@@ -42,14 +42,6 @@ h1 {
   margin-bottom: 0;
   margin-right: 30px;
   display: flex;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  border: 2px solid #ccc;
-  border-radius: 10px;
-  font-family: "Raleway", sans-serif;
-  font-size: 20px;
-
 }
 
 .parentContainer {
@@ -78,7 +70,6 @@ button {
   background-color: white;
   color: grey;
   border: 1px solid rgb(154, 150, 150);
-  cursor: pointer;
 }
 
 .profilePicUpload {
@@ -113,12 +104,6 @@ button {
 }
 
 .sidebar {
-  z-index: 1;
-}
-
-.loaderContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  position: fixed;
+  left: 0;
 }

@@ -5,14 +5,13 @@ const defaultPicture = "./DefaultProfilePic.svg.png";
 import { collection, where, query, getDocs } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { db } from "../firebase";
-import styles from "./StudentProfile.module.css";
+import styles from "./AdminProfile.module.css";
 import { updateUser } from "../controllers/updateUser";
 import { storage } from "../firebase";
 import { ref, uploadBytes, getStorage, getDownloadURL } from "firebase/storage";
-import SidebarStudent from "../Components/SidebarStudent";
-import ClipLoader from "react-spinners/ClipLoader";
+import SidebarAdmin from "../Components/SidebarAdmin";
 
-export default function studentProfile() {
+export default function AdminProfile() {
   const navigation = useNavigate();
   const userL = useUser();
   const [userEmail, setUserEmail] = useState(null);
@@ -34,13 +33,13 @@ export default function studentProfile() {
       setUserEmail(userL.email);
       console.log(userEmail);
     }
-    // else{
-    //   navigation("/signup");
-    // }
     const findUser = async () => {
       try {
         const querySnapshot = await getDocs(
-          query(collection(db, "Students"), where("email", "==", userL.email))
+          query(
+            collection(db, "Administrator"),
+            where("email", "==", userL.email)
+          )
         );
 
         querySnapshot.forEach((doc) => {
@@ -55,7 +54,6 @@ export default function studentProfile() {
         });
       } catch (error) {
         console.log("Error getting documents: ", error);
-        // navigation("/signup");
       }
 
       if (userId) {
@@ -105,20 +103,15 @@ export default function studentProfile() {
   };
 
   if (isLoading) {
-    return <div className ={styles.loaderContainer}>
-    <ClipLoader
-      color="#d6ae36"
-      cssOverride={{}}
-      size={100}
-      speedMultiplier={1}
-    /> </div>;
-    
+    return <div>Loading...</div>;
   }
   if (dataLoaded) {
     return (
       <div>
         <div>
-          <SidebarStudent className={styles.sidebar}></SidebarStudent>
+          <SidebarAdmin
+            className={`${styles.sidebar} ${styles.fixedToLeft}`}
+          ></SidebarAdmin>
           <Navbar></Navbar>
           <div className={styles.nameContainer}>
             <div
@@ -175,7 +168,6 @@ export default function studentProfile() {
                     type="email"
                     placeholder={userEmail}
                     readOnly={true}
-                    className={styles.input}
                   ></input>
                 </div>
               </div>
