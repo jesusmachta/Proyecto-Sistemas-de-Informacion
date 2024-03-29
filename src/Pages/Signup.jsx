@@ -10,7 +10,6 @@ import {
   AppleButton,
 } from "../Components/Signupbuttons";
 
-import { saveuser } from "../SaveUserDB";
 import { saveUser } from "../SaveUserDB";
 
 import styles from "./Signup.module.css";
