@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import styles from "./Afiliaciones.module.css";
 import SidebarStudent from "../Components/SidebarStudent";
 import PaypalButton from "../Components/PaypalButton";
+import ClipLoader from "react-spinners/ClipLoader";
 
 
 export default function Afiliaciones() {
@@ -69,7 +70,13 @@ export default function Afiliaciones() {
     isLoading,
   ]);
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div className ={styles.loaderContainer}>
+    <ClipLoader
+      color="#d6ae36"
+      cssOverride={{}}
+      size={100}
+      speedMultiplier={1}
+    /> </div>;
   }
 
   if (dataLoaded) {

@@ -46,7 +46,10 @@ body{
     font-family: 'Raleway', sans-serif;
     font-weight: normal;
     font-size: 18px;
-     text-align: left;
+    margin-top: 10px; 
+    flex-wrap: wrap;
+    width: 100%;
+     /* text-align: left; */
     /* width: 100%; */
     /* max-width: 500px; */
     /* margin: 0 auto;  */ 
@@ -54,14 +57,26 @@ body{
 }
 
 .input{
-    width: 10%; 
+    width: 60%; 
     padding: 12px 20px;
-    margin: 8px 0;
+    margin: auto;
+    margin-left: 20%;
+  display: block;
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 10px;
     font-family: 'Raleway', sans-serif;
     font-size: 20px;
+    padding: 12px 20px;
+   
+
+  
+  
+  
+  
+  
+  
+
 
     /* text-align: left; */
 
@@ -76,30 +91,31 @@ input:focus{
 }
 
 .container{
-    
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     flex-direction: column;
-    width: 100%;
+    width: 80%;
     height: 100vh; 
     margin-top: 0;
     padding: 0; 
-    margin: 0; 
+    margin: auto; 
     
 
 }
 
-h2{
+.h2{
     /* font-family: 'Raleway', sans-serif;
     font-weight: normal; */
     /* font-size: 30px; */
-    text-align: left;
+    text-align: center;
     margin-bottom: 20px;
     width: 100%; 
-    margin: 0 auto; 
-    max-width: 575px; 
+    /* margin: auto;  */
+    flex-wrap: wrap;
+    /* max-width: 575px; 
+    padding-left: 20px;  */
 
     
 
