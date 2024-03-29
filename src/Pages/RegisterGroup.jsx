@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { collection, getDocs, addDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import { useForm } from "react-hook-form";
-import styles from "../pages/UpdateGroup.module.css";
+import styles from "../pages/RegisterGroup.module.css";
 
 const RegisterGroup = () => {
   const [imgSrc, setImgSrc] = useState("");
