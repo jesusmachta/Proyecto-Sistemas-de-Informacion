@@ -1,6 +1,6 @@
 import React from "react";
 import { IoPersonCircle } from "react-icons/io5";
-import styles from "src/Pages/FeedbacksUsuario/FeedbacksUsuario.css";
+import styles from "./FeedbacksUsuario.module.css";
 import { FaChevronDown } from "react-icons/fa";
 import { FaRegStar } from "react-icons/fa";
 import { FaStar } from "react-icons/fa";
@@ -8,26 +8,26 @@ import { FaStarHalfAlt } from "react-icons/fa";
 
 function FeedbacksUsuario() {
   return (
-    <div className="Contenedor">
-      <div className="UsuarioHeader">
+    <div className={styles.Contenedor}>
+      <div className={styles.UsuarioHeader}>
         <IoPersonCircle size={70} />
         <p>Jane Doe</p>
         {/* <p2>jane.doe@correo.unimet.edu.ve</p2> */}
       </div>
-      <div className="ParteIzquierda">
+      <div className={styles.ParteIzquierda}>
         <p>Agrupaciones a las que perteneces:</p>
       </div>
-      <div className="Agrupaciones">
+      <div className={styles.Agrupaciones}>
         <p> Agrupaciones</p>
         <FaChevronDown size={15} color="#000" />
       </div>
-      <div className="ParteDerecha">
-        <div className="TextArea"> 
+      <div className={styles.ParteDerecha}>
+        <div className={styles.TextArea}> 
         <textarea></textarea>
         </div>
-        <div className="Rating">
+        <div className={styles.Rating}>
             <button>Pulsa para valorar la agrupación</button>
-        <div className="Estrellas"> 
+        <div className={styles.Estrellas}> 
           <FaStar size={40} color="#EC9900" />
           <FaStar size={40} color="#EC9900" />
           <FaStarHalfAlt size={40} color="#EC9900" />
