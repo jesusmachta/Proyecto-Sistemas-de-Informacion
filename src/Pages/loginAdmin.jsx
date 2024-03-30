@@ -4,6 +4,7 @@ import { auth } from "../firebase";
 import { signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useState, useEffect } from "react";
 import { InputControlAdmin } from "./InputControlAdmin/InputControlAdmin";
+import {GoogleButton} from "../Components/Buttons/Loginbuttons";
 const logo = "./logo-color-sinfondo.png";
 import {
   EmailField,
@@ -115,6 +116,7 @@ export function LoginAdmin() {
         >
           Iniciar
         </button>
+        <GoogleButton />
       </form>
     </div>
   );
