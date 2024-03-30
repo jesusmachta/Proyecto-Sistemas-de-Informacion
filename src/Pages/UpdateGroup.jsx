@@ -108,21 +108,25 @@ const UpdateGroup = () => {
                 {...register("name")}
                 placeholder="Nombre"
                 className={styles.input}
+                id ="nombreA"
               />
               <textarea
                 {...register("vision")}
                 placeholder="Visión"
                 className={styles.textarea}
+                id = "visionA"
               />
               <textarea
                 {...register("description")}
                 placeholder="Descripción"
                 className={styles.textarea}
+                id = "descripcionA"
               />
               <textarea
                 {...register("mision")}
                 placeholder="Misión"
                 className={styles.textarea}
+                id = "misionA"
               />
               <img src={selectedGroup.ImgSrc} alt="Imagen del grupo" />
               <textarea
@@ -132,6 +136,7 @@ const UpdateGroup = () => {
                 placeholder="Miembros"
                 readOnly
                 className={styles.textarea}
+                id = "miembrosA"
               />
               <div
                 style={{

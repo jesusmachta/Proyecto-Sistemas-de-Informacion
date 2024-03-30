@@ -143,6 +143,7 @@ export default function studentProfile() {
                 <div>
                   <h1>Nombre</h1>
                   <input
+                    id = "nombreEstudiante"
                     type="text"
                     placeholder={userName}
                     ref={nameRef}
@@ -152,6 +153,7 @@ export default function studentProfile() {
                 <div>
                   <h1>Apellido</h1>
                   <input
+                    id = "apellidoEstudiante"
                     type="text"
                     placeholder={userLastName}
                     ref={lastNameRef}
@@ -163,6 +165,7 @@ export default function studentProfile() {
                 <div>
                   <h1>Teléfono</h1>
                   <input
+                  id = "telefonoEstudiante"
                     type="tel"
                     placeholder={userPhone}
                     ref={phoneRef}
@@ -172,6 +175,7 @@ export default function studentProfile() {
                 <div>
                   <h1>Correo electrónico</h1>
                   <input
+                  id = "correoEstudiante"
                     type="email"
                     placeholder={userEmail}
                     readOnly={true}

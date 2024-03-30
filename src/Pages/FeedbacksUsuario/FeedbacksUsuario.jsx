@@ -116,6 +116,7 @@ function FeedbacksUsuario() {
           <textarea
             className={styles.textArea}
             value={feedbackInput}
+            id = "feedback"
             onChange={(e) => setFeedBackInput(e.target.value)}
           ></textarea>
           <div className={styles.Rating}>

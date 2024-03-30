@@ -64,26 +64,31 @@ const RegisterGroup = () => {
             {...register("name")}
             placeholder="Nombre"
             className={styles.input}
+            id ="nombreGroup"
           />
           <textarea
             {...register("vision")}
             placeholder="Visión"
             className={styles.textarea}
+            id ="visionGroup"
           />
           <textarea
             {...register("description")}
             placeholder="Descripción"
             className={styles.textarea}
+            id ="descripcionGroup"
           />
           <textarea
             {...register("mision")}
             placeholder="Misión"
             className={styles.textarea}
+            id = "misionGroup"
           />
           <input
             type="text"
             {...register("members", { required: true })}
             placeholder="Miembros (separados por comas)"
+            id = "miembrosGroup"
           />
           <input
             type="text"
@@ -91,12 +96,14 @@ const RegisterGroup = () => {
             onChange={handleImgSrcChange}
             placeholder="Pega el enlace de la imagen principal aquí"
             style={{ width: "100%", marginTop: "10px" }}
+            id = "imagenGroup"
           />
           <input
             type="text"
             onChange={handleImgExtrasChange}
             placeholder="Pega el enlace de las imágenes extras aquí"
             style={{ width: "100%", marginTop: "10px" }}
+            id = "imagenesExtrasGroup"
           />
           <input type="submit" value="Registrar" />
         </form>

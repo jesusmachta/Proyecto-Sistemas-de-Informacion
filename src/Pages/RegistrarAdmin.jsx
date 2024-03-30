@@ -126,6 +126,7 @@ export default function RegistrarAdmin() {
       <div className={styles.container}>
         <h2 className={styles.titles}>Nombre</h2>
         <TextField
+        id = "nombreAdministrador"
           label="Nombre"
           placeholder="Ingresa tu nombre..."
           onChange={(event) => {
@@ -136,6 +137,7 @@ export default function RegistrarAdmin() {
 
         <h2 className={styles.titles}>Apellido</h2>
         <TextField
+        id = "apellidoAdministrador"
           label="Apellido"
           placeholder="Ingresa tu apellido..."
           onChange={(event) =>
@@ -145,6 +147,7 @@ export default function RegistrarAdmin() {
 
         <h2 className={styles.titles}>Teléfono</h2>
         <TelField
+        id = "telefonoAdministrador"
           label="Telefono"
           placeholder="Ingresa tu teléfono..."
           onChange={(event) =>
@@ -154,6 +157,7 @@ export default function RegistrarAdmin() {
 
         <h2 className={styles.titles}>Correo Electrónico</h2>
         <EmailField
+        id = "correoAdministrador"
           label="Email"
           placeholder="Ingresa tu correo..."
           onChange={(event) =>
@@ -163,6 +167,7 @@ export default function RegistrarAdmin() {
 
         <h2 className={styles.titles}>Contraseña</h2>
         <PasswordField
+        id = "contraseñaAdministrador"
           placeholder="Ingresa tu contraseña..."
           onChange={(event) =>
             setvalues((prev) => ({ ...prev, password: event.target.value }))
@@ -173,6 +178,7 @@ export default function RegistrarAdmin() {
 
         <h2 className={styles.titles}>Confirme su Contraseña</h2>
         <PasswordField
+        id = "confirmarContraseñaAdministrador"
           placeholder="Confirma tu contraseña..."
           onChange={(event) =>
             setvalues((prev) => ({
