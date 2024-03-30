@@ -4,6 +4,7 @@ import Foto2 from '../../public/Foto_inicio2.png'
 import Foto3 from '../../public/FotoMetro.png'
 import SectionCarrusel from '../Components/SectionCarrusel'
 import 'animate.css' /*No borrar*/ 
+import { Link } from 'react-router-dom'
 
 const Inicio = () => {
 
@@ -16,8 +17,8 @@ const Inicio = () => {
       <div className={styles.textContainer}>
         <h1 className={`${styles.text} animate__animated animate__fadeIn`}>“La realidad está esperando a que la transformes”</h1>
         <div className={styles.buttonConteiner}>
-          <button className={styles.button}>Registrate</button>
-          <button className={styles.button}>Explorar agrupaciones</button>
+          <Link className={styles.button}>Registrate</Link>
+          <Link className={styles.button} to="/agrupaciones">Explorar agrupaciones</Link>
         </div>
       </div>
       <section className={styles.conteinerInformacion}>
@@ -31,7 +32,6 @@ const Inicio = () => {
         </div>
         <img src={Foto3} alt='foto de la metro' className={styles.imagen3}/>
         </section>
-
         <section>
           <SectionCarrusel/>
         </section>
