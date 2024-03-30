@@ -18,6 +18,7 @@ import { LoginAdmin } from "./Pages/loginAdmin";
 import UpdateGroup from "./Pages/UpdateGroup";
 import RegisterGroup from "./Pages/RegisterGroup";
 import AdminProfile from "./Pages/AdminProfile";
+import DeleteGroup from "./Pages/DeleteGroup";
 
 const browserRouter = createBrowserRouter([
   {
