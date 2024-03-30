@@ -61,11 +61,9 @@ function FeedbacksUsuario() {
           setHover(null);
         }
       }else{
-
-          setFeedBackInput('');
-          setRating(null);
-          setHover(null);
-
+        setFeedBackInput('');
+        setRating(null);
+        setHover(null);
       }
     }
   }, [selectedData]);

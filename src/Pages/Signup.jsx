@@ -133,7 +133,7 @@ export default function Register() {
       </div>
 
       <div className={styles.buttonsLogInSignUp}>
-        <button className={styles.button}>Log In</button>
+        <button className={styles.button} onClick={() => navigate("/loginadmin")}>Log In</button>
         <button className={`${styles.button} ${styles.buttonSelected}`}>
           Sign Up
         </button>
@@ -214,7 +214,10 @@ export default function Register() {
         </div>
         <div>
           <GoogleButton />
-          <FacebookButton />
+          
+        </div>
+        <div>
+        <FacebookButton />
         </div>
         <div>
           <AppleButton />

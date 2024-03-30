@@ -1,4 +1,4 @@
-import { collection, updateDoc, doc } from "firebase/firestore";
+import { collection, updateDoc, doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase";
 
 export async function updateUser({
@@ -35,3 +35,24 @@ export async function updateUser({
   window.location.reload();
   alert("User updated successfully");
 }
+
+
+export const getStudentById = async (studentId) => {
+  try {
+    if (!studentId) {
+      console.error('StudentId is empty');
+      return null;
+    }
+    const studentCollection = collection(db, 'Students');
+    const studentDocRef = doc(studentCollection, studentId);
+    const docSnap = await getDoc(studentDocRef);
+    if (docSnap.exists()) {
+      return docSnap.data();
+    } else {
+      console.log('No such document!');
+      return null;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};

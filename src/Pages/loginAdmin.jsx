@@ -48,7 +48,7 @@ export function LoginAdmin() {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         navigate("/");
-        guardarPerfil(user); // Llamada a la función para guardar el perfil del usuario
+        guardarPerfil(user);
       }
     });
     return unsubscribe;
@@ -61,7 +61,7 @@ export function LoginAdmin() {
       </div>
       <div className={styles.buttonsLogInSignUp}>
         <button className={`${styles.button} ${styles.buttonSelected}`}>Log In</button>
-        <button className={styles.button}>
+        <button className={styles.button} onClick={() => navigate("/signup")}>
           Sign Up
         </button>
       </div>
@@ -69,6 +69,7 @@ export function LoginAdmin() {
       <form className={styles.container}>
         <h2 className={styles.titles}>Correo Electrónico</h2>
         <EmailField
+          id="email"
           className={styles.inputField}
           label="Email"
           placeholder="Ingresa tu correo..."
@@ -78,6 +79,7 @@ export function LoginAdmin() {
         />
         <h2 className={styles.titles}>Contraseña</h2>
         <PasswordField
+          id="password"
           className={styles.inputField}
           label="Contraseña"
           placeholder="Ingresa tu contraseña..."
