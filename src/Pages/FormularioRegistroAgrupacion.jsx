@@ -133,15 +133,15 @@ export default function Formulario() {
         
         <div className={styles.containerInputs}>
             <p className={styles.titulosinputs}>Nombre</p>
-            <input type="text" readOnly placeholder={userName} className={styles.inputs}/>
+            <input id = "nombreEstudiante" type="text" readOnly placeholder={userName} className={styles.inputs}/>
             <p className={styles.titulosinputs}>Apellido</p>
-            <input type="text" readOnly placeholder={userLastName} className={styles.inputs}/>
+            <input id = "apellidoEstudiante" type="text" readOnly placeholder={userLastName} className={styles.inputs}/>
             <p className={styles.titulosinputs}>Teléfono</p>
-            <input type="number" readOnly placeholder={userPhone} className={styles.inputs}/>
+            <input id = "telefonoEstudiante" type="number" readOnly placeholder={userPhone} className={styles.inputs}/>
             <p className={styles.titulosinputs}>Correo electrónico</p>
-            <input type="mail" readOnly placeholder={userEmail} className={styles.inputs}/>
+            <input id = "correoEstudiante" type="mail" readOnly placeholder={userEmail} className={styles.inputs}/>
             <p className={styles.titulosinputs}>Carrera</p>
-            <input type="text"  placeholder={userCareer? userCareer: "Tu carrera..."} className={styles.inputs}
+            <input  id ="carreraEstudiante" type="text"  placeholder={userCareer? userCareer: "Tu carrera..."} className={styles.inputs}
                 onChange ={(event)=>{
                     setUserCareer(event.target.value); 
                     setErrorMessage("");} 
@@ -149,7 +149,7 @@ export default function Formulario() {
                 }
             />
             <p className={styles.titulosinputs}>Carnet Unimet</p>
-            <input type="number"  placeholder={carnet ? carnet: "Tu carnet...."} className={styles.inputs}
+            <input id ="carnetEstudiante" type="number"  placeholder={carnet ? carnet: "Tu carnet...."} className={styles.inputs}
                 onChange ={(event)=>{
                     setCarnet(event.target.value); 
                     setErrorMessage("");}
