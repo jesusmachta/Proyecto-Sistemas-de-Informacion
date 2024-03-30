@@ -16,7 +16,7 @@ const UpdateGroup = () => {
       const groupCollection = collection(db, "Agrupaciones");
       const groupSnapshot = await getDocs(groupCollection);
       const groupList = groupSnapshot.docs.map((doc) => {
-        console.log("Group data: ", doc.data()); // Agregado para depuración
+        console.log("Group data: ", doc.data());
         return {
           id: doc.id,
           ...doc.data(),
@@ -29,7 +29,7 @@ const UpdateGroup = () => {
       const adminCollection = collection(db, "Administrator");
       const adminSnapshot = await getDocs(adminCollection);
       if (!adminSnapshot.empty) {
-        const admin = adminSnapshot.docs[0].data(); // Asume que solo hay un administrador
+        const admin = adminSnapshot.docs[0].data();
         setAdminData(admin);
       } else {
         console.log(
@@ -40,11 +40,11 @@ const UpdateGroup = () => {
 
     fetchGroups();
     fetchAdminData();
-  }, []); // Añadido el cierre del useEffect
+  }, []);
 
   const handleGroupChange = (event) => {
     const group = groups.find((group) => group.name === event.target.value);
-    console.log("Selected group: ", group); // Agregado para depuración
+    console.log("Selected group: ", group);
     setSelectedGroup(group);
     for (const field in group) {
       setValue(field, group[field]);
@@ -59,7 +59,7 @@ const UpdateGroup = () => {
     const groupRef = doc(db, "Agrupaciones", selectedGroup.id);
     const newImgExtras = [...selectedGroup.ImgExtras, imgUrl];
     await updateDoc(groupRef, { ImgExtras: newImgExtras });
-    setImgUrl(""); // Limpiar el input después de agregar
+    setImgUrl("");
   };
 
   const handleDelete = async (imgUrl) => {
@@ -71,9 +71,8 @@ const UpdateGroup = () => {
   };
 
   const onSubmit = async (data) => {
-    console.log("Form data: ", data); // Agregado para depuración
+    console.log("Form data: ", data);
     try {
-      // Convertir la cadena de miembros a un array y contar la cantidad de miembros
       const membersArray = JSON.parse(data.members);
       data.members = membersArray.length;
 
