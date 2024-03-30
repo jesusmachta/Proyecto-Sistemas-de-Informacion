@@ -23,6 +23,7 @@ import {
 } from "firebase/auth";
 
 import { Link, useNavigate } from "react-router-dom";
+import {GithubSignupButton} from "../Components/Signupbuttons";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -222,11 +223,9 @@ export default function Register() {
           <GoogleButton />
           
         </div>
+       
         <div>
-        <FacebookButton />
-        </div>
-        <div>
-          <AppleButton />
+          <GithubSignupButton/>
         </div>
       </div>
     </div>
