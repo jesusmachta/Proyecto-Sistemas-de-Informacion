@@ -5,9 +5,10 @@ import Foto3 from '../../public/FotoMetro.png'
 import SectionCarrusel from '../Components/SectionCarrusel'
 import 'animate.css' /*No borrar*/ 
 import { Link } from 'react-router-dom'
+import { useUser } from '../context/user'
 
 const Inicio = () => {
-
+  const user = useUser(); 
   return (
     <div className={styles.conteiner}>
       <div className={styles.imageContainer}>
@@ -17,7 +18,7 @@ const Inicio = () => {
       <div className={styles.textContainer}>
         <h1 className={`${styles.text} animate__animated animate__fadeIn`}>“La realidad está esperando a que la transformes”</h1>
         <div className={styles.buttonConteiner}>
-          <Link className={styles.button}>Registrate</Link>
+        {!user && <Link className={styles.button} to = "/signup">Registrate</Link>}
           <Link className={styles.button} to="/agrupaciones">Explorar agrupaciones</Link>
         </div>
       </div>
