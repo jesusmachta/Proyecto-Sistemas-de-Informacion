@@ -2,7 +2,7 @@ import Navbar from "../Components/Navbar";
 import { useEffect, useRef, useState } from "react";
 import { useUser } from "../context/user";
 const defaultPicture = "./DefaultProfilePic.svg.png";
-import { collection, where, query, getDocs } from "firebase/firestore";
+import { collection, where, query, getDoc, doc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { db } from "../firebase";
 import styles from "./StudentProfile.module.css";
@@ -39,20 +39,19 @@ export default function studentProfile() {
     // }
     const findUser = async () => {
       try {
-        const querySnapshot = await getDocs(
-          query(collection(db, "Students"), where("email", "==", userL.email))
-        );
-
-        querySnapshot.forEach((doc) => {
-          setUserId(doc.id);
-          console.log("ID DEL DOC:");
-          console.log(userId);
-          setUserName(doc.data().name);
-          setUserLastName(doc.data().lastName);
-          setUserPhone(doc.data().phoneNumber);
+        const docRef = doc(db, "Students", userL.uid);
+        const docSnap = await getDoc(docRef);
+  
+        if (docSnap.exists()) {
+          setUserId(docSnap.id);
+          setUserName(docSnap.data().name);
+          setUserLastName(docSnap.data().lastName);
+          setUserPhone(docSnap.data().phoneNumber);
           setDataLoaded(true);
           setIsLoading(false);
-        });
+        } else {
+          console.log("No such document!");
+        }
       } catch (error) {
         console.log("Error getting documents: ", error);
         // navigation("/signup");

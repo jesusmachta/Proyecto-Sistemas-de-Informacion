@@ -52,12 +52,7 @@ export default function SidebarStudent() {
           </li>
 
         </NavLink>
-        <li>
-          <FontAwesomeIcon
-            className={styles.icon}
-            icon={faMoneyCheckDollar}
-          ></FontAwesomeIcon>
-        </li>
+    
         <li>
           <FontAwesomeIcon
             className={styles.logout}

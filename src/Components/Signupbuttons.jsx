@@ -2,10 +2,13 @@ import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
 import { AiFillApple } from "react-icons/ai";
 import styles from "./Singupbuttons.module.css";
-import { signInWithPopup } from "firebase/auth";
+import { signInWithPopup, GithubAuthProvider } from "firebase/auth";
 import { auth, googleProvider } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import { saveUser } from "../SaveUserDB";
+
+import { FaGithub } from "react-icons/fa";
+
 
 export function GoogleButton() {
   const navigate = useNavigate ();
@@ -70,6 +73,46 @@ export function AppleButton() {
   return (
     <button className={styles["apple-button"]}>
       <AiFillApple /> Registrate con Apple
+    </button>
+  );
+}
+
+
+export function GithubSignupButton() {
+  const signupWithGithub = async () => {
+    const githubProvider = new GithubAuthProvider();
+    try {
+      const result = await signInWithPopup(auth, githubProvider);
+
+      const credential = GithubAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      console.log("este es el usuario que te retorna"); 
+      console.log(user); 
+      const user = result.user;
+      const uid = user.uid;
+      console.log("nombreee"); 
+      console.log(user.displayName); 
+      const fullName = user.displayName || '';
+      const [nombre = '', apellido = ''] = fullName.split(' ');
+      const correo = user.email || '';
+      const numeroTelefono = user.phoneNumber || '';
+      const usuario ={
+        name: nombre,
+        lastName: apellido,
+        phoneNumber: numeroTelefono,
+        email: correo,
+      }
+
+      await saveUser( usuario, uid);
+      console.log(user); 
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  return(
+    <button className={styles["github-button"]} onClick={signupWithGithub}>
+      <FaGithub /> Regístrate con GitHub
     </button>
   );
 }

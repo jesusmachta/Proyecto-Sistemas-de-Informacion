@@ -4,6 +4,8 @@ import { auth } from "../firebase";
 import { signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useState, useEffect } from "react";
 import { InputControlAdmin } from "./InputControlAdmin/InputControlAdmin";
+import {GoogleButton} from "../Components/Buttons/Loginbuttons";
+import {LoginGitHub} from "../Components/Buttons/Loginbuttons";
 const logo = "./logo-color-sinfondo.png";
 import {
   EmailField,
@@ -16,6 +18,7 @@ export function LoginAdmin() {
   const [errorMsg, setErrorMsg] = useState([]);
   const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [selectedButton, setSelectedButton] = useState(null);
   const Iniciar = () => {
     if (!values.email || !values.password) {
       setErrorMsg("Datos incompletos");
@@ -60,10 +63,28 @@ export function LoginAdmin() {
         <img src={logo} alt="logo" className={styles.logo}></img>
       </div>
       <div className={styles.buttonsLogInSignUp}>
-        <button className={`${styles.button} ${styles.buttonSelected}`}>Log In</button>
+        <button className={`${styles.button} ${styles.buttonSelected}`}>
+          Log In
+        </button>
         <button className={styles.button} onClick={() => navigate("/signup")}>
           Sign Up
         </button>
+      </div>
+      <div className={styles.buttonsContainer}>
+        <button
+          className={`${styles.button2} ${
+            selectedButton === "student" ? styles.selected : ""
+          }`}
+          onClick={() => setSelectedButton("student")}
+        ></button>
+        <h3 className={styles.textobotones}>Estudiante</h3>
+        <button
+          className={`${styles.button2} ${
+            selectedButton === "admin" ? styles.selected : ""
+          }`}
+          onClick={() => setSelectedButton("admin")}
+        ></button>
+        <h3 className={styles.textobotones}>Administrador</h3>
       </div>
       <b className={styles.error}>{errorMsg}</b>
       <form className={styles.container}>
@@ -89,9 +110,15 @@ export function LoginAdmin() {
           showPassword={showPassword}
           onTogglePassword={() => setShowPassword(!showPassword)}
         />
-        <button onClick={Iniciar} disabled={submitButtonDisabled} className={styles.buttonIniciar}>
+        <button
+          onClick={Iniciar}
+          disabled={submitButtonDisabled}
+          className={styles.buttonIniciar}
+        >
           Iniciar
         </button>
+        <GoogleButton />
+        <LoginGitHub />
       </form>
     </div>
   );
