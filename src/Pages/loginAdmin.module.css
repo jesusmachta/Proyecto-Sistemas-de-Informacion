@@ -132,3 +132,30 @@ b {
   color: rgb(177, 17, 17);
   font-family: "Raleway", sans-serif;
 }
+
+.button2 {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border-width: 3px;
+  border-color: rgb(194, 192, 192); 
+  
+}
+
+.selected {
+  background-color: #f2ca99;
+}
+
+.textobotones{
+  font-family: "Raleway", sans-serif;
+  font-weight: normal;
+  font-size: small;
+  margin-top: 20px;
+}
+
+.buttonsContainer {
+  display: flex; /* Coloca los elementos en la misma línea */
+  align-items: center; /* Centra los elementos verticalmente */
+  gap: 10px; /* Espacio entre los elementos */
+  align-content: center;
+}
