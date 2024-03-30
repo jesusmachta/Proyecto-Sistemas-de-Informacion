@@ -129,9 +129,9 @@ h2 {
 
 .passwordInput {
   flex-grow: 1;
-  margin-right: 10px; /* Esto deja espacio para el icono del ojo */
+  margin-right: 10px;
   width: 40%;
-  height: 50px; /* Ajusta esto al tamaño que desees */
+  height: 50px;
   padding: 0 10px;
 }
 

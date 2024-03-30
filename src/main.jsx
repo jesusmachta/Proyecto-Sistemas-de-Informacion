@@ -7,18 +7,17 @@ import Inicio from "./Pages/Inicio";
 import Feedbacks from "./Pages/Feedbacks/Feedbacks";
 import Register from "./Pages/Signup";
 import RegistrarAdmin from "./Pages/RegistrarAdmin";
-import Agrupacion from './Pages/Agrupacion/Agrupacion';
-import UserProvider from './UserProvider';
-import StudentProfile from './Pages/StudentProfile';
-import SidebarStudent from './Components/SidebarStudent';
-import ThankYouRegisterPage from './Pages/ThankYouAndSuccessPages/ThankYouRegisterPage';
-import Afiliaciones from './Pages/Afiliaciones';
-import Formulario from './Pages/FormularioRegistroAgrupacion';
+import Agrupacion from "./Pages/Agrupacion/Agrupacion";
+import UserProvider from "./UserProvider";
+import StudentProfile from "./Pages/StudentProfile";
+import SidebarStudent from "./Components/SidebarStudent";
+import ThankYouRegisterPage from "./Pages/ThankYouAndSuccessPages/ThankYouRegisterPage";
+import Afiliaciones from "./Pages/Afiliaciones";
+import Formulario from "./Pages/FormularioRegistroAgrupacion";
 import { LoginAdmin } from "./Pages/loginAdmin";
 import UpdateGroup from "./Pages/UpdateGroup";
 import RegisterGroup from "./Pages/RegisterGroup";
 import AdminProfile from "./Pages/AdminProfile";
-
 
 const browserRouter = createBrowserRouter([
   {
@@ -45,31 +44,28 @@ const browserRouter = createBrowserRouter([
   },
   {
     // borrar!!!!
-    path: "/profile/:userId", 
-    element: <StudentProfile/>
-  },{
-    path: "/sidebarP", 
-    element: <SidebarStudent/>
-  },   
+    path: "/profile/:userId",
+    element: <StudentProfile />,
+  },
   {
-
+    path: "/sidebarP",
+    element: <SidebarStudent />,
+  },
+  {
     path: "/registraradmin",
     element: <RegistrarAdmin />,
-  },{
-    path: "/thank-you-register", 
-    element: <ThankYouRegisterPage/>
-
   },
   {
-    path:"/profile/afilliations/:userId", 
-    element: <Afiliaciones/>
-
+    path: "/thank-you-register",
+    element: <ThankYouRegisterPage />,
   },
   {
-
-    path:"/profile/formulario/:userId", 
-    element: <Formulario/>
-
+    path: "/profile/afilliations/:userId",
+    element: <Afiliaciones />,
+  },
+  {
+    path: "/profile/formulario/:userId",
+    element: <Formulario />,
   },
   {
     path: "/loginadmin",
@@ -89,10 +85,13 @@ const browserRouter = createBrowserRouter([
   },
   {
     path: "/agrupaciones/:id",
-    element: <Agrupacion/>,
-  }
+    element: <Agrupacion />,
+  },
+  {
+    path: "/deletegroup",
+    element: <DeleteGroup />,
+  },
 ]);
-
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

@@ -15,7 +15,7 @@ const RegisterGroup = () => {
       const adminCollection = collection(db, "Administrator");
       const adminSnapshot = await getDocs(adminCollection);
       if (!adminSnapshot.empty) {
-        const admin = adminSnapshot.docs[0].data(); // Asume que solo hay un administrador
+        const admin = adminSnapshot.docs[0].data();
         setAdminData(admin);
       } else {
         console.log(
@@ -37,7 +37,6 @@ const RegisterGroup = () => {
 
   const onSubmit = async (data) => {
     try {
-      // Convertir la cadena de miembros a un array
       data.members = data.members.split(",").map((member) => member.trim());
 
       data.ImgSrc = imgSrc;
