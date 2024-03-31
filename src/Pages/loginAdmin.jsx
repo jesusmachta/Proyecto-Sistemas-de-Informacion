@@ -11,6 +11,7 @@ import {
   EmailField,
   PasswordField,
 } from "./InputControlAdmin/InputControlAdmin";
+import Swal from "`sweetalert2`";
 
 export function LoginAdmin() {
   const navigate = useNavigate();
@@ -50,6 +51,12 @@ export function LoginAdmin() {
 
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
+        Swal.fire({
+          title: `Inicio de sesión exitoso!`,
+          icon: "success",
+          confirmButtonText: "OK",
+        
+        })
         navigate("/");
         guardarPerfil(user);
       }
