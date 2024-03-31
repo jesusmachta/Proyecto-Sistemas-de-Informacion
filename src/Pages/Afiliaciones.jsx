@@ -28,6 +28,8 @@ export default function Afiliaciones() {
   const [image, setImage] = useState(null);
   //borrar:
   const [showAlert, setShowAlert] = useState(false);
+  const [donationAmount, setDonationAmount] = useState(1);
+
 
   useEffect(() => {
     if (userL) {
@@ -148,13 +150,9 @@ export default function Afiliaciones() {
                       <tr key={agrupacion.id}>
                         <td>{agrupacion.nombre}</td>
                         <td>
-                          <button key = {agrupacion.id} className={styles.botonColaborar}>Pay with Paypal</button>
+                        <PaypalButton donationAmount={donationAmount} setDonationAmount={setDonationAmount} /> 
                         </td>
-                        <td>
-                          {new Date(
-                            agrupacion.fechaInicio.seconds * 1000
-                          ).toLocaleDateString()}
-                        </td>
+                        <td>{agrupacion.fechaAfiliacion}</td>
                         <td>
                           <FontAwesomeIcon
                             className={styles.logout}
@@ -174,3 +172,5 @@ export default function Afiliaciones() {
     );
   }
 }
+
+

@@ -1,0 +1,17 @@
+.search_bar_wrapper{
+    margin-bottom: 20px;
+    margin-left: 10px;
+    display: flex;
+    flex: 1;
+    max-width: 400px;
+    background-color: #FFF;
+    border-radius: 20px;
+    align-items: center;
+    padding: 0px 20px;
+}
+
+.search_bar{
+    border: none;
+    outline: none;
+    width: 100%;
+}
