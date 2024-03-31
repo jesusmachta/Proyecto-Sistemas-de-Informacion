@@ -149,7 +149,7 @@ export default function Afiliaciones() {
                         <td>{agrupacion.nombre}</td>
                         <td>
                           <button className={styles.botonColaborar}>Pay with Paypal</button>
-                        </td>{" "}
+                        </td>
                         <td>
                           {new Date(
                             agrupacion.fechaInicio.seconds * 1000
@@ -161,7 +161,7 @@ export default function Afiliaciones() {
                             icon={faArrowRightFromBracket}
                             onClick={()=> handleGetOut( agrupacion.nombre)}
                           ></FontAwesomeIcon>
-                        </td>{" "}
+                        </td>
                       </tr>
                     ))}
                   </tbody>
