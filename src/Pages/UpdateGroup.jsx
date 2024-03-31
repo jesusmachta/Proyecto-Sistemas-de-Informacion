@@ -3,8 +3,8 @@ import { collection, getDocs, doc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import { useForm } from "react-hook-form";
 import styles from "./UpdateGroup.module.css";
-import SidebarAdmin from "../components/SidebarAdmin"; // Asegúrate de que la ruta sea correcta
-import Navbar from "../components/Navbar";
+import SidebarAdmin from "../Components/SidebarAdmin"; // Asegúrate de que la ruta sea correcta
+import Navbar from "../Components/Navbar";
 
 const UpdateGroup = () => {
   const [groups, setGroups] = useState([]);
