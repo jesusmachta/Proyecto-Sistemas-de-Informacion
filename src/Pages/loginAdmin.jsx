@@ -4,8 +4,8 @@ import { auth } from "../firebase";
 import { signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useState, useEffect } from "react";
 import { InputControlAdmin } from "./InputControlAdmin/InputControlAdmin";
-import {GoogleButton} from "../Components/Buttons/Loginbuttons";
-import {LoginGitHub} from "../Components/Buttons/Loginbuttons";
+import {GoogleButton} from "../Components/Loginbuttons"; 
+import {LoginGitHub} from "../Components/Loginbuttons";
 const logo = "./logo-color-sinfondo.png";
 import {
   EmailField,

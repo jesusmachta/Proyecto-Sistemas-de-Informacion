@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { saveUser } from "../SaveUserDB";
 
 import { FaGithub } from "react-icons/fa";
+import Swal from 'sweetalert2';
 
 
 export function GoogleButton() {
@@ -48,6 +49,12 @@ export function GoogleButton() {
         email: userEmail,
         phoneNumber: phoneNumber,
       };
+      Swal.fire({
+        title: `Bienvenido ${name}!`,
+        text: 'Por favor completa tu perfil',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      })
       saveUser(user, uid);
       navigate("/");
     } catch (error) {
@@ -102,7 +109,12 @@ export function GithubSignupButton() {
         phoneNumber: numeroTelefono,
         email: correo,
       }
-
+      Swal.fire({
+        title: `Bienvenido!`,
+        text: 'Por favor completa tu perfil',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      })
       await saveUser( usuario, uid);
       console.log(user); 
     } catch (error) {

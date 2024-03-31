@@ -25,6 +25,7 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import {GithubSignupButton} from "../Components/Signupbuttons";
 
+
 export default function Register() {
   const navigate = useNavigate();
   const [values, setvalues] = useState({
