@@ -8,7 +8,6 @@ import { storage } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import styles from "./Afiliaciones.module.css";
 import SidebarStudent from "../Components/SidebarStudent";
-import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import PaypalButton from "../Components/PaypalButton";
 import ClipLoader from "react-spinners/ClipLoader";
 import { getStudentById } from "../controllers/updateUser";
@@ -30,6 +29,7 @@ export default function Afiliaciones() {
   //borrar:
   const [showAlert, setShowAlert] = useState(false);
   const [donationAmount, setDonationAmount] = useState(1);
+
 
   useEffect(() => {
     if (userL) {
@@ -66,13 +66,7 @@ export default function Afiliaciones() {
   }, [
     navigation,
     userL,
-    userId,
-    userEmail,
-    userName,
-    agrupaciones,
-    image,
-    dataLoaded,
-    isLoading,
+    
   ]);
   const handleGetOut=( nombre)=>{
     console.log("Nombre de la agrupación que quieres eliminar!"); 
@@ -93,20 +87,6 @@ export default function Afiliaciones() {
         />{" "}
       </div>
     );
-  }
-
-  function onApprove(data, actions) {
-    return actions.order
-      .capture()
-      .then(function (details) {
-        alert("¡Muchas gracias por su colaboración!");
-      })
-      .catch(function (error) {
-        console.error("Error al capturar la orden:", error);
-        alert(
-          "Hubo un problema al procesar su donación. Por favor, inténtelo de nuevo más tarde."
-        );
-      });
   }
 
   if (dataLoaded) {
@@ -169,69 +149,7 @@ export default function Afiliaciones() {
                       <tr key={agrupacion.id}>
                         <td>{agrupacion.nombre}</td>
                         <td>
-                          <div className={styles.paypalWrapper}>
-                            <PayPalScriptProvider
-                              options={{
-                                clientId:
-                                  "AegtMfBPHAwnLICPfPbXdxpws0YIf0P9tVf1kUW012yoG9TFSkN2xfTdw4MYnwUiYXGkwfdiQBuwWxPK",
-                                components: "buttons",
-                                currency: "USD",
-                              }}
-                            >
-                              <PayPalButtons
-                                fundingSource="paypal"
-                                style={{ layout: "vertical", label: "donate" }}
-                                disabled={false}
-                                forceReRender={[{ layout: "vertical" }]}
-                                createOrder={(data, actions) => {
-                                  return actions.order.create({
-                                    purchase_units: [
-                                      {
-                                        amount: {
-                                          value:
-                                            parseFloat(donationAmount).toFixed(
-                                              2
-                                            ),
-                                          breakdown: {
-                                            item_total: {
-                                              currency_code: "USD",
-                                              value:
-                                                parseFloat(
-                                                  donationAmount
-                                                ).toFixed(2),
-                                            },
-                                          },
-                                        },
-                                        items: [
-                                          {
-                                            name: "Agrupación",
-                                            quantity: "1",
-                                            unit_amount: {
-                                              currency_code: "USD",
-                                              value:
-                                                parseFloat(
-                                                  donationAmount
-                                                ).toFixed(2),
-                                            },
-                                            category: "DONATION",
-                                          },
-                                        ],
-                                      },
-                                    ],
-                                  });
-                                }}
-                                onApprove={onApprove}
-                              />
-                            </PayPalScriptProvider>
-                            <input
-                              type="number"
-                              step={0.5}
-                              value={donationAmount}
-                              onChange={(e) =>
-                                setDonationAmount(e.target.value)
-                              }
-                            />
-                          </div>
+                        <PaypalButton donationAmount={donationAmount} setDonationAmount={setDonationAmount} /> 
                         </td>
                         <td>{agrupacion.fechaAfiliacion}</td>
                         <td>
@@ -250,3 +168,5 @@ export default function Afiliaciones() {
     );
   }
 }
+
+
