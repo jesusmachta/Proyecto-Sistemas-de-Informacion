@@ -9,6 +9,13 @@ import { useNavigate } from "react-router-dom";
 import styles from "./Afiliaciones.module.css";
 import SidebarStudent from "../Components/SidebarStudent";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import PaypalButton from "../Components/PaypalButton";
+import ClipLoader from "react-spinners/ClipLoader";
+import { getStudentById } from "../controllers/updateUser";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import {removeSubscriptionFunction} from '../controllers/agregarAfiliacion';
+
 
 export default function Afiliaciones() {
   const navigation = useNavigate();
@@ -20,6 +27,7 @@ export default function Afiliaciones() {
   const [dataLoaded, setDataLoaded] = useState(false);
   const [agrupaciones, setAgrupaciones] = useState([]);
   const [image, setImage] = useState(null);
+  //borrar:
   const [showAlert, setShowAlert] = useState(false);
   const [donationAmount, setDonationAmount] = useState(1);
 
@@ -35,7 +43,7 @@ export default function Afiliaciones() {
         querySnapshot.forEach((doc) => {
           setUserId(doc.id);
           setUserName(doc.data().name);
-          setAgrupaciones(doc.data().agrupaciones);
+          setAgrupaciones(doc.data().afiliaciones);
           console.log(agrupaciones);
           setShowAlert(true);
           setDataLoaded(true);
@@ -66,8 +74,25 @@ export default function Afiliaciones() {
     dataLoaded,
     isLoading,
   ]);
+  const handleGetOut=( nombre)=>{
+    console.log("Nombre de la agrupación que quieres eliminar!"); 
+    console.log(nombre); 
+    removeSubscriptionFunction(nombre, userL);
+
+    // window.location.reload(); 
+  }; 
+
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className={styles.loaderContainer}>
+        <ClipLoader
+          color="#d6ae36"
+          cssOverride={{}}
+          size={100}
+          speedMultiplier={1}
+        />{" "}
+      </div>
+    );
   }
 
   function onApprove(data, actions) {
@@ -123,11 +148,13 @@ export default function Afiliaciones() {
             </div>
           ) : (
             <div>
-              <div>
+              <div className={styles.header}>
                 <h1 className={styles.titulo}>Afiliaciones</h1>
-                <button>Realizar un feedback</button>
+                <button className={styles.botonRealizarFeedback}>
+                  Realizar un feedback
+                </button>
               </div>
-              <div>
+              <div className={styles.tableContainer}>
                 <table>
                   <thead>
                     <tr>
@@ -135,7 +162,6 @@ export default function Afiliaciones() {
                       <th>Colaborar</th>
                       <th>Fecha de Afiliación</th>
                       <th>Desafiliar</th>
-                      <th>Miembros</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -211,7 +237,7 @@ export default function Afiliaciones() {
                         <td>
                           <button>Desafiliar</button>
                         </td>
-                        <td>{agrupacion.miembros.length}</td>
+                        <td>{agrupacion.miembros?.length}</td>
                       </tr>
                     ))}
                   </tbody>

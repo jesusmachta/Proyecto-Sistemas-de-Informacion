@@ -1,0 +1,77 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.groupList {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.groupHeader {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+.groupItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.groupItem button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.profile-image {
+  width: 186px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-info h2 {
+  margin: 0;
+}
+
+.profile-info p {
+  margin: 0;
+}
+
+.adminSection {
+  display: flex;
+  flex-direction: row;
+}
+
+.deleteButton {
+  width: 100px;
+  height: 30px;
+  margin-top: 10px;
+  margin-right: 50px;
+}

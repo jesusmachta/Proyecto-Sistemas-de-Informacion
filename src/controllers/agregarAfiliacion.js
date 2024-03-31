@@ -1,24 +1,46 @@
-import {  updateDoc, doc, arrayUnion, arrayRemove} from "firebase/firestore";
+import {  updateDoc, doc, arrayUnion, arrayRemove, getDoc} from "firebase/firestore";
 import {db} from '../firebase'; 
+import Swal from 'sweetalert2'; 
+import { useUser } from "../context/user";
+
 
 // se le pasa el userId que es el id del documento y el nombre de la agrupación y su id (del documento)
-export async function addSubscriptionFunction(userId, agrupacion, agrupacionId){
-    const userRef = doc(db, "Students", userId);
-    const currentDate = new Date();
-    const afiliacion = {
+export async function addSubscriptionFunction(
+    userId,
+    agrupacion,
+    agrupacionId
+  ) {
+    try {
+      const userRef = doc(db, 'Students', userId);
+      const currentDate = new Date();
+      const afiliacion = {
         nombre: agrupacion,
-        fechaInicio: currentDate, 
-        idAgrupacion: agrupacionId, 
+        fechaInicio: currentDate,
+        idAgrupacion: agrupacionId,
+      };
+  
+      await updateDoc(userRef, {
+        afiliaciones: arrayUnion(afiliacion),
+      });
+      Swal.fire({
+        title: `Se envió exitosamemente su formulario a ${agrupacion}!`,
+        text: 'Revisa en tu perfil el formulario enviado.',
+        icon: 'success',
+        confirmButtonText: 'OK',
+      });
+  
+      return true;
+    } catch (error) {
+      console.log(error);
+      return false;
     }
-    await updateDoc(userRef, {
-        afiliaciones: arrayUnion(afiliacion)
-    }); 
-    
-}
+  }
 
-
-export async function removeSubscriptionFunction(userId, agrupacion){
-    const userRef = doc(db, "Students", userId);
+export async function removeSubscriptionFunction(agrupacion, user){
+    const userRef = doc(db, "Students", user.uid);
+    console.log("ESTOY DENTRO DE LA FUNCIÓN"); 
+    console.log(agrupacion);
+  
 
     const userSnapshot = await getDoc(userRef);
     const userData = userSnapshot.data();
@@ -31,4 +53,9 @@ export async function removeSubscriptionFunction(userId, agrupacion){
         });
     }
 
+    Swal.fire({
+        title: `Se salió exitosamente de la agrupación:  ${agrupacion}!`,
+        icon: 'success',
+        confirmButtonText: 'OK'
+    })
 } 

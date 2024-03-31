@@ -1,113 +1,124 @@
-.mainContainer{
-    display: flex; 
+.mainContainer {
+  display: flex;
 }
-.nameContainer{
-    margin-bottom: 0;
-    display: flex;
-    align-items: center;
-    font-family: 'Raleway', sans-serif
-    
-}
-
-.profilePic{
-    margin-left: 100px;
-    width: calc(100%-45px); 
-    height: 100%; 
-    /* z-index: 2; */
+.nameContainer {
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  font-family: "Raleway", sans-serif;
 }
 
-.profileName, .profileEmail{
-    margin-left: 10px; 
-    font-family: 'Raleway', sans-serif
-}
-h1{
-    font-family: 'Raleway', sans-serif
-}
-
-.containerInputs{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 0;
+.profilePic {
+  margin-left: 100px;
+  width: calc(100%-45px);
+  height: 100%;
+  /* z-index: 2; */
 }
 
-.inputs{
-    display: flex; 
-    /* justify-content: space-between;  */
-    width: 100%; 
-    ;
+.profileName,
+.profileEmail {
+  margin-left: 10px;
+  font-family: "Raleway", sans-serif;
 }
-.input{
-    width: 100%;
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-right: 30px;
-    display: flex; 
+h1 {
+  font-family: "Raleway", sans-serif;
 }
 
-.parentContainer{
-    display: flex; 
-    justify-content: center;
-    align-items: center;
-    height: auto;
-    width: 90%; 
-    margin: 0 auto;
-    padding: 20px; 
-    margin-top: 0;
-    
+.containerInputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0;
 }
 
-h1{
-    margin-top: 0;
-    margin-bottom: 0;
+.inputs {
+  display: flex;
+  /* justify-content: space-between;  */
+  width: 100%;
 }
-
-button{
-    align-self: flex-end;
-    margin-top: 20px;
-    width: 160%;
-    height: 45px; 
-    border-radius: 10px;
-    font-family: 'Raleway', sans-serif;
-    background-color: white;
-    color: grey;
-    border: 1px solid rgb(154, 150, 150);
+.input {
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-right: 30px;
+  display: flex;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  font-family: "Raleway", sans-serif;
+  font-size: 20px;
 
 }
 
+.parentContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px;
+  margin-top: 0;
+}
+
+h1 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+button {
+  align-self: flex-end;
+  margin-top: 20px;
+  width: 160%;
+  height: 45px;
+  border-radius: 10px;
+  font-family: "Raleway", sans-serif;
+  background-color: white;
+  color: grey;
+  border: 1px solid rgb(154, 150, 150);
+  cursor: pointer;
+}
 
 .profilePicUpload {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-  }
-  
-  
-  .customFileInput {
-    font-family: 'Raleway', sans-serif;
-    position: relative;
-    border: 1px solid #ccc;
-    background-color: white;
-    border-radius: 10px;
-    width: 400px;
-    height: 80px;
-    padding: 10px;
-    box-sizing: border-box;
-  }
-  
-  .customFileInput label {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    cursor: pointer;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
 
-  .pImage{
-    color: grey; 
-  }
+.customFileInput {
+  font-family: "Raleway", sans-serif;
+  position: relative;
+  border: 1px solid #ccc;
+  background-color: white;
+  border-radius: 10px;
+  width: 400px;
+  height: 80px;
+  padding: 10px;
+  box-sizing: border-box;
+}
 
-  .sidebar{
-    z-index: 1;
-  }
+.customFileInput label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.pImage {
+  color: grey;
+}
+
+.sidebar {
+  z-index: 1;
+}
+
+.loaderContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}

@@ -6,11 +6,19 @@ import CarouselAgrupacion from "../../Components/CarouselAgrupacion/CarouselAgru
 import DropdownInfo from "../../Components/DropdownInfo/DropdownInfo";
 import { getAgrupacionById } from "../../controllers/Agrupaciones";
 import Feedbacks from "../Feedbacks/Feedbacks";
+import Navbar from '../../Components/Navbar';
+import { useUser } from "../../context/user";
+import {addSubscriptionFunction} from '../../controllers/agregarAfiliacion'; 
+import { getStudentById } from "../../controllers/updateUser";
+
 
 function Agrupacion() {
   const [agrupacion, setAgrupacion] = useState(null);
+  const [isUserAMember, setIsUserAMember] = useState(false);
+  const [submittedAfiliacion, setSubmittedAfiliacion] = useState(false);
 
   let { id } = useParams();
+  const userL = useUser();
 
   useEffect(() => {
     if (id) {
@@ -25,8 +33,33 @@ function Agrupacion() {
     }
   }, []);
 
+  const handleJoinClick = async()=>{
+    const submitted = await addSubscriptionFunction(userL.uid, agrupacion.name, id);
+
+    if (submitted) {
+      setSubmittedAfiliacion(true)
+    }else{
+      setSubmittedAfiliacion(false)
+    }
+  }; 
+
+  useEffect(() => {
+    const checkMembership = async () => {
+      const student = await getStudentById(userL.uid);
+      const isMember = student.afiliaciones.some(afiliacion => afiliacion.nombre === agrupacion.name);
+      setIsUserAMember(isMember);
+    };
+  
+    if (userL && agrupacion) {
+      checkMembership();
+    }
+  }, [agrupacion, userL]);
+
   return (
     agrupacion && (
+      <div>
+        <Navbar></Navbar>
+        <div className="space"></div>
       <div className="agrupacion__container">
         <BannerAgrupacion
           title={agrupacion?.name}
@@ -46,12 +79,14 @@ function Agrupacion() {
           />
         </div>
         <div className="buttonUnirseWrapper">
-          <button className="buttonUnirse"> Unirse a Agrupación </button>
+          {userL && !isUserAMember && !submittedAfiliacion && <button className="buttonUnirse" onClick={handleJoinClick}> Unirse a Agrupación </button>}
         </div>
 
-        <Feedbacks />
+        {userL && <Feedbacks />}
         
       </div>
+      </div>
+      
     )
   );
 }

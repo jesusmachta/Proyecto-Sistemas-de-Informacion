@@ -2,6 +2,8 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    width: 100vw;
+    max-width: 100vw;
 }
 
 .description__wrapper{
@@ -32,4 +34,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.space{
+    margin-bottom: 10px; 
+
 }

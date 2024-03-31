@@ -1,7 +1,7 @@
 .container {
     display: flex;
     justify-content: space-between;
-    gap: 30px; /* Espacio entre las cartas */
+    flex-wrap: wrap;
 }
 .aver{
     background-color: white;
@@ -9,9 +9,9 @@
     padding:10px;
     display: flex;
     flex-direction: column;
-    margin-right: 100px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     height: 500px;
+    width: 30rem;
 }
 
 .imageContainer {
@@ -23,6 +23,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px;
+    margin: 0px 100px 10px 100px;
 }
 
 .images {
@@ -52,4 +53,39 @@
     overflow: hidden;
     text-overflow: ellipsis;
     -webkit-line-clamp: 2; 
+}
+
+.button{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 10px;
+}
+
+.anterior,.siguiente{
+    border: none;
+    color: white;
+    font-weight: 500;
+    width: 5%;
+    background-color: #99BEA9;
+}
+
+@media (min-width: 119px) and (max-width: 538px){
+    .button{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        margin-top: 10px;
+    }
+    .anterior,.siguiente{
+        border: none;
+        color: white;
+        font-weight: 500;
+        width: 20%;
+        background-color: #99BEA9;
+    }
 }
