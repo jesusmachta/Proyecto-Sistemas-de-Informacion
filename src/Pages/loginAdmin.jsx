@@ -11,7 +11,7 @@ import {
   EmailField,
   PasswordField,
 } from "./InputControlAdmin/InputControlAdmin";
-import Swal from "`sweetalert2`";
+import Swal from "sweetalert2";
 
 export function LoginAdmin() {
   const navigate = useNavigate();
