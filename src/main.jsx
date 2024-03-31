@@ -85,7 +85,7 @@ const browserRouter = createBrowserRouter([
     element: <AdminProfile />,
   },
   {
-    path: "/agrupaciones/:id",
+    path: "/agrupacion/:id",
     element: <Agrupacion />,
   },
   {
