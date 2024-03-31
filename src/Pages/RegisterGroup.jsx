@@ -3,8 +3,8 @@ import { collection, getDocs, addDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import { useForm } from "react-hook-form";
 import styles from "./RegisterGroup.module.css";
-import Navbar from "../components/Navbar";
-import SidebarAdmin from "../components/SidebarAdmin";
+import Navbar from "../Components/Navbar";
+import SidebarAdmin from "../Components/SidebarAdmin";
 
 const RegisterGroup = () => {
   const [imgSrc, setImgSrc] = useState("");
