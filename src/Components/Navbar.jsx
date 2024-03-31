@@ -17,7 +17,7 @@ const Navbar = () => {
   useEffect(()=>{
     const findUserRole = async()=>{
       const studentDoc = await getDoc(doc(db, 'Students', userL.uid));
-      const adminQuery = query(collection(db, 'Admins'), where("email", '==', userL.email));
+      const adminQuery = query(collection(db, 'Administrator'), where("email", '==', userL.email));
       const adminSnapshot = await getDocs(adminQuery);
 
       if(studentDoc.exists()){
