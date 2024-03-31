@@ -15,6 +15,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import {removeSubscriptionFunction} from '../controllers/agregarAfiliacion';
 
+
 export default function Afiliaciones() {
   const navigation = useNavigate();
   const userL = useUser();
@@ -75,6 +76,7 @@ export default function Afiliaciones() {
     console.log("Nombre de la agrupación que quieres eliminar!"); 
     console.log(nombre); 
     removeSubscriptionFunction(nombre, userL);
+
     // window.location.reload(); 
   }; 
 

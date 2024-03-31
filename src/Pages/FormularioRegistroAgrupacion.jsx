@@ -10,6 +10,7 @@ import { ref, getDownloadURL } from "firebase/storage";
 import { storage } from "../firebase";
 import { updateDoc, doc } from "firebase/firestore";
 import ClipLoader from "react-spinners/ClipLoader";
+import Swal from "sweetalert2";
 
 export default function Formulario() {
   const navigation = useNavigate();
@@ -79,6 +80,11 @@ export default function Formulario() {
         await updateDoc(userRef, {
             career: userCareer,
             carnet: carnet,
+        });
+        Swal.fire({
+            icon: "success",
+            title: "¡Datos actualizados!",
+            confirmButtonText: "Ok",
         });
         window.location.reload();
     }else{

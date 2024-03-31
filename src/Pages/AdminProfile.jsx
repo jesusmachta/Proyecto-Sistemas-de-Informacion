@@ -91,10 +91,10 @@ export default function AdminProfile() {
       // Esto verifica si image es diferente de null
       const storageRef = ref(getStorage(), `profilePictures/${userId}`);
       uploadBytes(storageRef, image).then(() => {
-        alert("Se subió la imagen correctamente");
+        // alert("Se subió la imagen correctamente");
       });
     } else {
-      alert("No se seleccionó ninguna imagen");
+      // alert("No se seleccionó ninguna imagen");
     }
   };
 

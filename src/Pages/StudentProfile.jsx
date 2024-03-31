@@ -11,6 +11,7 @@ import { storage } from "../firebase";
 import { ref, uploadBytes, getStorage, getDownloadURL } from "firebase/storage";
 import SidebarStudent from "../Components/SidebarStudent";
 import ClipLoader from "react-spinners/ClipLoader";
+import Swal from "sweetalert2";
 
 export default function studentProfile() {
   const navigation = useNavigate();
@@ -92,11 +93,16 @@ export default function studentProfile() {
       // Esto verifica si image es diferente de null
       const storageRef = ref(getStorage(), `profilePictures/${userId}`);
       uploadBytes(storageRef, image).then(() => {
-        alert("Se subió la imagen correctamente");
+        // alert("Se subió la imagen correctamente");
       });
     } else {
-      alert("No se seleccionó ninguna imagen");
+      // alert("No se seleccionó ninguna imagen");
     }
+    Swal.fire({
+      icon: "success",
+      title: "Perfil actualizado exitosamente",
+      confirmButtonText: "OK",
+  })
   };
 
   const handleFileChange = (event) => {
