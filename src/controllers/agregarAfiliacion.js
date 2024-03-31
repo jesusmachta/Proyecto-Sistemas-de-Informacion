@@ -3,12 +3,12 @@ import {db} from '../firebase';
 import Swal from 'sweetalert2'; 
 import { useUser } from "../context/user";
 
-
-// se le pasa el userId que es el id del documento y el nombre de la agrupación y su id (del documento)
 export async function addSubscriptionFunction(
     userId,
     agrupacion,
-    agrupacionId
+    agrupacionId,
+    name,
+    lastName
   ) {
     try {
       const userRef = doc(db, 'Students', userId);
@@ -22,6 +22,13 @@ export async function addSubscriptionFunction(
       await updateDoc(userRef, {
         afiliaciones: arrayUnion(afiliacion),
       });
+
+      const groupRef = doc(db, 'Agrupaciones', agrupacionId);
+
+      await updateDoc(groupRef, {
+        members: arrayUnion(`${name} ${lastName}`),
+      });
+
       Swal.fire({
         title: `Se envió exitosamemente su formulario a ${agrupacion}!`,
         text: 'Revisa en tu perfil el formulario enviado.',
@@ -36,7 +43,7 @@ export async function addSubscriptionFunction(
     }
   }
 
-export async function removeSubscriptionFunction(agrupacion, user){
+export async function removeSubscriptionFunction(agrupacion, user, agrupacionId, name, lastName){
     const userRef = doc(db, "Students", user.uid);
     console.log("ESTOY DENTRO DE LA FUNCIÓN"); 
     console.log(agrupacion);
@@ -50,6 +57,12 @@ export async function removeSubscriptionFunction(agrupacion, user){
     if(afiliacionToRemove){
         await updateDoc(userRef, {
             afiliaciones: arrayRemove(afiliacionToRemove)
+        });
+
+        const groupRef = doc(db, 'Agrupaciones', agrupacionId);
+
+        await updateDoc(groupRef, {
+            members: arrayRemove(`${name} ${lastName}`),
         });
     }
 

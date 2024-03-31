@@ -29,22 +29,17 @@ export default function studentProfile() {
   const lastNameRef = useRef();
   const phoneRef = useRef();
 
-
-
   useEffect(() => {
     if (userL) {
       console.log("Si existe userL");
       setUserEmail(userL.email);
       console.log(userEmail);
     }
-    // else{
-    //   navigation("/signup");
-    // }
     const findUser = async () => {
       try {
         const docRef = doc(db, "Students", userL.uid);
         const docSnap = await getDoc(docRef);
-  
+
         if (docSnap.exists()) {
           setUserId(docSnap.id);
           setUserName(docSnap.data().name);
@@ -57,7 +52,6 @@ export default function studentProfile() {
         }
       } catch (error) {
         console.log("Error getting documents: ", error);
-        // navigation("/signup");
       }
 
       if (userId) {
@@ -104,7 +98,7 @@ export default function studentProfile() {
       icon: "success",
       title: "Perfil actualizado exitosamente",
       confirmButtonText: "OK",
-  })
+    });
   };
 
   const handleFileChange = (event) => {
@@ -112,14 +106,16 @@ export default function studentProfile() {
   };
 
   if (isLoading) {
-    return <div className ={styles.loaderContainer}>
-    <ClipLoader
-      color="#d6ae36"
-      cssOverride={{}}
-      size={100}
-      speedMultiplier={1}
-    /> </div>;
-    
+    return (
+      <div className={styles.loaderContainer}>
+        <ClipLoader
+          color="#d6ae36"
+          cssOverride={{}}
+          size={100}
+          speedMultiplier={1}
+        />{" "}
+      </div>
+    );
   }
   if (dataLoaded) {
     return (
@@ -150,7 +146,7 @@ export default function studentProfile() {
                 <div>
                   <h1>Nombre</h1>
                   <input
-                    id = "nombreEstudiante"
+                    id="nombreEstudiante"
                     type="text"
                     placeholder={userName}
                     ref={nameRef}
@@ -160,7 +156,7 @@ export default function studentProfile() {
                 <div>
                   <h1>Apellido</h1>
                   <input
-                    id = "apellidoEstudiante"
+                    id="apellidoEstudiante"
                     type="text"
                     placeholder={userLastName}
                     ref={lastNameRef}
@@ -172,7 +168,7 @@ export default function studentProfile() {
                 <div>
                   <h1>Teléfono</h1>
                   <input
-                  id = "telefonoEstudiante"
+                    id="telefonoEstudiante"
                     type="tel"
                     placeholder={userPhone}
                     ref={phoneRef}
@@ -182,7 +178,7 @@ export default function studentProfile() {
                 <div>
                   <h1>Correo electrónico</h1>
                   <input
-                  id = "correoEstudiante"
+                    id="correoEstudiante"
                     type="email"
                     placeholder={userEmail}
                     readOnly={true}
