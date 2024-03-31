@@ -4,13 +4,14 @@ import { useUser } from "../context/user";
 import styles from "./FormularioRegistroAgrupacion.module.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { collection, where, query, getDocs } from "firebase/firestore";
+import { collection, where, query, getDocs,  getDoc} from "firebase/firestore";
 import { db } from "../firebase";
 import { ref, getDownloadURL } from "firebase/storage";
 import { storage } from "../firebase";
 import { updateDoc, doc } from "firebase/firestore";
 import ClipLoader from "react-spinners/ClipLoader";
 import Swal from "sweetalert2";
+const defaultPicture = "./DefaultProfilePic.svg.png";
 
 export default function Formulario() {
   const navigation = useNavigate();
@@ -33,31 +34,36 @@ export default function Formulario() {
     }
     const findUser = async () => {
       try {
-        const querySnapshot = await getDocs(
-          query(collection(db, "Students"), where("email", "==", userL.email))
-        );
-        querySnapshot.forEach((doc) => {
-          setUserId(doc.id);
-          setUserName(doc.data().name);
-          setUserLastName(doc.data().lastName);
-          setUserPhone(doc.data().phoneNumber);
-          setUserCareer(doc.data().career);
-          setCarnet(doc.data().carnet);
+        const docRef = doc(db, "Students", userL.uid);
+        const docSnap = await getDoc(docRef);
+  
+        if (docSnap.exists()) {
+          setUserId(docSnap.id);
+          setUserName(docSnap.data().name);
+          setUserLastName(docSnap.data().lastName);
+          setUserPhone(docSnap.data().phoneNumber);
+          setUserCareer(docSnap.data().career);
+          setCarnet(docSnap.data().carnet);
           console.log(userCareer);
-
+  
           setDataLoaded(true);
           setIsLoading(false);
-        });
+        } else {
+          console.log("No such document!");
+        }
       } catch (error) {
         console.log("Error getting documents: ", error);
       }
-      if (userId) {
-        const storageRef = ref(storage, `profilePictures/${userId}`);
+      console.log("Se cargaron los datos ahora viene la imagen"); 
+      console.log(userId); 
+      if (userL) {
+        const storageRef = ref(storage, `profilePictures/${userL.uid}`);
         try {
           const url = await getDownloadURL(storageRef);
           setImage(url);
         } catch (error) {
           console.log(error);
+          setImage(defaultPicture);
         }
       }
     };
@@ -104,7 +110,7 @@ export default function Formulario() {
           <div
             className={styles.profilePic}
             style={{
-              backgroundImage: `url(${image})`,
+              backgroundImage: `url(${image || defaultPicture})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
               borderRadius: "50%",
