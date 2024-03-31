@@ -19,6 +19,7 @@ import UpdateGroup from "./Pages/UpdateGroup";
 import RegisterGroup from "./Pages/RegisterGroup";
 import AdminProfile from "./Pages/AdminProfile";
 import DeleteGroup from "./Pages/DeleteGroup";
+import FeedbacksUsuario from "./Pages/FeedbacksUsuario/FeedbacksUsuario";
 
 const browserRouter = createBrowserRouter([
   {
@@ -35,7 +36,7 @@ const browserRouter = createBrowserRouter([
       },
       {
         path: "/feedbacks",
-        element: <Feedbacks />,
+        element: <FeedbacksUsuario />,
       },
     ],
   },
