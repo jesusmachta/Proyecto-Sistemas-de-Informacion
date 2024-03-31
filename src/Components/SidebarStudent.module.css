@@ -1,13 +1,15 @@
 .sidebar{
-    background-color: #F2CA99;
-    padding-top: 50px; 
+    background-color: #f2ca99;
+    padding-top: 50px;
     padding-right: 50px;
-   margin-right: 95%;
-   padding-bottom: 450px;
-   position: absolute;
-   margin-bottom: 0;
-   width: 45px; 
-   height: 100%; 
+    margin-right: 95%;
+    padding-bottom: 450px;
+    position: absolute;
+    margin-bottom: 0;
+    width: 70px;
+    height: 100%;
+    position: fixed;
+    left: 0;
 }
 
 
