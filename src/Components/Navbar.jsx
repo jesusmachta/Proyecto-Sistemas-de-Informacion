@@ -4,11 +4,32 @@ import lupa from "../../Icons/search_black_36dp.svg"
 import user from "../../Icons/account_circle_black_24dp.svg"
 import { Link,useLocation } from'react-router-dom'
 import { useUser } from '../context/user'
+import {collection, query, where, getDocs, getDoc, doc} from 'firebase/firestore'
+import { useState, useEffect } from 'react'; 
+import { db } from '../firebase'; 
 
 
 const Navbar = () => {
   const location = useLocation(); 
   const userL = useUser(); 
+  const [userRole, setUserRole] = useState(null);
+
+  useEffect(()=>{
+    const findUserRole = async()=>{
+      const studentDoc = await getDoc(doc(db, 'Students', userL.uid));
+      const adminQuery = query(collection(db, 'Admins'), where("email", '==', userL.email));
+      const adminSnapshot = await getDocs(adminQuery);
+
+      if(studentDoc.exists()){
+        setUserRole('student');
+      }else if(!adminSnapshot.empty){
+        setUserRole('admin');
+      }
+    }; 
+    if(userL){
+      findUserRole();
+    }
+  },[userL]); 
 
   return (
     <div className={styles.container}>
@@ -45,7 +66,7 @@ const Navbar = () => {
         </nav>
       <div className={styles.icons}>
         <img className={styles.icon} src={lupa} alt="lupa" />
-        <Link to={userL?`/profile/${userL.uid}` : '/signup'}>
+        <Link to={userL ? (userRole === 'admin' ? `/adminprofile` : `/profile/${userL.uid}`) : '/loginadmin'}>
           <img className={styles.icon} src={user} alt="user" />
         </Link>
       </div>
@@ -55,3 +76,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+// /adminprofile

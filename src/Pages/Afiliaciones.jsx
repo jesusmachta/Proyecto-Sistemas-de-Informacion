@@ -148,7 +148,7 @@ export default function Afiliaciones() {
                       <tr key={agrupacion.id}>
                         <td>{agrupacion.nombre}</td>
                         <td>
-                          <button className={styles.botonColaborar}>Pay with Paypal</button>
+                          <button key = {agrupacion.id} className={styles.botonColaborar}>Pay with Paypal</button>
                         </td>
                         <td>
                           {new Date(
