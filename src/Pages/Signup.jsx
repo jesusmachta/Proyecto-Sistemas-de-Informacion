@@ -23,6 +23,8 @@ import {
 } from "firebase/auth";
 
 import { Link, useNavigate } from "react-router-dom";
+import {GithubSignupButton} from "../Components/Signupbuttons";
+
 
 export default function Register() {
   const navigate = useNavigate();
@@ -146,6 +148,7 @@ export default function Register() {
         className = {styles.input}
           label="Nombre"
           placeholder="Ingresa tu nombre..."
+          id = "name"
           onChange={(event) => {
             console.log(event.target.value);
             setvalues((prev) => ({ ...prev, name: event.target.value }));
@@ -157,6 +160,7 @@ export default function Register() {
         className = {styles.input}
           label="Apellido"
           placeholder="Ingresa tu apellido..."
+          id = "lastName"
           onChange={(event) =>
             setvalues((prev) => ({ ...prev, lastName: event.target.value }))
           }
@@ -164,6 +168,7 @@ export default function Register() {
 
         <h2 className={styles.titles}>Teléfono</h2>
         <TelField
+        id = "phoneNumber"
         className = {styles.input}
           label="Telefono"
           placeholder="Ingresa tu teléfono..."
@@ -175,6 +180,7 @@ export default function Register() {
         <h2 className={styles.titles}>Correo Electrónico</h2>
         <EmailField
         className = {styles.input}
+        id = "email"
           label="Email"
           placeholder="Ingresa tu correo..."
           onChange={(event) =>
@@ -185,6 +191,7 @@ export default function Register() {
         <h2 className={styles.titles}>Contraseña</h2>
         <PasswordField
         className = {styles.input}
+        id = "password"
           placeholder="Ingresa tu contraseña..."
           onChange={(event) =>
             setvalues((prev) => ({ ...prev, password: event.target.value }))
@@ -196,6 +203,7 @@ export default function Register() {
         <h2 className={styles.titles}>Confirme su Contraseña</h2>
         <PasswordField
         className = {styles.input}
+        id = "confirmPassword"
           placeholder="Confirma tu contraseña..."
           onChange={(event) =>
             setvalues((prev) => ({
@@ -216,11 +224,9 @@ export default function Register() {
           <GoogleButton />
           
         </div>
+       
         <div>
-        <FacebookButton />
-        </div>
-        <div>
-          <AppleButton />
+          <GithubSignupButton/>
         </div>
       </div>
     </div>

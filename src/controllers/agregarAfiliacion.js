@@ -5,26 +5,36 @@ import { useUser } from "../context/user";
 
 
 // se le pasa el userId que es el id del documento y el nombre de la agrupación y su id (del documento)
-export async function addSubscriptionFunction(userId, agrupacion, agrupacionId){
-    const userRef = doc(db, "Students", userId);
-    const currentDate = new Date();
-    const afiliacion = {
+export async function addSubscriptionFunction(
+    userId,
+    agrupacion,
+    agrupacionId
+  ) {
+    try {
+      const userRef = doc(db, 'Students', userId);
+      const currentDate = new Date();
+      const afiliacion = {
         nombre: agrupacion,
-        fechaInicio: currentDate, 
-        idAgrupacion: agrupacionId, 
-    }
-
-    await updateDoc(userRef, {
-        afiliaciones: arrayUnion(afiliacion)
-    }); 
-    Swal.fire({
+        fechaInicio: currentDate,
+        idAgrupacion: agrupacionId,
+      };
+  
+      await updateDoc(userRef, {
+        afiliaciones: arrayUnion(afiliacion),
+      });
+      Swal.fire({
         title: `Se envió exitosamemente su formulario a ${agrupacion}!`,
         text: 'Revisa en tu perfil el formulario enviado.',
         icon: 'success',
-        confirmButtonText: 'OK'
-      })
-    
-}
+        confirmButtonText: 'OK',
+      });
+  
+      return true;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  }
 
 export async function removeSubscriptionFunction(agrupacion, user){
     const userRef = doc(db, "Students", user.uid);

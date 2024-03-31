@@ -1,15 +1,15 @@
 
 
 import styles from "./InputControl.module.css";
-export function TextField({placeholder, onChange}){
-    return <input type ="text" placeholder={placeholder} onChange={onChange} className={styles.input}></input>
+export function TextField({placeholder, onChange, id }){
+    return <input type ="text" placeholder={placeholder} onChange={onChange} className={styles.input} id = {id}></input>
 }
 
-export function EmailField({placeholder, onChange}){
-    return <input type ="email" placeholder={placeholder} onChange={onChange} className={styles.input}></input>
+export function EmailField({placeholder, onChange, id}){
+    return <input type ="email" placeholder={placeholder} onChange={onChange} className={styles.input} id ={id}></input>
 }
 
-export function PasswordField({placeholder, onChange, showPassword, onTogglePassword}){
+export function PasswordField({placeholder, onChange, showPassword, onTogglePassword, id}){
     return (
         <div >
             <input 
@@ -17,6 +17,7 @@ export function PasswordField({placeholder, onChange, showPassword, onTogglePass
                 placeholder={placeholder} 
                 onChange={onChange}
                 className={styles.input}
+                id ={id}
             />
             <i 
                 onClick={onTogglePassword}
@@ -26,6 +27,6 @@ export function PasswordField({placeholder, onChange, showPassword, onTogglePass
     );
 }
 
-export function TelField({placeholder, onChange}){
-    return <input type= "tel" placeholder={placeholder} onChange={onChange} className={styles.input}/>;
+export function TelField({placeholder, onChange, id}){
+    return <input type= "tel" placeholder={placeholder} onChange={onChange} className={styles.input} id ={id}/>;
 }

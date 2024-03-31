@@ -9,13 +9,11 @@ import {
   getDocs,
 } from "firebase/firestore";
 import { listAll, ref, getDownloadURL } from "firebase/storage"; 
-import Slider from "react-slick";
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 
 const ImagesCarrusel = () => {
     const [images, setImages] = useState([]);
     const [imageData, setImageData] = useState([]);
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const imageListRef = ref(storage, 'Carrusel/');
 
     useEffect(() => {
@@ -53,37 +51,65 @@ const ImagesCarrusel = () => {
     
         fetchImageData();
     }, [images]);
-    
-    const settings = {
-        arrows:false,
-        dots: false,
-        infinite: false,
-        speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 3
+
+    const nextImage = () => {
+        setCurrentImageIndex((prevIndex) => (prevIndex >= images.length - 3 ? 0 : prevIndex + 3));
+    };
+
+    const prevImage = () => {
+        setCurrentImageIndex((prevIndex) => (prevIndex <= 2 ? images.length - 3 : prevIndex - 3));
     };
     
     return (
+        <>
+            <div className={styles.container}>
+                {images.slice(currentImageIndex, currentImageIndex + 3).map((image, index) => {
+                    const imageDataForImage = imageData.find((item) => item.imageUrl === image);
+                    const name = imageDataForImage ? imageDataForImage.data[0]?.name : "";
+                    const description = imageDataForImage ? imageDataForImage.data[0]?.description : "";
 
-        <Slider {...settings} className={styles.container}>
-        {images.map((image, index) => {
-            const imageDataForImage = imageData.find((item) => item.imageUrl === image);
-            const description = imageDataForImage ? imageDataForImage.data[0]?.description : "";
-            const name = imageDataForImage ? imageDataForImage.data[0]?.name : "";
-            return (
-                <div className={`${styles.imageContainer} slide`} key={index}>
-                    <div className={styles.aver}>
-                        <img src={image} alt="imagen de carrusel" className={styles.images} />
-                        <div className={styles.textContainer}>
-                            {name && <h2>{name}</h2>}
-                            {description && <p>{description}</p>}
+                    return (
+                        <div key={index} className={`${styles.imageContainer} slide`}>
+                            <div className={styles.aver}>
+                                <img src={image} alt="imagen" className={styles.images} />
+                                <div className={styles.textContainer}>
+                                    {name && <h2>{name}</h2>}
+                                    {description && <p>{description}</p>}
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    
-                </div>
-            );
-        })}
-      </Slider>
+                    );
+                })}
+                
+            </div>
+            <div className={styles.button}>
+                <button onClick={prevImage} className={styles.anterior}>Anterior</button>
+                <button onClick={nextImage} className={styles.siguiente}>Siguiente</button>
+            </div> 
+        </>
+
+
+        // <>
+        //     {/* <Slider {...settings} className={styles.container}> */}
+        //         {images.map((image, index) => {
+        //             const imageDataForImage = imageData.find((item) => item.imageUrl === image);
+        //             const description = imageDataForImage ? imageDataForImage.data[0]?.description : "";
+        //             const name = imageDataForImage ? imageDataForImage.data[0]?.name : "";
+        //             return (
+        //                 <div className={`${styles.imageContainer} slide`} key={index}>
+        //                     <div className={styles.aver}>
+        //                         <img src={image} alt="imagen de carrusel" className={styles.images} />
+        //                         <div className={styles.textContainer}>
+        //                             {name && <h2>{name}</h2>}
+        //                             {description && <p>{description}</p>}
+        //                         </div>
+        //                     </div>
+                            
+        //                 </div>
+        //             );
+        //         })}
+        //     {/* </Slider> */}
+        // </>
     );
 };
 

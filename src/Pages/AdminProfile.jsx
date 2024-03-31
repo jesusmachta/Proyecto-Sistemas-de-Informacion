@@ -91,10 +91,10 @@ export default function AdminProfile() {
       // Esto verifica si image es diferente de null
       const storageRef = ref(getStorage(), `profilePictures/${userId}`);
       uploadBytes(storageRef, image).then(() => {
-        alert("Se subió la imagen correctamente");
+        // alert("Se subió la imagen correctamente");
       });
     } else {
-      alert("No se seleccionó ninguna imagen");
+      // alert("No se seleccionó ninguna imagen");
     }
   };
 
@@ -136,6 +136,7 @@ export default function AdminProfile() {
                 <div>
                   <h1>Nombre</h1>
                   <input
+                  id = "nombreAdmin"
                     type="text"
                     placeholder={userName}
                     ref={nameRef}
@@ -145,6 +146,7 @@ export default function AdminProfile() {
                 <div>
                   <h1>Apellido</h1>
                   <input
+                  id ="apellidoAdmin"
                     type="text"
                     placeholder={userLastName}
                     ref={lastNameRef}
@@ -156,6 +158,7 @@ export default function AdminProfile() {
                 <div>
                   <h1>Teléfono</h1>
                   <input
+                  id = "telefonoAdmin"
                     type="tel"
                     placeholder={userPhone}
                     ref={phoneRef}
@@ -165,6 +168,7 @@ export default function AdminProfile() {
                 <div>
                   <h1>Correo electrónico</h1>
                   <input
+                  id = "emailAdmin"
                     type="email"
                     placeholder={userEmail}
                     readOnly={true}

@@ -9,8 +9,8 @@ import {
 } from "firebase/firestore";
 import { db } from "../firebase";
 import styles from "./DeleteGroup.module.css";
-import Navbar from "../components/Navbar";
-import SidebarAdmin from "../components/SidebarAdmin";
+import Navbar from "../Components/Navbar";
+import SidebarAdmin from "../Components/SidebarAdmin";
 
 function DeleteGroup() {
   const [groups, setGroups] = useState([]);

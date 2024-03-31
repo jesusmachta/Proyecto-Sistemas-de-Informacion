@@ -15,11 +15,10 @@ import { getStudentById } from "../../controllers/updateUser";
 function Agrupacion() {
   const [agrupacion, setAgrupacion] = useState(null);
   const [isUserAMember, setIsUserAMember] = useState(false);
+  const [submittedAfiliacion, setSubmittedAfiliacion] = useState(false);
 
   let { id } = useParams();
   const userL = useUser();
-  
-  
 
   useEffect(() => {
     if (id) {
@@ -34,8 +33,14 @@ function Agrupacion() {
     }
   }, []);
 
-  const handleJoinClick =()=>{
-    addSubscriptionFunction(userL.uid, agrupacion.name, id);
+  const handleJoinClick = async()=>{
+    const submitted = await addSubscriptionFunction(userL.uid, agrupacion.name, id);
+
+    if (submitted) {
+      setSubmittedAfiliacion(true)
+    }else{
+      setSubmittedAfiliacion(false)
+    }
   }; 
 
   useEffect(() => {
@@ -74,7 +79,7 @@ function Agrupacion() {
           />
         </div>
         <div className="buttonUnirseWrapper">
-          {userL && !isUserAMember&& <button className="buttonUnirse" onClick={handleJoinClick}> Unirse a Agrupación </button>}
+          {userL && !isUserAMember && !submittedAfiliacion && <button className="buttonUnirse" onClick={handleJoinClick}> Unirse a Agrupación </button>}
         </div>
 
         {userL && <Feedbacks />}

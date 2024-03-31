@@ -1,7 +1,8 @@
 .Contenedor{
-display: flex;
-flex-direction: column;
-gap: 20px;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .UsuarioHeader{
@@ -10,19 +11,31 @@ gap: 20px;
     color: #000000;
     gap: 5px;
     
-    }
+}
 
-.UsuarioHeader > p{
+.feedbacksWrapper{
+    display: flex;
+    width: 100%;
+    gap: 40px;
+}
+
+.username{
     font-weight: 800;
     font-size: 20px;
 }
 
+.ParteIzquierda{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .ParteIzquierda > p{
-background-color: #D0D5DD;
-border-radius: 15px;
-border: 0;
-outline: 0;
-padding: 10px 20px;
+    background-color: #D0D5DD;
+    border-radius: 15px;
+    border: 0;
+    outline: 0;
+    padding: 10px 20px;
 }
 
 .Agrupaciones{
@@ -34,28 +47,29 @@ padding: 10px 20px;
     border-radius: 20px;
     cursor: pointer;
     width: 100%;
+    border: none;
+    outline: none;
 }
 
 .ParteDerecha{
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
-.TextArea{
-padding: 10px;
-min-width: 20px;
-min-height: 100px;
+.textArea{
+    width: 80%;
+    height: 40vh;
+    border-radius: 20px;
+    padding: 20px;
+    outline: none;
 }
 
 .Rating{
-display: flex;
-flex-direction: column;
-gap: 20px;
-align-items: center;
-justify-content: center;
-
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .Estrellas{
@@ -66,16 +80,23 @@ justify-content: center;
 .Rating > button{
     display: flex;
     align-items: center;
+    width: fit-content;
     border: 0;
     outline: 0;
     padding: 10px 20px;
     background-color: #FFFFFF;
     border-radius: 20px;
     cursor: pointer;
-    width: 100%;
-    font-weight: 300;
     font-size: 15px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.Estrellas input[type=radio] {
+    display: none;
+}
+
+.star{
+    cursor: pointer;
 }
 
 

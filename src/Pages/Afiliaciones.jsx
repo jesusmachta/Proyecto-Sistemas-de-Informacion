@@ -1,7 +1,7 @@
 import Navbar from "../Components/Navbar";
 import { useEffect, useRef, useState } from "react";
 import { useUser } from "../context/user";
-import { collection, where, query, getDocs } from "firebase/firestore";
+import { collection, where, query, getDocs, doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import { ref, uploadBytes, getStorage, getDownloadURL } from "firebase/storage";
 import { storage } from "../firebase";
@@ -14,6 +14,7 @@ import { getStudentById } from "../controllers/updateUser";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import {removeSubscriptionFunction} from '../controllers/agregarAfiliacion';
+
 
 export default function Afiliaciones() {
   const navigation = useNavigate();
@@ -34,23 +35,25 @@ export default function Afiliaciones() {
     }
     const findUser = async () => {
       try {
-        const querySnapshot = await getDocs(
-          query(collection(db, "Students"), where("email", "==", userL.email))
-        );
-        querySnapshot.forEach((doc) => {
-          setUserId(doc.id);
-          setUserName(doc.data().name);
-          setAgrupaciones(doc.data().afiliaciones);
+        const docRef = doc(db, "Students", userL.uid);
+        const docSnap = await getDoc(docRef);
+  
+        if (docSnap.exists()) {
+          setUserId(docSnap.id);
+          setUserName(docSnap.data().name);
+          setAgrupaciones(docSnap.data().afiliaciones);
           console.log(agrupaciones);
           setShowAlert(true);
           setDataLoaded(true);
           setIsLoading(false);
-        });
+        } else {
+          console.log("No such document!");
+        }
       } catch (error) {
         console.log("Error getting documents: ", error);
       }
-      if (userId) {
-        const storageRef = ref(storage, `profilePictures/${userId}`);
+      if (userL) {
+        const storageRef = ref(storage, `profilePictures/${userL.uid}`);
         try {
           const url = await getDownloadURL(storageRef);
           setImage(url);
@@ -62,19 +65,13 @@ export default function Afiliaciones() {
     findUser();
   }, [
     navigation,
-    userL,
-    userId,
-    userEmail,
-    userName,
-    agrupaciones,
-    image,
-    dataLoaded,
-    isLoading,
+    userL
   ]);
   const handleGetOut=( nombre)=>{
     console.log("Nombre de la agrupación que quieres eliminar!"); 
     console.log(nombre); 
     removeSubscriptionFunction(nombre, userL);
+
     // window.location.reload(); 
   }; 
 
@@ -152,7 +149,7 @@ export default function Afiliaciones() {
                         <td>{agrupacion.nombre}</td>
                         <td>
                           <button className={styles.botonColaborar}>Pay with Paypal</button>
-                        </td>{" "}
+                        </td>
                         <td>
                           {new Date(
                             agrupacion.fechaInicio.seconds * 1000
@@ -164,7 +161,7 @@ export default function Afiliaciones() {
                             icon={faArrowRightFromBracket}
                             onClick={()=> handleGetOut( agrupacion.nombre)}
                           ></FontAwesomeIcon>
-                        </td>{" "}
+                        </td>
                       </tr>
                     ))}
                   </tbody>

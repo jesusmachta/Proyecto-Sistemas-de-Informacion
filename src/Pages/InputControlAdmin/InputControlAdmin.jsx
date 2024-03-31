@@ -8,10 +8,11 @@ export function InputControlAdmin(props) {
   );
 }
 
-export function EmailField({ placeholder, onChange }) {
+export function EmailField({ placeholder, onChange, id }) {
   return (
     <input
       className={styles.inputField}
+      id = {id}
       type="email"
       placeholder={placeholder}
       onChange={onChange}
@@ -24,6 +25,7 @@ export function PasswordField({
   onChange,
   showPassword,
   onTogglePassword,
+  id,
 }) {
   return (
     <div className={styles.inputField}>
@@ -32,6 +34,7 @@ export function PasswordField({
         placeholder={placeholder}
         onChange={onChange}
         className={styles.passwordInput}
+        id = {id}
       />
       <i
         onClick={onTogglePassword}
