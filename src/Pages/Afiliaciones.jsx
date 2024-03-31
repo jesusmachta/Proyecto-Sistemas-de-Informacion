@@ -8,8 +8,7 @@ import { storage } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import styles from "./Afiliaciones.module.css";
 import SidebarStudent from "../Components/SidebarStudent";
-import PaypalButton from "../Components/PaypalButton";
-
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 export default function Afiliaciones() {
   const navigation = useNavigate();
@@ -21,8 +20,8 @@ export default function Afiliaciones() {
   const [dataLoaded, setDataLoaded] = useState(false);
   const [agrupaciones, setAgrupaciones] = useState([]);
   const [image, setImage] = useState(null);
-  //borrar: 
   const [showAlert, setShowAlert] = useState(false);
+  const [donationAmount, setDonationAmount] = useState(1);
 
   useEffect(() => {
     if (userL) {
@@ -38,10 +37,9 @@ export default function Afiliaciones() {
           setUserName(doc.data().name);
           setAgrupaciones(doc.data().agrupaciones);
           console.log(agrupaciones);
-          setShowAlert(true); 
+          setShowAlert(true);
           setDataLoaded(true);
           setIsLoading(false);
-          
         });
       } catch (error) {
         console.log("Error getting documents: ", error);
@@ -72,11 +70,24 @@ export default function Afiliaciones() {
     return <div>Loading...</div>;
   }
 
+  function onApprove(data, actions) {
+    return actions.order
+      .capture()
+      .then(function (details) {
+        alert("¡Muchas gracias por su colaboración!");
+      })
+      .catch(function (error) {
+        console.error("Error al capturar la orden:", error);
+        alert(
+          "Hubo un problema al procesar su donación. Por favor, inténtelo de nuevo más tarde."
+        );
+      });
+  }
+
   if (dataLoaded) {
     return (
       <div>
         <div>
-    
           <SidebarStudent></SidebarStudent>
           <Navbar />
           <div className={styles.nameContainer}>
@@ -99,7 +110,7 @@ export default function Afiliaciones() {
           {!agrupaciones ? (
             <div>
               <h1 className={styles.titulo}>Afiliaciones</h1>
-           
+
               <p className={styles.mensaje}>
                 Todavía no estás afiliado a ninguna agrupación.
               </p>
@@ -132,16 +143,74 @@ export default function Afiliaciones() {
                       <tr key={agrupacion.id}>
                         <td>{agrupacion.nombre}</td>
                         <td>
-                          <button>Pay with Paypal</button>
-                        </td>{" "}
-                        
+                          <div className={styles.paypalWrapper}>
+                            <PayPalScriptProvider
+                              options={{
+                                clientId:
+                                  "AegtMfBPHAwnLICPfPbXdxpws0YIf0P9tVf1kUW012yoG9TFSkN2xfTdw4MYnwUiYXGkwfdiQBuwWxPK",
+                                components: "buttons",
+                                currency: "USD",
+                              }}
+                            >
+                              <PayPalButtons
+                                fundingSource="paypal"
+                                style={{ layout: "vertical", label: "donate" }}
+                                disabled={false}
+                                forceReRender={[{ layout: "vertical" }]}
+                                createOrder={(data, actions) => {
+                                  return actions.order.create({
+                                    purchase_units: [
+                                      {
+                                        amount: {
+                                          value:
+                                            parseFloat(donationAmount).toFixed(
+                                              2
+                                            ),
+                                          breakdown: {
+                                            item_total: {
+                                              currency_code: "USD",
+                                              value:
+                                                parseFloat(
+                                                  donationAmount
+                                                ).toFixed(2),
+                                            },
+                                          },
+                                        },
+                                        items: [
+                                          {
+                                            name: "Agrupación",
+                                            quantity: "1",
+                                            unit_amount: {
+                                              currency_code: "USD",
+                                              value:
+                                                parseFloat(
+                                                  donationAmount
+                                                ).toFixed(2),
+                                            },
+                                            category: "DONATION",
+                                          },
+                                        ],
+                                      },
+                                    ],
+                                  });
+                                }}
+                                onApprove={onApprove}
+                              />
+                            </PayPalScriptProvider>
+                            <input
+                              type="number"
+                              step={0.5}
+                              value={donationAmount}
+                              onChange={(e) =>
+                                setDonationAmount(e.target.value)
+                              }
+                            />
+                          </div>
+                        </td>
                         <td>{agrupacion.fechaAfiliacion}</td>
                         <td>
-                          <button >
-                            Desafiliar
-                          </button>
-                        </td>{" "}
-                        
+                          <button>Desafiliar</button>
+                        </td>
                         <td>{agrupacion.miembros.length}</td>
                       </tr>
                     ))}

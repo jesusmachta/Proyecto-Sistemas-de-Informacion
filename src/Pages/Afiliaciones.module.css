@@ -56,3 +56,18 @@
     margin-top: 30px; 
 
 }
+
+.paypalWrapper{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.paypalWrapper > input{
+    border-radius: 15px;
+    padding: 15px;
+    max-width: 120px;
+    width: 120px;
+    border: none;
+    outline: none;
+}
