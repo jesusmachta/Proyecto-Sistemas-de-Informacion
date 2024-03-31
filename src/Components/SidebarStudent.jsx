@@ -24,6 +24,7 @@ export default function SidebarStudent() {
       <NavLink
             to={userL? `/profile/${userL.uid}`: '/signup'}
             activeClassName={styles.activeLink}
+            exact
             
         >
             <li>
