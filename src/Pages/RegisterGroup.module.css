@@ -46,6 +46,8 @@ body {
 
 .input {
   margin-bottom: 10px;
+  width: 30%;
+  margin-right: 2%;
 }
 
 .button {
@@ -53,18 +55,27 @@ body {
 }
 
 .textarea {
-  width: 100%;
+  width: 50%;
   height: 100px;
   margin-bottom: 10px;
 }
 
 .input,
 .textarea {
-  width: 100%;
+  width: 48%;
   min-height: 17vh;
   margin-bottom: 10px;
 }
 
 .textarea {
   height: auto;
+}
+
+.pair {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pair textarea {
+  width: 48%;
 }

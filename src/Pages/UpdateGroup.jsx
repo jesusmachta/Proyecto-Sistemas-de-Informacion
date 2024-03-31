@@ -3,6 +3,8 @@ import { collection, getDocs, doc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import { useForm } from "react-hook-form";
 import styles from "./UpdateGroup.module.css";
+import SidebarAdmin from "../Components/SidebarAdmin"; // Asegúrate de que la ruta sea correcta
+import Navbar from "../Components/Navbar";
 
 const UpdateGroup = () => {
   const [groups, setGroups] = useState([]);
@@ -85,59 +87,119 @@ const UpdateGroup = () => {
   };
 
   return (
-    <div className={styles.body}>
-      <div className={styles.profileInfo}>
-        <img className={styles.profileImage} src="profile.jpg" alt="Profile" />
-        <h2>{adminData.name}</h2>
-        <p>{adminData.email}</p>
-      </div>
-      <h1 className={styles.updateGroup}>Actualización de Agrupaciones</h1>
-      <div className={styles.leftSection}>
-        <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-          <select onChange={handleGroupChange} className={styles.select}>
-            <option>Selecciona un grupo</option>
-            {groups.map((group, index) => (
-              <option key={index} value={group.name}>
-                {group.name}
-              </option>
-            ))}
-          </select>
-          {selectedGroup && (
-            <>
-              <input
-                {...register("name")}
-                placeholder="Nombre"
-                className={styles.input}
-                id ="nombreA"
-              />
-              <textarea
-                {...register("vision")}
-                placeholder="Visión"
-                className={styles.textarea}
-                id = "visionA"
-              />
-              <textarea
-                {...register("description")}
-                placeholder="Descripción"
-                className={styles.textarea}
-                id = "descripcionA"
-              />
-              <textarea
-                {...register("mision")}
-                placeholder="Misión"
-                className={styles.textarea}
-                id = "misionA"
-              />
-              <img src={selectedGroup.ImgSrc} alt="Imagen del grupo" />
-              <textarea
-                value={selectedGroup.members
-                  .map((member, index) => `${index + 1}. ${member}`)
-                  .join("\n")}
-                placeholder="Miembros"
-                readOnly
-                className={styles.textarea}
-                id = "miembrosA"
-              />
+    <>
+      <Navbar />
+      <SidebarAdmin />
+      <div className={styles.body}>
+        <div className={styles.profileInfo}>
+          <img
+            className={styles.profileImage}
+            src="profile.jpg"
+            alt="Profile"
+          />
+          <h2>{adminData.name}</h2>
+          <p>{adminData.email}</p>
+        </div>
+        <h1 className={styles.updateGroup}>Actualización de Agrupaciones</h1>
+        <div className={styles.leftSection}>
+          <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                justifyContent: "space-between",
+              }}
+            >
+              <div style={{ flex: "0 0 48%" }}>
+                <select onChange={handleGroupChange} className={styles.select}>
+                  <option>Selecciona un grupo</option>
+                  {groups.map((group, index) => (
+                    <option key={index} value={group.name}>
+                      {group.name}
+                    </option>
+                  ))}
+                </select>
+                {selectedGroup && (
+                  <>
+                    <input
+                      {...register("name")}
+                      placeholder="Nombre"
+                      className={styles.input}
+                      id="nombreA"
+                    />
+                    <textarea
+                      {...register("vision")}
+                      placeholder="Visión"
+                      className={styles.textarea}
+                      id="visionA"
+                      style={{ height: "50px" }} // Ajusta este valor según tus necesidades
+                    />
+                    <textarea
+                      {...register("mision")}
+                      placeholder="Misión"
+                      className={styles.textarea}
+                      id="misionA"
+                      style={{ height: "50px" }} // Ajusta este valor según tus necesidades
+                    />
+                    <textarea
+                      value={selectedGroup.members
+                        .map((member, index) => `${index + 1}. ${member}`)
+                        .join("\n")}
+                      placeholder="Miembros"
+                      readOnly
+                      className={styles.textarea}
+                      id="miembrosA"
+                      style={{ height: "50px" }} // Ajusta este valor según tus necesidades
+                    />
+                  </>
+                )}
+              </div>
+              <div style={{ flex: "0 0 48%" }}>
+                {selectedGroup && (
+                  <>
+                    <textarea
+                      {...register("description")}
+                      placeholder="Descripción"
+                      className={styles.textarea}
+                      id="descripcionA"
+                      style={{ height: "50px" }} // Ajusta este valor según tus necesidades
+                    />
+                    <img src={selectedGroup.ImgSrc} alt="Imagen del grupo" />
+                    <input
+                      type="text"
+                      value={imgUrl}
+                      onChange={handleLinkChange}
+                      placeholder="Pega el enlace de la imagen aquí"
+                      style={{ width: "100%" }}
+                    />
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        width: "200px",
+                        marginLeft: "35%",
+                      }}
+                    >
+                      <button
+                        type="button"
+                        onClick={handleAdd}
+                        style={{ margin: "10px auto" }}
+                      >
+                        Agregar
+                      </button>
+                      <button
+                        type="submit"
+                        className={styles.button}
+                        style={{ margin: "10px auto" }}
+                      >
+                        Actualizar
+                      </button>
+                    </div>
+                  </>
+                )}
+              </div>
+            </div>
+            {selectedGroup && (
               <div
                 style={{
                   display: "flex",
@@ -169,41 +231,11 @@ const UpdateGroup = () => {
                   </div>
                 ))}
               </div>
-              <input
-                type="text"
-                value={imgUrl}
-                onChange={handleLinkChange}
-                placeholder="Pega el enlace de la imagen aquí"
-                style={{ width: "100%" }}
-              />
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  width: "200px",
-                  marginLeft: "35%",
-                }}
-              >
-                <button
-                  type="button"
-                  onClick={handleAdd}
-                  style={{ margin: "10px auto" }}
-                >
-                  Agregar
-                </button>
-                <button
-                  type="submit"
-                  className={styles.button}
-                  style={{ margin: "10px auto" }}
-                >
-                  Actualizar
-                </button>
-              </div>
-            </>
-          )}
-        </form>
+            )}
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

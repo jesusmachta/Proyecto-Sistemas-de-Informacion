@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import { collection, getDocs, addDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import { useForm } from "react-hook-form";
-import styles from './RegisterGroup.module.css';
+import styles from "./RegisterGroup.module.css";
+import Navbar from "../Components/Navbar";
+import SidebarAdmin from "../Components/SidebarAdmin";
 
 const RegisterGroup = () => {
   const [imgSrc, setImgSrc] = useState("");
@@ -51,64 +53,79 @@ const RegisterGroup = () => {
   };
 
   return (
-    <div className={styles.body}>
-      <div className={styles.profileInfo}>
-        <img className={styles.profileImage} src="profile.jpg" alt="Profile" />
-        <h2>{adminData.name}</h2>
-        <p>{adminData.email}</p>
+    <>
+      <Navbar />
+      <SidebarAdmin />
+      <div className={styles.body}>
+        <div className={styles.profileInfo}>
+          <img
+            className={styles.profileImage}
+            src="profile.jpg"
+            alt="Profile"
+          />
+          <h2>{adminData.name}</h2>
+          <p>{adminData.email}</p>
+        </div>
+        <h1 className={styles.updateGroup}>Registro de Agrupaciones</h1>
+        <div className={styles.leftSection}>
+          <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+            <input
+              {...register("name")}
+              placeholder="Nombre"
+              className={styles.input}
+              id="nombreGroup"
+            />
+            <div className={styles.pair}>
+              <textarea
+                {...register("vision")}
+                placeholder="Visión"
+                className={styles.textarea}
+                id="visionGroup"
+              />
+              <textarea
+                {...register("description")}
+                placeholder="Descripción"
+                className={styles.textarea}
+                id="descripcionGroup"
+              />
+            </div>
+            <div className={styles.pair}>
+              <textarea
+                {...register("mision")}
+                placeholder="Misión"
+                className={styles.textarea}
+                id="misionGroup"
+              />
+              <input
+                type="text"
+                {...register("members", { required: true })}
+                placeholder="Miembros (separados por comas)"
+                className={styles.input}
+                id="miembrosGroup"
+              />
+            </div>
+            <div className={styles.pair}>
+              <input
+                type="text"
+                value={imgSrc}
+                onChange={handleImgSrcChange}
+                placeholder="Pega el enlace de la imagen principal aquí"
+                className={styles.input}
+                id="imagenGroup"
+              />
+              <input
+                type="text"
+                onChange={handleImgExtrasChange}
+                placeholder="Pega el enlace de las imágenes extras aquí"
+                className={styles.input}
+                id="imagenesExtrasGroup"
+              />
+            </div>
+            <input type="submit" value="Registrar" />
+          </form>
+        </div>
       </div>
-      <h1 className={styles.updateGroup}>Registro de Agrupaciones</h1>
-      <div className={styles.leftSection}>
-        <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-          <input
-            {...register("name")}
-            placeholder="Nombre"
-            className={styles.input}
-            id ="nombreGroup"
-          />
-          <textarea
-            {...register("vision")}
-            placeholder="Visión"
-            className={styles.textarea}
-            id ="visionGroup"
-          />
-          <textarea
-            {...register("description")}
-            placeholder="Descripción"
-            className={styles.textarea}
-            id ="descripcionGroup"
-          />
-          <textarea
-            {...register("mision")}
-            placeholder="Misión"
-            className={styles.textarea}
-            id = "misionGroup"
-          />
-          <input
-            type="text"
-            {...register("members", { required: true })}
-            placeholder="Miembros (separados por comas)"
-            id = "miembrosGroup"
-          />
-          <input
-            type="text"
-            value={imgSrc}
-            onChange={handleImgSrcChange}
-            placeholder="Pega el enlace de la imagen principal aquí"
-            style={{ width: "100%", marginTop: "10px" }}
-            id = "imagenGroup"
-          />
-          <input
-            type="text"
-            onChange={handleImgExtrasChange}
-            placeholder="Pega el enlace de las imágenes extras aquí"
-            style={{ width: "100%", marginTop: "10px" }}
-            id = "imagenesExtrasGroup"
-          />
-          <input type="submit" value="Registrar" />
-        </form>
-      </div>
-    </div>
+    </>
   );
 };
 

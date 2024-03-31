@@ -68,3 +68,13 @@ body {
 .textarea {
   height: auto;
 }
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.form > div {
+  flex: 0 0 48%;
+}
