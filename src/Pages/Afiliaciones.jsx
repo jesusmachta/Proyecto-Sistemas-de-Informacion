@@ -1,7 +1,7 @@
 import Navbar from "../Components/Navbar";
 import { useEffect, useRef, useState } from "react";
 import { useUser } from "../context/user";
-import { collection, where, query, getDocs } from "firebase/firestore";
+import { collection, where, query, getDocs, doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import { ref, uploadBytes, getStorage, getDownloadURL } from "firebase/storage";
 import { storage } from "../firebase";
@@ -35,23 +35,25 @@ export default function Afiliaciones() {
     }
     const findUser = async () => {
       try {
-        const querySnapshot = await getDocs(
-          query(collection(db, "Students"), where("email", "==", userL.email))
-        );
-        querySnapshot.forEach((doc) => {
-          setUserId(doc.id);
-          setUserName(doc.data().name);
-          setAgrupaciones(doc.data().afiliaciones);
+        const docRef = doc(db, "Students", userL.uid);
+        const docSnap = await getDoc(docRef);
+  
+        if (docSnap.exists()) {
+          setUserId(docSnap.id);
+          setUserName(docSnap.data().name);
+          setAgrupaciones(docSnap.data().afiliaciones);
           console.log(agrupaciones);
           setShowAlert(true);
           setDataLoaded(true);
           setIsLoading(false);
-        });
+        } else {
+          console.log("No such document!");
+        }
       } catch (error) {
         console.log("Error getting documents: ", error);
       }
-      if (userId) {
-        const storageRef = ref(storage, `profilePictures/${userId}`);
+      if (userL) {
+        const storageRef = ref(storage, `profilePictures/${userL.uid}`);
         try {
           const url = await getDownloadURL(storageRef);
           setImage(url);

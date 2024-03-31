@@ -66,8 +66,8 @@ export default function studentProfile() {
           const url = await getDownloadURL(storageRef);
           setImage(url);
         } catch (error) {
-          // setImage(defaultPicture);
           console.log("No se encontró la imagen");
+          setImage(defaultPicture);
         }
       }
     };
