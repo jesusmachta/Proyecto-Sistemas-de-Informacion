@@ -64,14 +64,7 @@ export default function Formulario() {
     findUser();
   }, [
     navigation,
-    userL,
-    userId,
-    userEmail,
-    userName,
-    userPhone,
-    image,
-    dataLoaded,
-    isLoading,
+    userL
   ]);
 
   async function update (){

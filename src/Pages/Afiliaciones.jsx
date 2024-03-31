@@ -63,14 +63,7 @@ export default function Afiliaciones() {
     findUser();
   }, [
     navigation,
-    userL,
-    userId,
-    userEmail,
-    userName,
-    agrupaciones,
-    image,
-    dataLoaded,
-    isLoading,
+    userL
   ]);
   const handleGetOut=( nombre)=>{
     console.log("Nombre de la agrupación que quieres eliminar!"); 

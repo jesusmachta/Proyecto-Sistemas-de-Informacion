@@ -29,6 +29,8 @@ export default function studentProfile() {
   const lastNameRef = useRef();
   const phoneRef = useRef();
 
+
+
   useEffect(() => {
     if (userL) {
       console.log("Si existe userL");
@@ -70,7 +72,7 @@ export default function studentProfile() {
       }
     };
     findUser();
-  }, [navigation, userId, userEmail, userL, userName, userLastName, userPhone]);
+  }, [navigation, userId]);
 
   const update = () => {
     const nameR = nameRef.current.value;
