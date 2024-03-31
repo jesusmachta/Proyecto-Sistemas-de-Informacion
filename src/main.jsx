@@ -4,7 +4,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Footer_Navbar from "./Components/Footer_Navbar";
 import Agrupaciones from "./Pages/Agrupaciones";
 import Inicio from "./Pages/Inicio";
-import Feedbacks from "./Pages/Feedbacks/Feedbacks";
 import Register from "./Pages/Signup";
 import RegistrarAdmin from "./Pages/RegistrarAdmin";
 import Agrupacion from "./Pages/Agrupacion/Agrupacion";
@@ -19,6 +18,7 @@ import UpdateGroup from "./Pages/UpdateGroup";
 import RegisterGroup from "./Pages/RegisterGroup";
 import AdminProfile from "./Pages/AdminProfile";
 import DeleteGroup from "./Pages/DeleteGroup";
+import FeedbacksUsuario from "./Pages/FeedbacksUsuario/FeedbacksUsuario";
 
 const browserRouter = createBrowserRouter([
   {
@@ -35,7 +35,7 @@ const browserRouter = createBrowserRouter([
       },
       {
         path: "/feedbacks",
-        element: <Feedbacks />,
+        element: <FeedbacksUsuario />,
       },
     ],
   },

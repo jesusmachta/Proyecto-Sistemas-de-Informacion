@@ -5,17 +5,19 @@ import { useParams } from "react-router-dom";
 import CarouselAgrupacion from "../../Components/CarouselAgrupacion/CarouselAgrupacion";
 import DropdownInfo from "../../Components/DropdownInfo/DropdownInfo";
 import { getAgrupacionById } from "../../controllers/Agrupaciones";
-import Feedbacks from "../Feedbacks/Feedbacks";
+import Feedbacks from "../../Components/Feedbacks/Feedbacks";
 import Navbar from '../../Components/Navbar';
 import { useUser } from "../../context/user";
 import {addSubscriptionFunction} from '../../controllers/agregarAfiliacion'; 
 import { getStudentById } from "../../controllers/updateUser";
-
+import { geFeedbacksByAgrupacion } from "../../controllers/feedbacks";
 
 function Agrupacion() {
   const [agrupacion, setAgrupacion] = useState(null);
   const [isUserAMember, setIsUserAMember] = useState(false);
   const [submittedAfiliacion, setSubmittedAfiliacion] = useState(false);
+  const [feedbacks, setFeedbacks] = useState(null);
+  const [avgRating, setAvgRating] = useState(null);
 
   let { id } = useParams();
   const userL = useUser();
@@ -24,7 +26,6 @@ function Agrupacion() {
     if (id) {
       const buscarId = async () => {
         const currentAgrup = await getAgrupacionById(id);
-        console.log(currentAgrup);
         if (currentAgrup) {
           setAgrupacion(currentAgrup);
         }
@@ -32,6 +33,36 @@ function Agrupacion() {
       buscarId();
     }
   }, []);
+
+  const handleSetAvgFeedbacks = (feedbacksList) => {
+    var avg = 0
+    if(feedbacksList?.length > 0){
+
+      feedbacksList.map((feedback) => {
+        avg += feedback.rating
+      })
+  
+      avg = avg / feedbacksList.length
+      setAvgRating(avg)
+    }else{
+      setAvgRating(null)
+    }
+  }
+
+  useEffect(() => {
+    if(agrupacion){
+      const handleGetFeedback = async () => {
+        const feedbacksList = await geFeedbacksByAgrupacion(agrupacion.name)
+        if(feedbacksList){
+          setFeedbacks(feedbacksList)
+          handleSetAvgFeedbacks(feedbacksList)
+        }
+      }
+
+      handleGetFeedback()
+    }
+  }, [agrupacion])
+  
 
   const handleJoinClick = async()=>{
     const submitted = await addSubscriptionFunction(userL.uid, agrupacion.name, id);
@@ -82,8 +113,7 @@ function Agrupacion() {
           {userL && !isUserAMember && !submittedAfiliacion && <button className="buttonUnirse" onClick={handleJoinClick}> Unirse a Agrupación </button>}
         </div>
 
-        {userL && <Feedbacks />}
-        
+        {userL && <Feedbacks isAMember={isUserAMember} rating={avgRating} feedbacksList={feedbacks}/>}
       </div>
       </div>
       

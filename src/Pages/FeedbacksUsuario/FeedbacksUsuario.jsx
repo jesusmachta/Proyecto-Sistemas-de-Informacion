@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { IoPersonCircle } from 'react-icons/io5';
 import styles from './FeedbacksUsuario.module.css';
-import { FaRegStar } from 'react-icons/fa';
 import { FaStar } from 'react-icons/fa';
-import { FaStarHalfAlt } from 'react-icons/fa';
 import { getAllAgrupaciones } from '../../controllers/Agrupaciones';
 import { useUser } from '../../context/user';
 import { createFeedback, getUserFeedbacks } from '../../controllers/feedbacks';
@@ -28,38 +26,48 @@ function FeedbacksUsuario() {
     setSelectedData(selectedId);
   };
 
+  const handleGetStudentAgrupaciones = async () => {
+    const agrupacionesList = await getAllAgrupaciones();
+
+    if (agrupacionesList) {
+      const student = await getStudentById(user.uid);
+      setStudentData(student)
+      const myAgrupaciones = student.afiliaciones.map(afiliacion => {
+        const found = agrupacionesList.find(agrupacion => agrupacion?.name === afiliacion?.nombre)
+        if(found){
+          return found
+        }
+      });
+      setData(myAgrupaciones)
+    }
+  }
+
+  const handleGetMyFeedbacks = async() => {
+    const myFeedbacksList = await getUserFeedbacks(user.uid)
+
+    if(myFeedbacksList){
+      setMyFeedbacks(myFeedbacksList)
+    }
+  }
+
   useEffect(() => {
     setLoading(true);
     if(user){
-      const handleGetStudentAgrupaciones = async () => {
-        const agrupacionesList = await getAllAgrupaciones();
-  
-        if (agrupacionesList) {
-          const student = await getStudentById(user.uid);
-          setStudentData(student)
-          const myAgrupaciones = student.afiliaciones.map(afiliacion => {
-            const found = agrupacionesList.find(agrupacion => agrupacion?.name === afiliacion?.nombre)
-            if(found){
-              return found
-            }
-          });
-          setData(myAgrupaciones)
-        }
-      }
-  
-      const handleGetMyFeedbacks = async() => {
-        const myFeedbacksList = await getUserFeedbacks(user.email)
-  
-        if(myFeedbacksList){
-          setMyFeedbacks(myFeedbacksList)
-        }
-      }
-  
       handleGetStudentAgrupaciones()
       handleGetMyFeedbacks();
       setLoading(false);
     }
   }, []);
+
+  useEffect(() => {
+    if(user){
+      setLoading(true);
+      handleGetStudentAgrupaciones()
+      handleGetMyFeedbacks();
+      setLoading(false);
+    }
+  }, [user])
+  
 
   useEffect(() => {
     if (selectedData) {
@@ -85,7 +93,7 @@ function FeedbacksUsuario() {
     if (user) {
       const feedback = await createFeedback(
         feedbackInput,
-        user.email,
+        user.uid,
         selectedData,
         rating
       );
@@ -97,7 +105,7 @@ function FeedbacksUsuario() {
     }
   };
 
-  if(loading && !user && !studentData){
+  if(!user && !studentData){
     return (
       <p>Loading...</p>
     )

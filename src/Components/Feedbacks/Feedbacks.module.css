@@ -14,10 +14,12 @@
 
 .ratingContainer{
     display: flex;
+    flex: 1;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 10px;
+    padding: 0px 20px;
 }
 
 .FeedbacksContainer{
@@ -55,5 +57,9 @@ transition: all ease .3s;
 }
 
 .contenedorComentario{
+    display: flex;
+    flex: 4;
+    flex-direction: column;
+    gap: 15px;
     overflow-x: scroll;
 }
