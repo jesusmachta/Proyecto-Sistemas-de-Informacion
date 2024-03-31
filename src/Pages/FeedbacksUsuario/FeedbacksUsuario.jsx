@@ -43,7 +43,7 @@ function FeedbacksUsuario() {
   }
 
   const handleGetMyFeedbacks = async() => {
-    const myFeedbacksList = await getUserFeedbacks(user.email)
+    const myFeedbacksList = await getUserFeedbacks(user.uid)
 
     if(myFeedbacksList){
       setMyFeedbacks(myFeedbacksList)
@@ -93,7 +93,7 @@ function FeedbacksUsuario() {
     if (user) {
       const feedback = await createFeedback(
         feedbackInput,
-        user.email,
+        user.uid,
         selectedData,
         rating
       );

@@ -44,7 +44,7 @@ export const getFeedbackById = async (feedbackId) => {
 
 export const createFeedback = async (
   content,
-  userEmail,
+  userId,
   agrupacionName,
   rating
 ) => {
@@ -52,7 +52,7 @@ export const createFeedback = async (
     const feedbacksCollection = collection(db, 'Feedbacks');
     const docRef = await addDoc(feedbacksCollection, {
       content,
-      userEmail,
+      userId,
       agrupacion: agrupacionName,
       rating,
     });
@@ -66,15 +66,37 @@ export const createFeedback = async (
   }
 };
 
-export const getUserFeedbacks = async (email) => {
+export const getUserFeedbacks = async (userId) => {
   try {
-    if (!email) {
-      console.error('email is empty');
+    if (!userId) {
+      console.error('userId is empty');
       return null;
     }
     var feedbacks = [];
     const feedbacksCollection = collection(db, 'Feedbacks');
-    const q = query(feedbacksCollection, where('userEmail', '==', email));
+    const q = query(feedbacksCollection, where('userId', '==', userId));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      feedbacks.push(doc.data());
+    });
+
+    return feedbacks;
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const geFeedbacksByAgrupacion = async (agrupacionName) => {
+  try {
+    if (!agrupacionName) {
+      console.error('agrupacionName is empty');
+      return null;
+    }
+    var feedbacks = [];
+    const feedbacksCollection = collection(db, 'Feedbacks');
+    const q = query(
+      feedbacksCollection,
+      where('agrupacion', '==', agrupacionName)
+    );
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
       feedbacks.push(doc.data());

@@ -1,17 +1,38 @@
+import { useEffect, useState } from "react";
 import "./Comment.css"
 import { IoPersonCircle } from "react-icons/io5";
+import { useUser } from "../../context/user";
+import { getStudentById } from "../../controllers/updateUser";
 
-function Comment({comment}) {
-  //comment.username
-  //comment.description
+function Comment({feedback}) {
+
+  const [student, setStudent] = useState(null)
+
+  const user = useUser();
+
+  useEffect(() => {
+    if(user){
+      const handleGetStudent = async () => {
+        const student = await getStudentById(feedback.userId);
+        setStudent(student)
+      }
+
+      handleGetStudent()
+    }
+  }, [user])
+  
   return (
     <div className="commentContainer">
       <div className="commentHeader">
-      <IoPersonCircle size={35} color="#ADAAAA"/>
-        <p>Jane Doe </p>
+        <IoPersonCircle size={35} color="#ADAAAA"/>
+        {student ? (
+          <p>{`${student?.name} ${student?.lastName}`}</p>
+        ) :  (
+          <p>Jane Doe</p>
+        )}
       </div>
       <div className="commentDescription">
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi fugit cum repellat vel laboriosam illo accusamus obcaecati cumque est quos.</p>
+        <p>{feedback.content}</p>
       </div>
     </div>
   )
