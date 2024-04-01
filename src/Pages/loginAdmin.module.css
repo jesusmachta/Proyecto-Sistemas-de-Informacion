@@ -2,7 +2,7 @@ body {
   background-color: #eaecf0;
 }
 
-.logo {
+.la_logo {
   top: 0;
   left: 0;
   width: 300px;
@@ -11,14 +11,14 @@ body {
   margin-top: 0;
 }
 
-.buttonsLogInSignUp {
+.la_buttonsLogInSignUp {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   margin-bottom: none;
 }
 
-.button {
+.la_button {
   font-size: 20px;
   width: 200px;
   height: 50px;
@@ -29,19 +29,20 @@ body {
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   margin-bottom: none;
 }
-.buttonSelected {
+.la_buttonSelected {
   color: #f2ca99;
   border: 1px solid #f2ca99;
 }
 
-.titles {
+.la_titles {
   font-family: "Raleway", sans-serif;
   font-weight: normal;
   font-size: 18px;
   text-align: left;
+  margin-bottom: 0.5em;
 }
 
-.inputField {
+.la_inputField {
   width: 100%;
   padding: 10px;
   margin: 10px 0;
@@ -50,18 +51,30 @@ body {
   border-radius: 4px;
   font-size: 16px;
   background-color: #f8f8f8;
+  margin-top: 0.5em;
 }
 
-.inputField:focus {
+input {
+  width: 110%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  font-family: "Raleway", sans-serif;
+  font-size: 20px;
+}
+
+.la_inputField:focus {
   border-color: #f2ca99;
   box-shadow: 0 0 8px #f2ca99;
 }
 
-.container {
+.la_container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+
   flex-direction: column;
   width: 100%;
   margin-top: 0;
@@ -69,7 +82,7 @@ body {
   box-sizing: border-box;
 }
 
-h2 {
+.la_h2 {
   text-align: left;
   margin-bottom: 20px;
   width: 100%;
@@ -77,9 +90,7 @@ h2 {
   max-width: 575px;
 }
 
-.googleButton,
-.facebookButton,
-.appleButton {
+.la_googleButton {
   width: 100%;
   max-width: 500px;
   padding: 10px;
@@ -89,7 +100,7 @@ h2 {
   text-align: center;
 }
 
-.buttonRegistrarse {
+.la_buttonRegistrarse {
   font-size: 20px;
   width: 300px;
   height: 50px;
@@ -105,14 +116,14 @@ h2 {
   border-color: rgb(181, 177, 177);
 }
 
-.passwordField {
+.la_passwordField {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
 }
 
-.passwordInput {
+.la_passwordInput {
   flex-grow: 1;
   margin-right: 10px;
   width: 40%;
@@ -120,11 +131,11 @@ h2 {
   padding: 0 10px;
 }
 
-.fas {
+.la_fas {
   cursor: pointer;
 }
 
-b {
+.la_b {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -133,29 +144,40 @@ b {
   font-family: "Raleway", sans-serif;
 }
 
-.button2 {
+.la_button2 {
   width: 15px;
   height: 15px;
   border-radius: 50%;
   border-width: 3px;
-  border-color: rgb(194, 192, 192); 
-  
+  border-color: rgb(194, 192, 192);
 }
 
-.selected {
+.la_selected {
   background-color: #f2ca99;
 }
 
-.textobotones{
+.la_textobotones {
   font-family: "Raleway", sans-serif;
   font-weight: normal;
   font-size: small;
   margin-top: 20px;
 }
 
-.buttonsContainer {
+.la_buttonsContainer {
   display: flex; /* Coloca los elementos en la misma línea */
   align-items: center; /* Centra los elementos verticalmente */
   gap: 10px; /* Espacio entre los elementos */
   align-content: center;
+}
+
+.la_buttonIniciar {
+  align-self: flex-end;
+  margin-top: 20px;
+  width: 110%;
+  height: 45px;
+  border-radius: 10px;
+  font-family: "Raleway", sans-serif;
+  background-color: white;
+  color: grey;
+  border: 1px solid rgb(154, 150, 150);
 }
