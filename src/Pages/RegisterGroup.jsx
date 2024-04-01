@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { collection, getDocs, addDoc } from "firebase/firestore";
-import { db } from "../firebase";
+import { collection, query, where, getDocs, addDoc } from "firebase/firestore";
+import { db, auth } from "../firebase";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import styles from "./RegisterGroup.module.css";
 import Navbar from "../Components/Navbar";
@@ -10,9 +11,14 @@ const RegisterGroup = () => {
   const [imgSrc, setImgSrc] = useState("");
   const [imgExtras, setImgExtras] = useState([]);
   const { register, handleSubmit } = useForm();
+  const currentUser = auth.currentUser;
   const [adminData, setAdminData] = useState({ name: "", email: "" });
 
   useEffect(() => {
+    if (currentUser && currentUser.email !== "admin@unimet.edu.ve") {
+      navigate("/");
+      return;
+    }
     const fetchAdminData = async () => {
       const adminCollection = collection(db, "Administrator");
       const adminSnapshot = await getDocs(adminCollection);
@@ -27,7 +33,7 @@ const RegisterGroup = () => {
     };
 
     fetchAdminData();
-  }, []);
+  }, [currentUser, history]);
 
   const handleImgSrcChange = (event) => {
     setImgSrc(event.target.value);
@@ -45,6 +51,15 @@ const RegisterGroup = () => {
       data.ImgExtras = imgExtras;
 
       const groupCollection = collection(db, "Agrupaciones");
+
+      // Verificar si el grupo ya existe
+      const q = query(groupCollection, where("name", "==", data.name));
+      const querySnapshot = await getDocs(q);
+      if (!querySnapshot.empty) {
+        alert("El grupo ya existe");
+        return;
+      }
+
       await addDoc(groupCollection, data);
       alert("Grupo registrado con éxito");
     } catch (error) {

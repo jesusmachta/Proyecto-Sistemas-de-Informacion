@@ -1,19 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { collection, getDocs, doc, updateDoc } from "firebase/firestore";
-import { db } from "../firebase";
+import { db, auth } from "../firebase";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import styles from "./UpdateGroup.module.css";
-import SidebarAdmin from "../Components/SidebarAdmin"; // Asegúrate de que la ruta sea correcta
+import SidebarAdmin from "../Components/SidebarAdmin";
 import Navbar from "../Components/Navbar";
 
 const UpdateGroup = () => {
   const [groups, setGroups] = useState([]);
+  const currentUser = auth.currentUser;
   const [selectedGroup, setSelectedGroup] = useState(null);
   const [imgUrl, setImgUrl] = useState("");
   const { register, handleSubmit, setValue } = useForm();
   const [adminData, setAdminData] = useState({ name: "", email: "" });
 
   useEffect(() => {
+    if (currentUser && currentUser.email !== "admin@unimet.edu.ve") {
+      navigate("/");
+      return;
+    }
+
     const fetchGroups = async () => {
       const groupCollection = collection(db, "Agrupaciones");
       const groupSnapshot = await getDocs(groupCollection);
@@ -42,7 +49,7 @@ const UpdateGroup = () => {
 
     fetchGroups();
     fetchAdminData();
-  }, []);
+  }, [currentUser, history]);
 
   const handleGroupChange = (event) => {
     const group = groups.find((group) => group.name === event.target.value);
@@ -132,14 +139,14 @@ const UpdateGroup = () => {
                       placeholder="Visión"
                       className={styles.textarea}
                       id="visionA"
-                      style={{ height: "50px" }} // Ajusta este valor según tus necesidades
+                      style={{ height: "50px" }}
                     />
                     <textarea
                       {...register("mision")}
                       placeholder="Misión"
                       className={styles.textarea}
                       id="misionA"
-                      style={{ height: "50px" }} // Ajusta este valor según tus necesidades
+                      style={{ height: "50px" }}
                     />
                     <textarea
                       value={selectedGroup.members
@@ -149,7 +156,7 @@ const UpdateGroup = () => {
                       readOnly
                       className={styles.textarea}
                       id="miembrosA"
-                      style={{ height: "50px" }} // Ajusta este valor según tus necesidades
+                      style={{ height: "50px" }}
                     />
                   </>
                 )}
@@ -162,7 +169,7 @@ const UpdateGroup = () => {
                       placeholder="Descripción"
                       className={styles.textarea}
                       id="descripcionA"
-                      style={{ height: "50px" }} // Ajusta este valor según tus necesidades
+                      style={{ height: "50px" }}
                     />
                     <img src={selectedGroup.ImgSrc} alt="Imagen del grupo" />
                     <input

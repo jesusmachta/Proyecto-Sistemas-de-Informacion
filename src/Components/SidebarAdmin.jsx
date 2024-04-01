@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { auth } from "../firebase";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUser,
-  faPenToSquare,
   faUsers,
   faMoneyCheckDollar,
   faArrowRightFromBracket,
+  faXmark,
+  faPlus,
+  faPenToSquare,
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "./SidebarAdmin.module.css";
 
@@ -19,7 +22,7 @@ export default function SidebarAdmin() {
   return (
     <div className={styles.sidebar}>
       <ul>
-        <NavLink to="/profile/:userId" activeClassName={styles.activeLink}>
+        <NavLink to="/adminprofile" activeClassName={styles.activeLink}>
           <li>
             <FontAwesomeIcon
               className={styles.icon}
@@ -28,16 +31,25 @@ export default function SidebarAdmin() {
           </li>
         </NavLink>
 
-        <NavLink to="/profile/afilliations" activeClassName={styles.activeLink}>
+        <NavLink to="/deletegroup" activeClassName={styles.activeLink}>
           <li>
             <FontAwesomeIcon
               className={styles.icon}
-              icon={faUsers}
+              icon={faXmark}
             ></FontAwesomeIcon>
           </li>
         </NavLink>
 
-        <NavLink to="/profile/formulario" activeClassName={styles.activeLink}>
+        <NavLink to="/registergroup" activeClassName={styles.activeLink}>
+          <li>
+            <FontAwesomeIcon
+              className={styles.icon}
+              icon={faPlus}
+            ></FontAwesomeIcon>
+          </li>
+        </NavLink>
+
+        <NavLink to="/updategroup" activeClassName={styles.activeLink}>
           <li>
             <FontAwesomeIcon
               className={styles.icon}
@@ -45,12 +57,6 @@ export default function SidebarAdmin() {
             ></FontAwesomeIcon>
           </li>
         </NavLink>
-        <li>
-          <FontAwesomeIcon
-            className={styles.icon}
-            icon={faMoneyCheckDollar}
-          ></FontAwesomeIcon>
-        </li>
         <li>
           <FontAwesomeIcon
             className={styles.logout}

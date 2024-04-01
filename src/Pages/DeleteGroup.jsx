@@ -7,16 +7,24 @@ import {
   doc,
   deleteDoc,
 } from "firebase/firestore";
-import { db } from "../firebase";
+import { db, auth } from "../firebase";
 import styles from "./DeleteGroup.module.css";
 import Navbar from "../Components/Navbar";
 import SidebarAdmin from "../Components/SidebarAdmin";
+import { useNavigate } from "react-router-dom";
 
 function DeleteGroup() {
   const [groups, setGroups] = useState([]);
   const [adminData, setAdminData] = useState({});
+  const currentUser = auth.currentUser;
+  const navigate = useNavigate();
 
   useEffect(() => {
+    if (currentUser && currentUser.email !== "admin@unimet.edu.ve") {
+      navigate("/");
+      return;
+    }
+
     const getGroups = async () => {
       const q = query(
         collection(db, "Agrupaciones"),
@@ -45,7 +53,7 @@ function DeleteGroup() {
 
     getGroups();
     fetchAdminData();
-  }, []);
+  }, [currentUser, history]);
 
   const deleteGroup = async (groupId) => {
     await deleteDoc(doc(db, "Agrupaciones", groupId));
