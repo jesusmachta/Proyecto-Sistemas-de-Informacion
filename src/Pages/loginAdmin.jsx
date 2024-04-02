@@ -4,8 +4,8 @@ import { auth } from "../firebase";
 import { signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useState, useEffect } from "react";
 import { InputControlAdmin } from "./InputControlAdmin/InputControlAdmin";
-import {GoogleButton} from "../Components/Loginbuttons"; 
-import {LoginGitHub} from "../Components/Loginbuttons";
+import { GoogleButton } from "../Components/Loginbuttons";
+import { LoginGitHub } from "../Components/Loginbuttons";
 const logo = "./logo-color-sinfondo.png";
 import {
   EmailField,
@@ -55,8 +55,7 @@ export function LoginAdmin() {
           title: `Inicio de sesión exitoso!`,
           icon: "success",
           confirmButtonText: "OK",
-        
-        })
+        });
         navigate("/");
         guardarPerfil(user);
       }
@@ -65,68 +64,84 @@ export function LoginAdmin() {
   }, [navigate, values.name]);
 
   return (
-    <div className={styles.page}>
-      <div>
-        <img src={logo} alt="logo" className={styles.logo}></img>
-      </div>
-      <div className={styles.buttonsLogInSignUp}>
-        <button className={`${styles.button} ${styles.buttonSelected}`}>
-          Log In
-        </button>
-        <button className={styles.button} onClick={() => navigate("/signup")}>
-          Sign Up
-        </button>
-      </div>
-      <div className={styles.buttonsContainer}>
-        <button
-          className={`${styles.button2} ${
-            selectedButton === "student" ? styles.selected : ""
-          }`}
-          onClick={() => setSelectedButton("student")}
-        ></button>
-        <h3 className={styles.textobotones}>Estudiante</h3>
-        <button
-          className={`${styles.button2} ${
-            selectedButton === "admin" ? styles.selected : ""
-          }`}
-          onClick={() => setSelectedButton("admin")}
-        ></button>
-        <h3 className={styles.textobotones}>Administrador</h3>
-      </div>
-      <b className={styles.error}>{errorMsg}</b>
-      <form className={styles.container}>
-        <h2 className={styles.titles}>Correo Electrónico</h2>
-        <EmailField
-          id="email"
-          className={styles.inputField}
-          label="Email"
-          placeholder="Ingresa tu correo..."
-          onChange={(event) =>
-            setValues((prev) => ({ ...prev, email: event.target.value }))
-          }
-        />
-        <h2 className={styles.titles}>Contraseña</h2>
-        <PasswordField
-          id="password"
-          className={styles.inputField}
-          label="Contraseña"
-          placeholder="Ingresa tu contraseña..."
-          onChange={(event) =>
-            setValues((prev) => ({ ...prev, password: event.target.value }))
-          }
-          showPassword={showPassword}
-          onTogglePassword={() => setShowPassword(!showPassword)}
-        />
-        <button
-          onClick={Iniciar}
-          disabled={submitButtonDisabled}
-          className={styles.buttonIniciar}
+    <div className={styles.la_page}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <img src={logo} alt="logo" className={styles.la_logo}></img>
+        <div className={styles.la_buttonsLogInSignUp}>
+          <button className={`${styles.la_button} ${styles.la_buttonSelected}`}>
+            Log In
+          </button>
+          <button
+            className={styles.la_button}
+            onClick={() => navigate("/signup")}
+          >
+            Sign Up
+          </button>
+        </div>
+        <div
+          className={styles.la_buttonsContainer}
+          style={{ justifyContent: "center" }}
         >
-          Iniciar
-        </button>
-        <GoogleButton />
-        <LoginGitHub />
-      </form>
+          <button
+            className={`${styles.la_button2} ${
+              selectedButton === "student" ? styles.la_selected : ""
+            }`}
+            onClick={() => setSelectedButton("student")}
+          ></button>
+          <h3 className={styles.la_textobotones}>Estudiante</h3>
+          <button
+            className={`${styles.la_button2} ${
+              selectedButton === "admin" ? styles.la_selected : ""
+            }`}
+            onClick={() => setSelectedButton("admin")}
+          ></button>
+          <h3 className={styles.la_textobotones}>Administrador</h3>
+        </div>
+        <div
+          style={{ width: "100%", display: "flex", justifyContent: "center" }}
+        >
+          <form className={styles.la_container}>
+            <h2 className={styles.la_titles}>Correo Electrónico</h2>
+            <EmailField
+              id="email"
+              className={styles.la_inputField}
+              label="Email"
+              placeholder="Ingresa tu correo..."
+              onChange={(event) =>
+                setValues((prev) => ({ ...prev, email: event.target.value }))
+              }
+            />
+            <h2 className={styles.la_titles}>Contraseña</h2>
+            <PasswordField
+              id="password"
+              className={styles.la_inputField}
+              label="Contraseña"
+              placeholder="Ingresa tu contraseña..."
+              onChange={(event) =>
+                setValues((prev) => ({ ...prev, password: event.target.value }))
+              }
+              showPassword={showPassword}
+              onTogglePassword={() => setShowPassword(!showPassword)}
+            />
+            <button
+              onClick={Iniciar}
+              disabled={submitButtonDisabled}
+              className={styles.la_buttonIniciar}
+            >
+              Iniciar
+            </button>
+            <GoogleButton />
+            <LoginGitHub />
+          </form>
+        </div>
+      </div>
+      <b className={styles.la_error}>{errorMsg}</b>
     </div>
   );
 }
